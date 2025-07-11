@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <h1>Questo Home</h1>
+      <h1>Contenuto Home</h1>
     </>
   );
 };
