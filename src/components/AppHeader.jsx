@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import BurgerMenu from "./BurgerMenu";
+import SearchInput from "./SearchInput";
 
 const AppHeader = () => {
  
@@ -27,8 +29,8 @@ const linkNav = [
 
     return (
         <>
-            <header className="header-color d-flex justify-content-between align-items-center">
-                <div className="header-logo">L8CD</div>
+            <header className="header-color">
+                <div className="header-logo  me-auto"><Link className="logo">L8CD</Link></div>
                 <div className="link-header">
             <ul className="d-flex">
                 <li><Link>Offerte</Link></li>
@@ -37,11 +39,17 @@ const linkNav = [
                 <li><Link>Bambino</Link></li>
             </ul>
                 </div>
+    
                 
                 <div ><input type="text" placeholder="Cerca il tuo articolo... " className="search"/></div>
+            <div className="left-group d-flex align-items-center">
+                 <div>{<BurgerMenu/>}</div> 
                 <div className="header-icons"><Link><i className="fa-solid fa-cart-shopping text-white"></i></Link></div>
-                
+             </div>
             </header>
+                <div className="line"></div>
+    <SearchInput/>
+            
         </>
     )
 }
