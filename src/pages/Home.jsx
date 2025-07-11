@@ -1,12 +1,11 @@
-import {useState} from "react"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    return (
-        <>
-            <h1>Questo Home</h1>
-        </>
-    )
-}
+  return (
+    <>
+      <h1>Contenuto Home</h1>
+    </>
+  );
+};
 
-export default Home
+export default Home;
