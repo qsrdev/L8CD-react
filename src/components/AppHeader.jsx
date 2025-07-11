@@ -31,10 +31,16 @@ const linkNav = [
                 <div className="header-logo">L8CD</div>
                 <div className="link-header">
             <ul className="d-flex">
-                <li><Link>Offerte</Link></li>
-                <li><Link>Uomo</Link></li>
-                <li><Link>Donna</Link></li>
-                <li><Link>Bambino</Link></li>
+                {linkNav.map((link) => (
+                    <li key={link.title}>
+                        <NavLink
+                        to={link.url}
+                        className="text-white text-decoration-none"
+                        activeclassname="fw-bold">
+                            {link.title}
+                        </NavLink>
+                    </li>
+                ))}
             </ul>
                 </div>
                 

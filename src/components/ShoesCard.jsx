@@ -8,7 +8,7 @@ const ShoesCard = ({ shoe }) => {
             <div className="card-body">
                 <h5 className="card-title name">{name} - {brand}</h5>
                 <p className="card-text description">{description}</p>
-                <p className="card-text price"> {price} </p>
+                <p className="card-text price"> {price}€ </p>
             </div>
         </div>
     </Link>
