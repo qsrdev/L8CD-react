@@ -1,11 +1,23 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GuestLayout from "./layouts/GuestLayout";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
+
       <h1 className="text-center">L8CD e-commerce per le scarpe</h1>
+
+      <BrowserRouter>
+        <Routes>
+          <Route>
+              <Route element={<GuestLayout/>}>
+                {/* <Route path="/" element={<Home/>} /> */}
+              </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
