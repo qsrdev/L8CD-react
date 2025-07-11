@@ -14,9 +14,10 @@ function App() {
         <Routes>
           <Route>
               <Route element={<GuestLayout/>}>
-                {/* <Route path="/" element={<Home/>} /> */}
+                <Route path="/" element={<Home/>} />
+                <Route path="/shoes" element={< Shoes />} />
               </Route>
-              <Route path="/shoes" element={< Shoes />} />
+              
           </Route>
         </Routes>
       </BrowserRouter>
