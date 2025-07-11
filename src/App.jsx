@@ -2,13 +2,12 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GuestLayout from "./layouts/GuestLayout";
 import Shoes from "./pages/Shoes";
+import Home from "./pages/Home"
 
 function App() {
 
   return (
     <>
-
-      <h1 className="text-center">L8CD e-commerce per le scarpe</h1>
 
       <BrowserRouter>
         <Routes>
