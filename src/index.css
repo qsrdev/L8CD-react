@@ -13,4 +13,23 @@
 
 /* HEADER */
 /* MAIN */
+.hover-zoom {
+  transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+.card-title.name{
+  font-size: 16px;
+}
+
+.card-text.description {
+  font-size: 14px;
+}
+
+.card-text.price {
+  font-size: 12px;
+}
 /* FOOTER */
