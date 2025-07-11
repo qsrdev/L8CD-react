@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GuestLayout from "./layouts/GuestLayout";
+import Shoes from "./pages/Shoes";
 import Home from "./pages/Home"
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
               <Route element={<GuestLayout/>}>
                 <Route path="/" element={<Home/>} />
               </Route>
+              <Route path="/shoes" element={< Shoes />} />
           </Route>
         </Routes>
       </BrowserRouter>
