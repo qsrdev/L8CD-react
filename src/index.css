@@ -11,6 +11,13 @@
 /* Utilities */
 /* Common */
 
+:root {
+  --common-color-1: #251F32;
+  --common-color-2: #FEA82F;
+  --common-color-3: #677DB7;
+  --common-color-3: #FFB5B5;
+}
+
 /* HEADER */
 /* MAIN */
 /* FOOTER */
