@@ -8,8 +8,6 @@ function App() {
   return (
     <>
 
-      <h1 className="text-center">L8CD e-commerce per le scarpe</h1>
-
       <BrowserRouter>
         <Routes>
           <Route>
