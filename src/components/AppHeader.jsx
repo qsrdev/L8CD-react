@@ -9,19 +9,19 @@ const AppHeader = () => {
 const linkNav = [
 {
     title: "Offerte",
-    url: "/offerte",
+    url: "/shoes/offerte",
 },
 {
     title: "Uomo",
-    url: "/uomo",
+    url: "/shoes/uomo",
 },
 {
     title: "Donna",
-    url: "/donna",
+    url: "/shoes/donna",
 },
 {
     title: "Bambino",
-    url: "/bambino",
+    url: "/shoes/bambino",
 }
 ]
 

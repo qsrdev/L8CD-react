@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 const ShoesCard = ({ shoe }) => {
-    const { id, name, description, brand, price, image} = shoe;
+    const { id, name, description, brand, price, image, gender} = shoe;
     return (
     <Link to={`/shoes/${id}`} className="text-decoration-none text-dark">
         <div className="card h-100 hover-zoom">
