@@ -62,7 +62,7 @@ background-color: #301F32;
 .nav-footer{
   text-decoration: none;
  color: #ffff;
- font-size: 1.5em;
+ font-size: 1em;
 }
 .sponsored-by{
   margin-top:30px ;
@@ -72,7 +72,7 @@ background-color: #301F32;
  text-decoration: none;
  color: #ffff;
  font-weight: 700;
- font-size: 2em;
+ font-size: 1.5em;
    margin-bottom: 20px;
 }
 .diritti-riservati{
@@ -94,7 +94,7 @@ background-color: #301F32;
 /* media query */
 @media screen and (max-width: 450px) {
   footer{
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
   .footer-top{
     display: inline;
@@ -131,6 +131,6 @@ margin: 0 auto;
 
 @media screen and (max-width: 1000px){
   .nav-footer{
- font-size: 1em;
+ font-size: 0.8em;
 }
 } 
