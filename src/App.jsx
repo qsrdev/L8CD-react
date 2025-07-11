@@ -31,10 +31,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
+
+              <Route element={<GuestLayout/>}>
+                <Route path="/" element={<Home/>} />
+                <Route path="/shoes/:gender" element={< Shoes />} />
+              </Route>
+              
+
             <Route element={<GuestLayout />}>
               <Route path="/" element={<Home />} />
             </Route>
             <Route path="/shoes" element={<Shoes />} />
+
           </Route>
         </Routes>
       </BrowserRouter>
