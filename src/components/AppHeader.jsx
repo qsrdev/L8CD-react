@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 
 const AppHeader = () => {
   // Link per la navigazione di pagina in pagina
-  const home = [{ title: "Home", url: "/" }];
+  const homeNav = [{ title: "Home", url: "/" }];
 
   const linkNav = [
     {
@@ -26,9 +26,11 @@ const AppHeader = () => {
 
   return (
     <>
-      <header className="header-color d-flex justify-content-between align-items-center">
-        <div className="header-logo">
-          <Link to={home.url}>L8CD</Link>
+      <header className="header-color d-flex justify-content-between align-items-center ">
+        <div className="header-logo ">
+          <Link className="text-decoration-none text-white" to={homeNav[0].url}>
+            L8CD
+          </Link>
         </div>
 
         <div className="link-header">
