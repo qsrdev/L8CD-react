@@ -7,27 +7,19 @@ const Shoes = () => {
   const { gender } = useParams();
   const [shoes, setShoes] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     let url = "http://localhost:3000/shoes";
 
-    if (gender === "novita") {
-        url += "?isNew=true";
-    } else if (gender) {
-        url += `?gender=${gender}`;
+    if (gender && gender !== "novita") {
+      url += `?gender=${gender}`;
     }
 
-    axios
-        .get(url)
-        .then((resp) => {
-        setShoes(resp.data.data);
-      })
-    }, [gender]);
+    axios.get(url).then((resp) => {
+      setShoes(resp.data.data);
+    });
+  }, [gender]);
 
-  const pageTitle = gender === "novita"
-    ? "Novità"
-    : gender
-    ? `Scarpe per ${gender}`
-    : "Tutte le scarpe";
+  const pageTitle = gender === "novita" ? "Novità" : gender ? `Scarpe per ${gender}` : "Tutte le scarpe";
 
   return (
     <main>

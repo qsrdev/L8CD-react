@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 const AppHeader = () => {
+
  
 // Link per la navigazione di pagina in pagina  
 const linkNav = [
@@ -52,8 +53,4 @@ const linkNav = [
 }
 
 
-
-
-
 export default AppHeader;
-
