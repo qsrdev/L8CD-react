@@ -17,7 +17,7 @@ const Shoes = () => {
     axios
         .get(url)
         .then((resp) => {
-        setShoes(data);
+        setShoes(resp.data.data);
       })
     }, [gender]);
 
