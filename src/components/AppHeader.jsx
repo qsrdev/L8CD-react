@@ -8,7 +8,7 @@ const AppHeader = () => {
   const linkNav = [
     {
       title: "Novità",
-      url: "/shoes/novità",
+      url: "/shoes/novita",
     },
     {
       title: "Uomo",
