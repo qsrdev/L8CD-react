@@ -25,8 +25,10 @@ const Home = () => {
 
   return (
     <>
+
       <h1>salute</h1>
       <Slider />
+
     </>
   );
 };
