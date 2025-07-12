@@ -27,22 +27,13 @@ function App() {
 
   return (
     <>
-      <NewsletterModal show={showModal} onClose={handleClose} />
+       <NewsletterModal show={showModal} onClose={handleClose} />
       <BrowserRouter>
         <Routes>
-          <Route>
-
-              <Route element={<GuestLayout/>}>
-                <Route path="/" element={<Home/>} />
-                <Route path="/shoes/:gender" element={< Shoes />} />
-              </Route>
-              
-
-            <Route element={<GuestLayout />}>
-              <Route path="/" element={<Home />} />
-            </Route>
+          <Route element={<GuestLayout />}>
+            <Route path="/" element={<Home />} />
             <Route path="/shoes" element={<Shoes />} />
-
+            <Route path="/shoes/:gender" element={<Shoes />} /> 
           </Route>
         </Routes>
       </BrowserRouter>
