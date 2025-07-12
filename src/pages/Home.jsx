@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Slider from "../components/Slider/Slider";
 
 const Home = () => {
   const [shoes, setShoes] = useState([]);
@@ -11,8 +12,6 @@ const Home = () => {
       setShoes(resp.data.data);
     });
   }, []);
-
-  console.log();
 
   //creo un nuovo array che si popola solo delle scarpe che sto filtrano e poi l'array verrà mappato nella sua parte di pagina precisa
   //ultime 10 scarpe inserite nel database
@@ -26,7 +25,8 @@ const Home = () => {
 
   return (
     <>
-      <h1>Contenuto Home</h1>
+      <h1>salute</h1>
+      <Slider />
     </>
   );
 };
