@@ -10,8 +10,10 @@ const Shoes = () => {
   useEffect(() => {
     let url = "http://localhost:3000/shoes";
 
-    if (gender && gender !== "novita") {
-      url += `?gender=${gender}`;
+    if (gender === "novita") {
+      url += "?isNew=true";
+    } else if (gender) {
+      url += "?gender=${gender}";
     }
 
     axios.get(url).then((resp) => {
