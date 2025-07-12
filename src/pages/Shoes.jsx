@@ -16,6 +16,8 @@ const Shoes = () => {
         url += `?gender=${gender}`;
     }
 
+
+
     axios.get(url).then((resp) => {
       setShoes(resp.data.data);
     });
@@ -39,4 +41,4 @@ const Shoes = () => {
   );
 };
 
-export default Shoes;
+export default Shoes
