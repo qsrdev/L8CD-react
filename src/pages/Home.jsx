@@ -12,8 +12,6 @@ const Home = () => {
     });
   }, []);
 
-  console.log();
-
   //creo un nuovo array che si popola solo delle scarpe che sto filtrano e poi l'array verrà mappato nella sua parte di pagina precisa
   //ultime 10 scarpe inserite nel database
   const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
