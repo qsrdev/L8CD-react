@@ -48,7 +48,7 @@ const linkNav = [
              </div>
             </header>
                 <div className="line"></div>
-    <SearchInput/>
+            <SearchInput/>
             
         </>
     )
