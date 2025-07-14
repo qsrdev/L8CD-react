@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Slider from "../components/Slider/Slider";
 
 const Home = () => {
   const [shoes, setShoes] = useState([]);
@@ -25,7 +26,8 @@ const Home = () => {
   return (
     <>
 
-      <h1>Contenuto Home</h1>
+      <h1>salute</h1>
+      <Slider />
 
     </>
   );
