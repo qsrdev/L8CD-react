@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../Context/CartContext";
+import { use } from "react";
+
 const ShoesCard = ({ shoe }) => {
+  const { addToCart } = useCart();
   const { id, name, description, brand, price, image, gender } = shoe;
+
   return (
     <Link to={`/shoes/${id}`} className="text-decoration-none text-dark">
       <div className="card h-100 hover-zoom">
@@ -11,6 +16,14 @@ const ShoesCard = ({ shoe }) => {
           </h5>
           <p className="card-text description">{description}</p>
           <p className="card-text price"> {price}€ </p>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(shoe);
+            }}
+          >
+            AGGIUNGI!
+          </button>
         </div>
       </div>
     </Link>

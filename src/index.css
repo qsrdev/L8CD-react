@@ -19,6 +19,7 @@
   --common-color-2: #fea82f;
   --common-color-3: #677db7;
   --common-color-3: #ffb5b5;
+  --common-color-4: #FF6B6B;
 }
 
 li {
@@ -37,6 +38,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 div .link-header{
@@ -46,12 +50,15 @@ div .link-header{
 .search {
   padding: 2px 10px;
 }
+.search-btn{
+  background-color: #f0f0ff;
+}
 .logo {
   color: white;
   text-decoration: none;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
 }
+
 .link-header {
   display: flex;
   padding-left: 30px;
@@ -71,9 +78,18 @@ div.link-header {
   border-radius: 30px;
   border: 1px solid var(--common-color-2);
   padding: 7px 60px;
-  margin-right: 50px;
 }
-
+.btn-search-desktop{
+  background-color: #f7cf60;
+  border: none;
+  color: #fff;
+border-radius: 30px 10px 30px 10px;
+padding: 0px 20px;
+margin-right: 20px;
+}
+.search-input{
+  display: none;
+}
 
 input {
   transition: all 0.3s ease;
@@ -105,8 +121,11 @@ li:hover {
   display: none;
 }
 
-
 /* MAIN */
+.coupons-cta {
+  background-color: var(--common-color-4);
+}
+
 .hover-zoom {
   transition: transform 0.3s ease;
 }
@@ -147,12 +166,13 @@ li:hover {
 
 footer {
   background-color: #301f32;
-  width: 100%;
 }
+
 .footer-top {
   display: flex;
   justify-content: space-between;
 }
+
 .link-footer {
   gap: 20px;
   list-style: none;
@@ -166,8 +186,8 @@ footer {
 }
 .sponsored-by {
   margin-top: 30px;
-  margin-right: 30px;
 }
+
 .l8cd-link {
   text-decoration: none;
   color: #ffff;
@@ -175,14 +195,15 @@ footer {
   font-size: 1.5em;
   margin-bottom: 20px;
 }
+
 .diritti-riservati {
   font-size: 0.7em;
   margin-left: 30px;
   margin-top: 10px;
 }
+
 .footer-bottom {
-  margin-top: 50px;
-  margin-left: 30px;
+  margin-top: 20px;
   padding-bottom: 30px;
   display: flex;
   text-align: center;
@@ -260,8 +281,13 @@ header {
 } 
 @media screen and (min-width: 971px) and (max-width: 990px) {
   .burger-menu {
-    display: none !important;
+    display: none;
   }
+  .btn-search-desktop{
+padding: 0px 10px;
+margin-right: 3px;
+}
+
 }
 
 @media screen and (max-width: 970px){
@@ -276,6 +302,12 @@ header {
   }
   .search {
     display: none;
+  }
+  .btn-search-desktop{
+    display: none;
+  }
+  .search-input{
+    display: block;
   }
   .search-small-screen {
     display: block;

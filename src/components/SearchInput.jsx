@@ -1,23 +1,45 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
-    const [text, setText] = useState("");
-    return (
-<div className="search-wrapper">
-       <input
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleInput = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleRedirect = () => {
+    if (search.trim()) {
+      // Usa il valore inserito, non un brand fisso
+      navigate(`/shoes?brand=${encodeURIComponent(search.trim())}`);
+    }
+  };
+
+  return (
+    <div className="search-wrapper search-input">
+      <input
         type="text"
-      placeholder="Cerca i tuoi prodotti preferiti..."
-      className="w-100 search-small-screen"
-      value={text}
-      onChange={(e) => setText(e.target.value)}
+        placeholder="Cerca il tuo articolo..."
+        className="w-100 search-small-screen"
+        value={search}
+        onChange={handleInput}
+        onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
-      {text && (
-         <button className="clear-btn" onClick={() => setText("")}>
-        &#10005;
+
+
+      <button onClick={handleRedirect} className="btn btn-primary mx-2">
+        Cerca
       </button>
+
+
+      {search && (
+        <button className="clear-btn" onClick={() => setSearch("")}>
+          &#10005;
+        </button>
       )}
-      </div>
-    )
-}
+    </div>
+  );
+};
+
 export default SearchInput;
