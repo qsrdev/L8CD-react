@@ -27,6 +27,12 @@ const Home = () => {
   return (
     <>
       <Slider />
+      <section>
+        <div className="coupons-cta py-3">
+            <h3 className="text-center fs-4 text-white text-decoration-underline">Usa il codice SUMMER15 per avere il 15% di sconto sui prodotti</h3>
+        </div>
+      </section>
+
       <section className="py-5">
         <div className="container g-4">
           <div className="mb-5">
@@ -39,7 +45,7 @@ const Home = () => {
 
       <section className="promo-color py-5">
         <div className="container g-4">
-          <div className="mb-5">
+          <div className="mb-5 text-white">
             <h2>Promo spedizione gratuita</h2>
             <p>Approfitta ora della spedizione a costo zero</p>
           </div>
