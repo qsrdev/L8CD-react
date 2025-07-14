@@ -1,23 +1,34 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 
 const SearchInput = () => {
 
+    // const [text, setText] = useState("")
     const [search, setSearch] = useState("");
     const [shoes, setShoes] = useState([])
+
+    
 
     const searchShoes = () => {
       if (search) {
         axios
-        .get(`http://localhost:3000/shoes/&query=${search}`)
+        .get(`http://localhost:3000/shoes/?query=${search}`)
         .then((resp) => {
-          const shoesList = resp.data.data
+          const shoesList = resp.data.results
+          console.log(shoesList)
           setShoes(shoesList)
+          
         })
+        .catch((error) => {
+          console.error("Errore nella chiamata");
+        });
       }
     }
+
+    
+
 
     return (
     <div className="search-wrapper">
@@ -29,11 +40,13 @@ const SearchInput = () => {
       onChange={(e) => setSearch(e.target.value)}
       />
       {search && (
-         <button className="clear-btn" onClick={() => setSearch("")}>
+        <button className="clear-btn" onClick={() => setText("")}>
         &#10005;
-      </button>
+        </button>
       )}
     </div>
     )
 }
+
+
 export default SearchInput;
