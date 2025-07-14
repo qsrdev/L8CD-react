@@ -37,6 +37,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 div .link-header{
@@ -73,7 +76,6 @@ div.link-header {
   padding: 7px 60px;
   margin-right: 50px;
 }
-
 
 input {
   transition: all 0.3s ease;
