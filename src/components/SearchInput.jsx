@@ -27,9 +27,11 @@ const SearchInput = () => {
         onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
 
+
       <button onClick={handleRedirect} className="btn btn-primary mx-2">
         Cerca
       </button>
+
 
       {search && (
         <button className="clear-btn" onClick={() => setSearch("")}>

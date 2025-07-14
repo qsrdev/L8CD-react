@@ -6,6 +6,7 @@ import Shoes from "./pages/Shoes";
 import Home from "./pages/Home";
 import NewsletterModal from "./components/Modal/NewsletterModal";
 import Cart from "./pages/Cart";
+import Contacts from "./pages/Contacts";
 
 function App() {
   // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
@@ -38,6 +39,7 @@ function App() {
               <Route path="/shoes" element={<Shoes />} />
               <Route path="/shoes/:gender" element={<Shoes />} />
               <Route path="/shoes/cart" element={<Cart />} />
+              <Route path="/contacts" element={<Contacts />} />
             </Route>
           </Routes>
         </BrowserRouter>
