@@ -26,59 +26,130 @@ const Home = () => {
 
   // ================GESTIONE del CARRELLO ================
 
+  //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
 
+  //vado a prendere lo stato da localstorage del mio carrello e del prezzo totale del carrello
   useEffect(() => {
-    //questo use effect serve se esistono già degli oggetti nel carrello li aggiunge
     const localCartItems = localStorage.getItem("cartItems");
     const localTotalPrice = localStorage.getItem("totalPrice");
-    if (localCartItems !== null) {
-      //facciamo parse e stringify dopo per trasformare l'array in stringa e viceversa
-      // localstorare supporta solo queste modalità di dati
+    if (localCartItems) {
       setCartItems(JSON.parse(localCartItems));
       setTotalPrice(JSON.parse(localTotalPrice));
     }
   }, []);
 
   useEffect(() => {
-    // crea nello storage gli elementi cartItems e totalPrice
-    if (cartItems.length > 0) {
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
-      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-    }
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
   }, [cartItems, totalPrice]);
 
-  const addToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
-    setTotalPrice((prevTotal) => prevTotal + item.price);
+  //array fittizio con dei prodotti finti
+  const products = [
+    { id: 1, name: "Pozione", price: 5 },
+    { id: 2, name: "Spada", price: 20 },
+    { id: 3, name: "Armatura", price: 40 },
+  ];
+
+  //funzione che gestisce l'aggiunta di prodotti nuovi al carrello
+  const addToCart = (newItem) => {
+    const existingItem = cartItems.find((item) => item.id === newItem.id);
+
+    if (existingItem) {
+      // Se esiste, incrementa quantità
+      const updatedItems = cartItems.map((item) => (item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item));
+      setCartItems(updatedItems);
+    } else {
+      // Se non esiste, aggiungi al carrello
+      setCartItems([...cartItems, { ...newItem, quantity: 1 }]);
+    }
+
+    //aggiornamento del prezzo in base all'oggetto che viene aggiunto
+    setTotalPrice((prev) => prev + newItem.price);
+  };
+
+  //funzione che cancella tutto il carrello con un click
+  const removeItemCompletely = (id) => {
+    const itemToRemove = cartItems.find((item) => item.id === id);
+    if (!itemToRemove) return;
+
+    setCartItems(cartItems.filter((item) => item.id !== id));
+    setTotalPrice((prev) => prev - itemToRemove.price * itemToRemove.quantity);
+  };
+
+  //funzione che gestisce i bottoni visino ai prodotti nel carrello per aggiungere 1 di singola quantità
+  const increaseQuantity = (id) => {
+    const item = cartItems.find((item) => item.id === id);
+    if (!item) return;
+
+    const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
+    setCartItems(updatedItems);
+    setTotalPrice((prev) => prev + item.price);
+  };
+
+  //funzione che gestisce il bottone di sottrazione nel carrello
+  const decreaseQuantity = (id) => {
+    const item = cartItems.find((item) => item.id === id);
+    if (!item) return;
+
+    if (item.quantity === 1) {
+      removeItemCompletely(id);
+    } else {
+      const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item));
+      setCartItems(updatedItems);
+      setTotalPrice((prev) => prev - item.price);
+    }
+  };
+
+  //funzione che svuota tutto il carrello insieme e aggiorna lo stato dentro il local storage
+  const clearCart = () => {
+    setCartItems([]);
+    setTotalPrice(0);
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("totalPrice");
   };
 
   return (
     <>
-      <div>
-        <button
-          className="text-center"
-          onClick={() =>
-            addToCart({
-              id: Date.now(),
-              name: "Prodotto di prova",
-              price: 10,
-              quantity: 1,
-            })
-          }
-        >
-          Aggiungi prodotto di prova
-        </button>
-
-        <h3>Carrello</h3>
-        {cartItems.map((item) => (
-          <div key={item.id}>
-            {item.name} - €{item.price}
+      <div style={{ padding: "1rem" }}>
+        <h2>Prodotti disponibili</h2>
+        {products.map((product) => (
+          <div key={product.id} style={{ marginBottom: "10px" }}>
+            {product.name} - €{product.price}
+            <button style={{ marginLeft: "10px" }} onClick={() => addToCart(product)}>
+              Aggiungi al carrello
+            </button>
           </div>
         ))}
-        <p>Totale: €{totalPrice}</p>
+
+        <hr />
+
+        <h2>Carrello</h2>
+        {cartItems.length === 0 ? (
+          <p>Il carrello è vuoto</p>
+        ) : (
+          <div>
+            {cartItems.map((item) => (
+              <div key={item.id} style={{ marginBottom: "5px" }}>
+                {item.name} - €{item.price} × {item.quantity} = €{item.price * item.quantity}
+                <button style={{ marginLeft: "10px" }} onClick={() => decreaseQuantity(item.id)}>
+                  -
+                </button>
+                <button style={{ marginLeft: "5px" }} onClick={() => increaseQuantity(item.id)}>
+                  +
+                </button>
+                <button style={{ marginLeft: "5px" }} onClick={() => removeItemCompletely(item.id)}>
+                  Rimuovi tutto
+                </button>
+              </div>
+            ))}
+            <p>
+              <strong>Totale: €{totalPrice}</strong>
+            </p>
+            <button onClick={clearCart}>Svuota carrello</button>
+          </div>
+        )}
       </div>
 
       <Slider />
