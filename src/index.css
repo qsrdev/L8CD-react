@@ -49,12 +49,13 @@ div .link-header{
 .search {
   padding: 2px 10px;
 }
+
 .logo {
   color: white;
   text-decoration: none;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
 }
+
 .link-header {
   display: flex;
   padding-left: 30px;
@@ -149,12 +150,13 @@ li:hover {
 
 footer {
   background-color: #301f32;
-  width: 100%;
 }
+
 .footer-top {
   display: flex;
   justify-content: space-between;
 }
+
 .link-footer {
   gap: 20px;
   list-style: none;
@@ -168,8 +170,8 @@ footer {
 }
 .sponsored-by {
   margin-top: 30px;
-  margin-right: 30px;
 }
+
 .l8cd-link {
   text-decoration: none;
   color: #ffff;
@@ -177,14 +179,15 @@ footer {
   font-size: 1.5em;
   margin-bottom: 20px;
 }
+
 .diritti-riservati {
   font-size: 0.7em;
   margin-left: 30px;
   margin-top: 10px;
 }
+
 .footer-bottom {
-  margin-top: 50px;
-  margin-left: 30px;
+  margin-top: 20px;
   padding-bottom: 30px;
   display: flex;
   text-align: center;
