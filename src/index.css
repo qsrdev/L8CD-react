@@ -104,6 +104,8 @@ li:hover {
 .search-small-screen{
   display: none;
 }
+
+
 /* MAIN */
 .hover-zoom {
   transition: transform 0.3s ease;
@@ -128,6 +130,18 @@ li:hover {
 .promo-color {
   background-color: var(--common-color-3);
 }
+
+.btn-outline-secondary.custom-hover:hover {
+  background-color: #6c757d; /* grigio bootstrap */
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-secondary.custom-hover {
+  transition: all 0.2s ease-in-out;
+}
+
 
 /* FOOTER */
 
