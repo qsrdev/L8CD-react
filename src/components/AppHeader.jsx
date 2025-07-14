@@ -30,7 +30,7 @@ const linkNav = [
     return (
         <>
             <header className="header-color">
-                <div className="header-logo  me-auto"><Link className="logo">L8CD</Link></div>
+                <div className="header-logo"><Link className="logo">L8CD</Link></div>
                 <div className="link-header">
             <ul className="d-flex">
                 <li><Link>Offerte</Link></li>

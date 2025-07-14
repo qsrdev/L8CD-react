@@ -38,6 +38,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 div .link-header{
   margin-right: 250px;
@@ -45,6 +46,9 @@ div .link-header{
 .search{
   padding: 2px 10px;
   margin: 15px;
+}
+.search-wrapper{
+display: none;
 }
 .logo{
   color: white;
@@ -70,13 +74,12 @@ div.link-header{
   border-radius: 30px;
   border: 1px solid rgb(58, 58, 58);
   padding: 7px 60px;
-  margin-right: 50px;
 }
 input{
    transition: all 0.3s ease;
 }
 .search:focus{
-    border-color: #7a798b; /* viola acceso */
+    border-color: #7a798b;
   background-color: #f0f0ff; 
   box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
   outline: none;
@@ -97,6 +100,8 @@ li a {
 li:hover{
     transform: scale(1.1);
     color: #fffce6;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2)
 }
 .search-sm-screen{
   display: none;
@@ -216,8 +221,8 @@ margin: 0 auto;
 
 @media screen and (max-width: 1300px){
 header {
-  padding-left:80px;
-  padding-right: 80px;
+  padding-left:8px;
+  padding-right: 8px;
 }
 .search{
   padding: 7px 40px;
@@ -230,7 +235,6 @@ header {
 }
 .search{
   padding: 2px 10px;
-  margin: 15px;
 }
 } 
 @media screen and (max-width: 970px){
@@ -250,7 +254,8 @@ display: none;
 }
 .search-small-screen{
   display: block;
-background-color:rgba(255, 149, 0, 0.333);
+background-color:rgba(254, 168, 47, 0.47);
+
   border: none;
   padding: 15px;
    box-shadow: 2px 6px 8px rgba(162, 162, 162, 0.5);
@@ -316,8 +321,8 @@ input:focus::placeholder {
   top: 60px; 
   left: 0;
   width: 100vw;
-  background-color: var(--common-color-2);
-
+  background-color: rgb(246, 170, 64);
+  z-index: 9999;
 }
 .burger-nav li a {
   text-decoration: none;
@@ -336,3 +341,4 @@ header {
   padding-right: 10px;
 }
 }
+
