@@ -8,8 +8,8 @@ const AppHeader = () => {
 // Link per la navigazione di pagina in pagina  
 const linkNav = [
 {
-    title: "Offerte",
-    url: "/offerte",
+    title: "Novità",
+    url: "/novità",
 },
 {
     title: "Uomo",
@@ -33,10 +33,8 @@ const linkNav = [
                 <div className="header-logo"><Link className="logo">L8CD</Link></div>
                 <div className="link-header">
             <ul className="d-flex">
+                
                 <li><Link>Offerte</Link></li>
-                <li><Link>Uomo</Link></li>
-                <li><Link>Donna</Link></li>
-                <li><Link>Bambino</Link></li>
             </ul>
                 </div>
     
