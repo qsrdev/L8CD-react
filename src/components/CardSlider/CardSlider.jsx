@@ -16,9 +16,8 @@ export default function CardSlider({ array }) {
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
+        navigation
+        pagination={{ clickable: true }}
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -33,12 +32,14 @@ export default function CardSlider({ array }) {
             spaceBetween: 60,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
       >
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
-            <Link><img src={curElement.image} alt={curElement.name} /></Link>
+            <Link>
+              <img src={curElement.image} alt={curElement.name} />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

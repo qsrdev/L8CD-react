@@ -14,7 +14,7 @@ const SearchInput = () => {
     const searchShoes = () => {
       if (search) {
         axios
-        .get(`http://localhost:3000/shoes/?query=${search}`)
+        .get(`http://localhost:3000/shoes/?brand=${search}`)
         .then((resp) => {
           const shoesList = resp.data.results
           console.log(shoesList)
