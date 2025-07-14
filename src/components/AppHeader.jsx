@@ -48,7 +48,7 @@ const AppHeader = () => {
         <div className="left-group d-flex align-items-center">
           <div>{<BurgerMenu />}</div>
           <div className="header-icons">
-            <Link>
+            <Link to='/shoes/cart'>
               <i className="fa-solid fa-cart-shopping text-white"></i>
             </Link>
           </div>
