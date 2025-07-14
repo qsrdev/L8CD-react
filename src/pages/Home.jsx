@@ -43,7 +43,7 @@ const Home = () => {
             <h2>Promo spedizione gratuita</h2>
             <p>Approfitta ora della spedizione a costo zero</p>
           </div>
-          <CardSlider array={newShoes} />
+          <CardSlider array={freeShippingShoes} />
         </div>
       </section>
 
@@ -52,7 +52,7 @@ const Home = () => {
           <div className="mb-5">
             <h2>Nuovi brand!</h2>
             <p>Tutti gli ultimi arrivi</p>
-            <CardSlider array={newShoes} />
+            <CardSlider array={randomShoes} />
           </div>
         </div>
       </section>

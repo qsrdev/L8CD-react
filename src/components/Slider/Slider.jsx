@@ -34,38 +34,37 @@ const slides = [
 export default function Slider() {
   return (
     <>
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        preventClicks={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        loop={true}
-        speed={2000}
-        className="nike-swiper"
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div
-              className="slide-content"
-              style={{
-                backgroundImage: `url(${slide.bg})`,
-              }}
-            >
-              <div className="slide-info">
-                <h1>{slide.text}</h1>
-                <p className="fs-5 fw-normal">{slide.description}</p>
-                <Link href={slide.link} className="cta-button">
-                  Scopri di più
-                </Link>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          preventClicks={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop={true}
+          speed={2000}
+          className="nike-swiper"
+        >
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.id}>
+              <div
+                className="slide-content"
+                style={{
+                  backgroundImage: `url(${slide.bg})`,
+                }}
+              >
+                <div className="slide-info">
+                  <h1 className="fw-bold">{slide.text}</h1>
+                  <p className="slider-description fw-normal">{slide.description}</p>
+                  <Link href={slide.link} className="cta-button">
+                    Scopri di più
+                  </Link>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      ;
+            </SwiperSlide>
+          ))}
+        </Swiper>
     </>
   );
 }
