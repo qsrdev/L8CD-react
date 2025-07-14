@@ -9,6 +9,8 @@ export const CartProvider = ({ children }) => {
 
   //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
+  console.log("sto inizializzando" + cartItems);
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   //vado a prendere lo stato da localstorage del mio carrello e del prezzo totale del carrello
@@ -25,13 +27,6 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
   }, [cartItems, totalPrice]);
-
-  //array fittizio con dei prodotti finti
-  const products = [
-    { id: 1, name: "Pozione", price: 5 },
-    { id: 2, name: "Spada", price: 20 },
-    { id: 3, name: "Armatura", price: 40 },
-  ];
 
   //funzione che gestisce l'aggiunta di prodotti nuovi al carrello
   const addToCart = (newItem) => {
@@ -91,7 +86,7 @@ export const CartProvider = ({ children }) => {
     localStorage.removeItem("totalPrice");
   };
 
-  const value = { addToCart, removeItemCompletely, increaseQuantity, decreaseQuantity, clearCart };
+  const value = { cartItems, totalPrice, addToCart, removeItemCompletely, increaseQuantity, decreaseQuantity, clearCart };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
