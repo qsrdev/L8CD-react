@@ -38,12 +38,13 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-div .link-header {
-  margin-right: 250px;
+
+div .link-header{
+  padding-right: 50px;
+
 }
 .search {
   padding: 2px 10px;
-  margin: 15px;
 }
 .logo {
   color: white;
@@ -97,7 +98,8 @@ li:hover {
   transform: scale(1.1);
   color: #fffce6;
 }
-.search-sm-screen {
+
+.search-small-screen{
   display: none;
 }
 /* MAIN */
@@ -213,14 +215,23 @@ footer {
   }
 }
 
-@media screen and (max-width: 1300px) {
-  header {
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-  .search {
-    padding: 7px 40px;
-  }
+
+}  
+
+@media screen and (max-width: 1300px){
+header {
+  padding-left:80px;
+  padding-right: 80px;
+}
+.search{
+  padding: 7px 40px;
+}
+} 
+@media screen and (max-width: 1050px){
+header {
+  padding-left:80px;
+  padding-right: 80px;
+
 }
 @media screen and (max-width: 1050px) {
   header {
@@ -263,11 +274,29 @@ footer {
     width: 100%;
   }
 
-  .search-wrapper input {
-    width: 100%;
-    padding-right: 35px;
-    box-sizing: border-box;
-  }
+
+.link-header{
+  display: none;
+}
+.burger-menu {
+   align-self: flex-start;
+  top:0;
+  left: 90px;
+  right: 140px;
+  padding: 10px;
+  background-color: var(--common-color-2);
+  z-index: 9999;
+}
+.logo{
+  font-size: 1.4rem;
+}
+.burger-nav {
+  top: 60px; 
+  left: 0;
+  width: 100vw;
+  background-color: var(--common-color-2);
+    z-index: 9999;
+
 
   .clear-btn {
     position: absolute;
