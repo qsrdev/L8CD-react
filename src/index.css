@@ -76,7 +76,6 @@ input {
   transition: all 0.3s ease;
 }
 .search:focus {
-  border-color: #7a798b; /* viola acceso */
   background-color: #f0f0ff;
   box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
   outline: none;
