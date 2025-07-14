@@ -127,7 +127,7 @@ li:hover{
   font-size: 12px;
 }
 /* FOOTER */
-.footer {
+footer{
 background-color: #301F32;
  position: fixed;
   bottom: 0;
@@ -175,6 +175,7 @@ background-color: #301F32;
  color: #f7cf60; 
 }
 
+/* MEDIA QUERY */
 
 @media screen and (max-width: 450px) {
   footer{
@@ -217,6 +218,9 @@ margin: 0 auto;
   .nav-footer{
  font-size: 0.8em;
 }
+
+}  
+
 } 
 
 @media screen and (max-width: 1300px){

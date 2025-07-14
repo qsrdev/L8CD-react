@@ -1,0 +1,38 @@
+.slide-content {
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+}
+
+.slide-info {
+  color: white;
+  max-width: 500px;
+}
+
+.slide-info h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.slide-info p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.cta-button {
+  background-color: white;
+  color: black;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e5e5e5;
+}
