@@ -17,7 +17,7 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="search-wrapper">
+    <div className="search-wrapper search-input">
       <input
         type="text"
         placeholder="Cerca il tuo articolo..."
