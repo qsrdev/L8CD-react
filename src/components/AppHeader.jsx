@@ -32,12 +32,13 @@ const linkNav = [
             <header className="header-color">
                 <div className="header-logo  me-auto"><Link className="logo">L8CD</Link></div>
                 <div className="link-header">
-            <ul className="d-flex">
-                <li><Link>Offerte</Link></li>
-                <li><Link>Uomo</Link></li>
-                <li><Link>Donna</Link></li>
-                <li><Link>Bambino</Link></li>
-            </ul>
+            <ul className="d-flex text-white">
+  {linkNav.map((curLink, index) => (
+    <li key={index}>
+      <Link to={curLink.url}>{curLink.title}</Link>
+    </li>
+  ))}
+</ul>
                 </div>
     
                 
