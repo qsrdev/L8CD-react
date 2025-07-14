@@ -122,6 +122,11 @@ li:hover {
 .card-text.price {
   font-size: 12px;
 }
+
+.promo-color {
+  background-color: var(--common-color-3);
+}
+
 /* FOOTER */
 footer {
   background-color: #301f32;

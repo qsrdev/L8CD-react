@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -19,16 +20,16 @@ export default function CardSlider({ array }) {
         }}
         breakpoints={{
           640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 1,
+            spaceBetween: 30,
           },
           768: {
-            slidesPerView: 4,
-            spaceBetween: 40,
+            slidesPerView: 3,
+            spaceBetween: 50,
           },
           1024: {
-            slidesPerView: 4,
-            spaceBetween: 50,
+            slidesPerView: 3,
+            spaceBetween: 60,
           },
         }}
         modules={[Pagination]}
@@ -36,7 +37,7 @@ export default function CardSlider({ array }) {
       >
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
-            <img src={curElement.image} alt={curElement.name} />
+            <Link><img src={curElement.image} alt={curElement.name} /></Link>
           </SwiperSlide>
         ))}
       </Swiper>
