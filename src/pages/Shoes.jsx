@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const Shoes = () => {
-  const location = useLocation();
+  
+const location = useLocation();
 const queryParams = new URLSearchParams(location.search);
 const brandFromQuery = queryParams.get("brand");
 const searchTermFromQuery = queryParams.get("q");
