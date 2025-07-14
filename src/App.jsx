@@ -4,6 +4,7 @@ import GuestLayout from "./layouts/GuestLayout";
 import Shoes from "./pages/Shoes";
 import Home from "./pages/Home";
 import NewsletterModal from "./components/Modal/NewsletterModal";
+import Cart from "./pages/Cart";
 
 function App() {
   // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/shoes/:gender" element={<Shoes />} />
+            <Route path="/shoes/cart" element={<Cart/>} />
           </Route>
         </Routes>
       </BrowserRouter>
