@@ -4,6 +4,7 @@ import BurgerMenu from "./BurgerMenu";
 import SearchInput from "./SearchInput";
 
 const AppHeader = () => {
+
   // Link per la navigazione di pagina in pagina
   const linkNav = [
     {
@@ -59,5 +60,6 @@ const AppHeader = () => {
     </>
   );
 };
+
 
 export default AppHeader;
