@@ -91,6 +91,21 @@ const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
               <ShoesCard shoe={curShoe} />
             </div>
           ))}
+          {shoes.length === 0 ? (
+  <div className="text-center my-5">
+    <h4>Nessun risultato trovato 😢</h4>
+    <p>Prova a modificare i filtri o cerca un brand diverso.</p>
+  </div>
+) : (
+  <div className="row g-3">
+    {shoes.map((curShoe) => (
+      <div key={curShoe.id} className="col-6 col-md-4">
+        <ShoesCard shoe={curShoe} />
+      </div>
+    ))}
+  </div>
+)}
+
         </div>
       </section>
     </main>
