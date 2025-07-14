@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShoesCard from "../components/ShoesCard.jsx";
 import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Shoes = () => {
+  const location = useLocation();
+const queryParams = new URLSearchParams(location.search);
+const brandFromQuery = queryParams.get("brand");
+const searchTermFromQuery = queryParams.get("q");
+
+
+
   const { gender } = useParams();
   const [shoes, setShoes] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
@@ -13,30 +21,30 @@ const Shoes = () => {
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
   // FINE FILTRI
 
   useEffect(() => {
-    let url = "http://localhost:3000/shoes";
+  let url = "http://localhost:3000/shoes";
+  const params = {};
 
-    const params = {};
+  if (gender === "novita") {
+    url += "?isNew=true";
+  } else if (gender) {
+    url += `?gender=${gender}`;
+  }
 
-    if (gender === "novita") {
-      url += "?isNew=true";
-    } else if (gender) {
-      url += `?gender=${gender}`;
-    }
+  if (minPrice) params.minPrice = minPrice;
+  if (maxPrice) params.maxPrice = maxPrice;
+  if (selectedColor) params.color = selectedColor;
+ if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
+  if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
 
-    if (minPrice) params.minPrice = minPrice;
-    if (maxPrice) params.maxPrice = maxPrice;
-    if (selectedColor) params.color = selectedColor;
-    if (selectedBrand) params.brand = selectedBrand;
-    if (searchTerm) params.q = searchTerm;
+  axios.get(url, { params }).then((resp) => {
+    setShoes(resp.data.data);
+  });
+}, [gender, minPrice, maxPrice, selectedColor, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
 
-    axios.get(url, { params }).then((resp) => {
-      setShoes(resp.data.data);
-    });
-  }, [gender, minPrice, maxPrice, selectedColor, selectedBrand]);
 
   const pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
 
