@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const SearchInput = () => {
@@ -9,6 +9,7 @@ const SearchInput = () => {
     const [search, setSearch] = useState("");
     const [shoes, setShoes] = useState([])
 
+    const navigate = useNavigate()
     
 
     const searchShoes = () => {
@@ -16,15 +17,20 @@ const SearchInput = () => {
         axios
         .get(`http://localhost:3000/shoes/?brand=${search}`)
         .then((resp) => {
-          const shoesList = resp.data.results
-          console.log(shoesList)
+          const shoesList = resp.data
+          console.log(resp.data)
           setShoes(shoesList)
-          
+          navigate(`/shoes`)       
         })
         .catch((error) => {
           console.error("Errore nella chiamata");
         });
       }
+    }
+
+    const handleInput = (event) => {
+      event.preventDefault()
+      setSearch(event.target.value)
     }
 
     
@@ -37,8 +43,9 @@ const SearchInput = () => {
       placeholder="Cerca il tuo articolo..."
       className="w-100 search-small-screen"
       value={search}
-      onChange={(e) => setSearch(e.target.value)}
+      onChange={handleInput}
       />
+      <button onClick={searchShoes}>Cerca</button>
       {search && (
         <button className="clear-btn" onClick={() => setText("")}>
         &#10005;
