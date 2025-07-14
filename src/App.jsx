@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./Context/CartContext";
 import GuestLayout from "./layouts/GuestLayout";
 import Shoes from "./pages/Shoes";
 import Home from "./pages/Home";
 import NewsletterModal from "./components/Modal/NewsletterModal";
+import Cart from "./pages/Cart";
 
 function App() {
   // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
@@ -27,16 +29,19 @@ function App() {
 
   return (
     <>
-       <NewsletterModal show={showModal} onClose={handleClose} />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<GuestLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/shoes" element={<Shoes />} />
-            <Route path="/shoes/:gender" element={<Shoes />} /> 
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <NewsletterModal show={showModal} onClose={handleClose} />
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<GuestLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/shoes" element={<Shoes />} />
+              <Route path="/shoes/:gender" element={<Shoes />} />
+              <Route path="/shoes/cart" element={<Cart />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

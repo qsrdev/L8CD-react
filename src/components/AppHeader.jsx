@@ -54,7 +54,7 @@ const AppHeader = () => {
           <div>{<BurgerMenu />}</div>
             <Link>Cerca</Link>
           <div className="header-icons">
-            <Link>
+            <Link to='/shoes/cart'>
               <i className="fa-solid fa-cart-shopping text-white"></i>
             </Link>
           </div>
