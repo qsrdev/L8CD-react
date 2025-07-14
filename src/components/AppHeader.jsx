@@ -52,7 +52,6 @@ const AppHeader = () => {
         </div>
         <div className="left-group d-flex align-items-center">
           <div>{<BurgerMenu />}</div>
-            <Link>Cerca</Link>
           <div className="header-icons">
             <Link to='/shoes/cart'>
               <i className="fa-solid fa-cart-shopping text-white"></i>

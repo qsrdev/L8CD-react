@@ -45,7 +45,6 @@ const SearchInput = () => {
       value={search}
       onChange={handleInput}
       />
-      <button onClick={searchShoes}>Cerca</button>
       {search && (
         <button className="clear-btn" onClick={() => setText("")}>
         &#10005;
