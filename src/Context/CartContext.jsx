@@ -91,7 +91,7 @@ export const CartProvider = ({ children }) => {
     localStorage.removeItem("totalPrice");
   };
 
-  const value = { addToCart, removeItemCompletely, increaseQuantity, decreaseQuantity, clearCart };
+  const value = { cartItems, totalPrice, addToCart, removeItemCompletely, increaseQuantity, decreaseQuantity, clearCart };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
