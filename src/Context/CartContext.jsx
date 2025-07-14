@@ -9,6 +9,8 @@ export const CartProvider = ({ children }) => {
 
   //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
+  console.log("sto inizializzando" + cartItems);
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   //vado a prendere lo stato da localstorage del mio carrello e del prezzo totale del carrello
