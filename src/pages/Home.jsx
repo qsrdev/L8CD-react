@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "../components/Slider/Slider";
+import CardSlider from "../components/CardSlider/CardSlider";
 
 const Home = () => {
   const [shoes, setShoes] = useState([]);
@@ -25,10 +26,11 @@ const Home = () => {
 
   return (
     <>
-
       <h1>salute</h1>
       <Slider />
-
+      <div className="container g-4">
+        <CardSlider array={newShoes} />
+      </div>
     </>
   );
 };
