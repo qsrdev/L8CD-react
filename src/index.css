@@ -50,7 +50,9 @@ div .link-header{
 .search {
   padding: 2px 10px;
 }
-
+.search-btn{
+  background-color: #f0f0ff;
+}
 .logo {
   color: white;
   text-decoration: none;
@@ -76,9 +78,16 @@ div.link-header {
   border-radius: 30px;
   border: 1px solid var(--common-color-2);
   padding: 7px 60px;
-  margin-right: 50px;
 }
-
+.btn-search-desktop{
+  background-color: #f7cf60;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+border-radius: 30px 10px 30px 10px;
+padding: 0px 20px;
+margin-right: 20px;
+}
 input {
   transition: all 0.3s ease;
 }
@@ -108,7 +117,6 @@ li:hover {
 .search-small-screen{
   display: none;
 }
-
 
 /* MAIN */
 .coupons-cta {
@@ -272,6 +280,11 @@ header {
   .burger-menu {
     display: none !important;
   }
+  .btn-search-desktop{
+padding: 0px 10px;
+margin-right: 3px;
+}
+
 }
 
 @media screen and (max-width: 970px){
@@ -285,6 +298,9 @@ header {
     font-size: 20px;
   }
   .search {
+    display: none;
+  }
+  .btn-search-desktop{
     display: none;
   }
   .search-small-screen {

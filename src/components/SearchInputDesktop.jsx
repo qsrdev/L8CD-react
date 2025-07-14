@@ -17,7 +17,7 @@ const SearchInputDesktop = () => {
   };
 
   return (
-    <div className="search-wrapper">
+    <div className="search-wrapper d-flex">
       <input
         type="text"
         placeholder="Cerca il tuo articolo..."
@@ -27,7 +27,7 @@ const SearchInputDesktop = () => {
         onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
 
-      <button onClick={handleRedirect} className="btn btn-primary mx-2">
+      <button onClick={handleRedirect} className="btn-search-desktop">
         Cerca
       </button>
 
