@@ -29,7 +29,8 @@ const AppHeader = () => {
   return (
     <>
       <header className="header-color">
-        <div className="header-logo">
+
+        <div className="header-logo me-auto">
           <Link className="logo" to="/">
             L8CD
           </Link>
