@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./Context/CartContext";
 import GuestLayout from "./layouts/GuestLayout";
 import Shoes from "./pages/Shoes";
 import Home from "./pages/Home";
@@ -29,16 +30,18 @@ function App() {
   return (
     <>
       <NewsletterModal show={showModal} onClose={handleClose} />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<GuestLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/shoes" element={<Shoes />} />
-            <Route path="/shoes/:gender" element={<Shoes />} />
-            <Route path="/shoes/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<GuestLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/shoes" element={<Shoes />} />
+              <Route path="/shoes/:gender" element={<Shoes />} />
+              <Route path="/shoes/cart" element={<Cart />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }
