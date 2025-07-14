@@ -28,8 +28,9 @@ const Home = () => {
     <>
       <h1>salute</h1>
       <Slider />
-
-      <CardSlider array={newShoes} />
+      <div className="container g-4">
+        <CardSlider array={newShoes} />
+      </div>
     </>
   );
 };

@@ -27,7 +27,7 @@ export default function CardSlider({ array }) {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 4,
             spaceBetween: 50,
           },
         }}
@@ -35,7 +35,7 @@ export default function CardSlider({ array }) {
         className="mySwiper"
       >
         {array.map((curElement, index) => (
-          <SwiperSlide className={index}>
+          <SwiperSlide key={index} className="slide">
             <img src={curElement.image} alt={curElement.name} />
           </SwiperSlide>
         ))}
