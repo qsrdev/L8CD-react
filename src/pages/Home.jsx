@@ -28,33 +28,33 @@ const Home = () => {
     <>
       <Slider />
       <section className="py-5">
-      <div className="container g-4">
-        <div className="mb-5">
-          <h2>Novità</h2>
-          <p>Scopri gli ultimi arrivi</p>
+        <div className="container g-4">
+          <div className="mb-5">
+            <h2>Novità</h2>
+            <p>Scopri gli ultimi arrivi</p>
+          </div>
+          <CardSlider array={newShoes} />
         </div>
-        <CardSlider array={newShoes} />
-      </div>
       </section>
 
       <section className="promo-color py-5">
-      <div className="container g-4">
-        <div className="mb-5">
-          <h2>Promo spedizione gratuita</h2>
-          <p>Approfitta ora della spedizione a costo zero</p>
+        <div className="container g-4">
+          <div className="mb-5">
+            <h2>Promo spedizione gratuita</h2>
+            <p>Approfitta ora della spedizione a costo zero</p>
+          </div>
+          <CardSlider array={newShoes} />
         </div>
-        <CardSlider array={newShoes} />
-      </div>
       </section>
 
       <section className="py-5">
-      <div className="container g-4">
-        <div className="mb-5">
-          <h2>Nuovi brand!</h2>
-          <p>Tutti gli ultimi arrivi</p>
-          <CardSlider array={newShoes} />
+        <div className="container g-4">
+          <div className="mb-5">
+            <h2>Nuovi brand!</h2>
+            <p>Tutti gli ultimi arrivi</p>
+            <CardSlider array={newShoes} />
+          </div>
         </div>
-      </div>
       </section>
     </>
   );
