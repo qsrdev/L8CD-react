@@ -26,23 +26,21 @@ const Home = () => {
 
   // ================GESTIONE del CARRELLO ================
 
-  const Carrello = () => {
-    const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalItems, setTotalItems] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
-    useEffect(() => {
-      //questo use effect serve se esistono già degli oggetti nel carrello li aggiunge
-      const localCartItems = localStorage.getItem("cartItems");
-      const localTotalPrice = localStorage.getItem("totalPrice");
-      if (localCartItems !== null) {
-        //facciamo parse e stringify dopo per trasformare l'array in stringa e viceversa
-        // localstorare supporta solo queste modalità di dati
-        setCartItems(JSON.parse(localCartItems));
-        setTotalPrice(JSON.parse(localTotalPrice));
-      }
-    }, []);
-  };
+  useEffect(() => {
+    //questo use effect serve se esistono già degli oggetti nel carrello li aggiunge
+    const localCartItems = localStorage.getItem("cartItems");
+    const localTotalPrice = localStorage.getItem("totalPrice");
+    if (localCartItems !== null) {
+      //facciamo parse e stringify dopo per trasformare l'array in stringa e viceversa
+      // localstorare supporta solo queste modalità di dati
+      setCartItems(JSON.parse(localCartItems));
+      setTotalPrice(JSON.parse(localTotalPrice));
+    }
+  }, []);
 
   useEffect(() => {
     // crea nello storage gli elementi cartItems e totalPrice
@@ -59,7 +57,30 @@ const Home = () => {
 
   return (
     <>
-      <h1>salute</h1>
+      <div>
+        <button
+          className="text-center"
+          onClick={() =>
+            addToCart({
+              id: Date.now(),
+              name: "Prodotto di prova",
+              price: 10,
+              quantity: 1,
+            })
+          }
+        >
+          Aggiungi prodotto di prova
+        </button>
+
+        <h3>Carrello</h3>
+        {cartItems.map((item) => (
+          <div key={item.id}>
+            {item.name} - €{item.price}
+          </div>
+        ))}
+        <p>Totale: €{totalPrice}</p>
+      </div>
+
       <Slider />
       <div className="container g-4">
         <CardSlider array={newShoes} />
