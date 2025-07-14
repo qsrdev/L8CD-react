@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./Slider.css";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -55,10 +56,10 @@ export default function Slider() {
             >
               <div className="slide-info">
                 <h1>{slide.text}</h1>
-                <p>{slide.description}</p>
-                <a href={slide.link} className="cta-button">
+                <p className="fs-5 fw-normal">{slide.description}</p>
+                <Link href={slide.link} className="cta-button">
                   Scopri di più
-                </a>
+                </Link>
               </div>
             </div>
           </SwiperSlide>
