@@ -26,46 +26,6 @@ const Home = () => {
 
   return (
     <>
-      {/* <div style={{ padding: "1rem" }}>
-        <h2>Prodotti disponibili</h2>
-        {products.map((product) => (
-          <div key={product.id} style={{ marginBottom: "10px" }}>
-            {product.name} - €{product.price}
-            <button style={{ marginLeft: "10px" }} onClick={() => addToCart(product)}>
-              Aggiungi al carrello
-            </button>
-          </div>
-        ))}
-
-        <hr />
-
-        <h2>Carrello</h2>
-        {cartItems.length === 0 ? (
-          <p>Il carrello è vuoto</p>
-        ) : (
-          <div>
-            {cartItems.map((item) => (
-              <div key={item.id} style={{ marginBottom: "5px" }}>
-                {item.name} - €{item.price} × {item.quantity} = €{item.price * item.quantity}
-                <button style={{ marginLeft: "10px" }} onClick={() => decreaseQuantity(item.id)}>
-                  -
-                </button>
-                <button style={{ marginLeft: "5px" }} onClick={() => increaseQuantity(item.id)}>
-                  +
-                </button>
-                <button style={{ marginLeft: "5px" }} onClick={() => removeItemCompletely(item.id)}>
-                  Rimuovi tutto
-                </button>
-              </div>
-            ))}
-            <p>
-              <strong>Totale: €{totalPrice}</strong>
-            </p>
-            <button onClick={clearCart}>Svuota carrello</button>
-          </div>
-        )}
-      </div> */}
-
       <Slider />
       <div className="container g-4">
         <CardSlider array={newShoes} />
