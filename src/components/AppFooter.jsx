@@ -10,7 +10,7 @@ const AppFooter = () => {
             <div>
               <ul className="link-footer">
                 <li>
-                  <Link className="nav-footer">Contatti</Link>
+                  <Link className="nav-footer" to={`/contacts`}>Contatti</Link>
                 </li>
               </ul>
             </div>
