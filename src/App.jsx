@@ -35,7 +35,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/shoes/:gender" element={<Shoes />} />
-            <Route path="/shoes/cart" element={<Cart/>} />
+            <Route path="/shoes/cart" element={<Cart />} />
           </Route>
         </Routes>
       </BrowserRouter>
