@@ -37,6 +37,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 div .link-header{
@@ -65,18 +68,19 @@ ul.d-flex {
 div.link-header {
   margin-top: 15px;
 }
+
 .search {
   background-color: rgba(255, 255, 255, 0.724);
   border-radius: 30px;
-  border: 1px solid rgb(58, 58, 58);
+  border: 1px solid var(--common-color-2);
   padding: 7px 60px;
   margin-right: 50px;
 }
+
 input {
   transition: all 0.3s ease;
 }
 .search:focus {
-  border-color: #7a798b; /* viola acceso */
   background-color: #f0f0ff;
   box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
   outline: none;
@@ -102,6 +106,8 @@ li:hover {
 .search-small-screen{
   display: none;
 }
+
+
 /* MAIN */
 .hover-zoom {
   transition: transform 0.3s ease;
@@ -122,11 +128,27 @@ li:hover {
 .card-text.price {
   font-size: 12px;
 }
+
+.promo-color {
+  background-color: var(--common-color-3);
+}
+
+.btn-outline-secondary.custom-hover:hover {
+  background-color: #6c757d; /* grigio bootstrap */
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-secondary.custom-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+
 /* FOOTER */
+
 footer {
   background-color: #301f32;
-  position: fixed;
-  bottom: 0;
   width: 100%;
 }
 .footer-top {
@@ -163,7 +185,7 @@ footer {
 .footer-bottom {
   margin-top: 50px;
   margin-left: 30px;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   display: flex;
   text-align: center;
 }

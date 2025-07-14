@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const BurgerMenu = () => {
+  
   const [menuOpen, setMenuOpen] = useState(false);
 
   const linkNav = [

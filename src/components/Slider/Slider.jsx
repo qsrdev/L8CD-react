@@ -5,25 +5,26 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./Slider.css";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
     id: 1,
-    bg: "./slider/jumbobanner.jpg",
+    bg: "./slider/nike-air.jpg",
     text: "Nike Air Max",
     description: "Comfort, stile e performance. Scopri la nuova collezione Air Max.",
     link: "/scarpe/air-max",
   },
   {
     id: 2,
-    bg: "./slider/jumbobanner2.jpg",
+    bg: "./slider/nike-zoom.webp",
     text: "Nike ZoomX",
     description: "Pensata per la velocità. Perfetta per la corsa ad alte prestazioni.",
     link: "/scarpe/zoomx",
   },
   {
     id: 3,
-    bg: "./slider/jumbobanner.jpg",
+    bg: "./slider/nike-revolution.webp",
     text: "Nike Revolution",
     description: "Reinventa il tuo stile urbano con un design moderno e leggero.",
     link: "/scarpe/revolution",
@@ -55,10 +56,10 @@ export default function Slider() {
             >
               <div className="slide-info">
                 <h1>{slide.text}</h1>
-                <p>{slide.description}</p>
-                <a href={slide.link} className="cta-button">
+                <p className="fs-5 fw-normal">{slide.description}</p>
+                <Link href={slide.link} className="cta-button">
                   Scopri di più
-                </a>
+                </Link>
               </div>
             </div>
           </SwiperSlide>
