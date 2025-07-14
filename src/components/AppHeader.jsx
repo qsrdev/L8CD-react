@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import BurgerMenu from "./BurgerMenu";
 import SearchInput from "./SearchInput";
+import SearchInputDesktop from "./SearchInputDesktop";
 
 const AppHeader = () => {
   // Link per la navigazione di pagina in pagina
@@ -44,15 +45,10 @@ const AppHeader = () => {
         </div>
 
         <div>
-          <input
-            type="text"
-            placeholder="Cerca il tuo articolo... "
-            className="search"
-          />
+         <SearchInputDesktop/>
         </div>
         <div className="left-group d-flex align-items-center">
           <div>{<BurgerMenu />}</div>
-            <Link>Cerca</Link>
           <div className="header-icons">
             <Link to='/shoes/cart'>
               <i className="fa-solid fa-cart-shopping text-white"></i>
