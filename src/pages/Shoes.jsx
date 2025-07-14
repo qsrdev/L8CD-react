@@ -13,7 +13,7 @@ const Shoes = () => {
     if (gender === "novita") {
       url += "?isNew=true";
     } else if (gender) {
-      url += "?gender=${gender}";
+      url += `?gender=${gender}`;
     }
 
     axios.get(url).then((resp) => {
