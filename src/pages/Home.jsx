@@ -24,6 +24,39 @@ const Home = () => {
   // 5 scarpe casuali per scopri i nostri brand
   const randomShoes = shoes.filter((shoe) => (shoe.id = Math.floor(Math.random() * shoes.length))).slice(0, 5);
 
+  // ================GESTIONE del CARRELLO ================
+
+  const Carrello = () => {
+    const [cartItems, setCartItems] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalItems, setTotalItems] = useState(0);
+
+    useEffect(() => {
+      //questo use effect serve se esistono già degli oggetti nel carrello li aggiunge
+      const localCartItems = localStorage.getItem("cartItems");
+      const localTotalPrice = localStorage.getItem("totalPrice");
+      if (localCartItems !== null) {
+        //facciamo parse e stringify dopo per trasformare l'array in stringa e viceversa
+        // localstorare supporta solo queste modalità di dati
+        setCartItems(JSON.parse(localCartItems));
+        setTotalPrice(JSON.parse(localTotalPrice));
+      }
+    }, []);
+  };
+
+  useEffect(() => {
+    // crea nello storage gli elementi cartItems e totalPrice
+    if (cartItems.length > 0) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    }
+  }, [cartItems, totalPrice]);
+
+  const addToCart = (item) => {
+    setCartItems((prevItems) => [...prevItems, item]);
+    setTotalPrice((prevTotal) => prevTotal + item.price);
+  };
+
   return (
     <>
       <h1>salute</h1>
