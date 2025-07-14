@@ -19,6 +19,7 @@ const Shoes = () => {
   useEffect(() => {
     let url = "http://localhost:3000/shoes";
 
+
     const params = {};
 
     if (gender === "novita") {
@@ -40,11 +41,12 @@ const Shoes = () => {
     });
   }, [gender, minPrice, maxPrice, selectedColor, selectedBrand]);
 
-  const pageTitle = gender === "novita" ? "Novità" : gender ? `Scarpe per ${gender}` : "Tutte le scarpe";
+  const pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
 
   return (
     <main>
       <section className="container py-5">
+
         <div className="d-flex justify-content-center align-items-center gap-3 mb-4 flex-wrap">
               <h1 className="m-0 text-center">
                 {pageTitle} ({shoes.length} risultati)
@@ -98,6 +100,8 @@ const Shoes = () => {
           </select>
         </div>
         )}
+
+        <h1 className="text-center"> {pageTitle} ({shoes.length} risultati)</h1>
 
         <div className="row g-3">
           {shoes.map((curShoe) => (

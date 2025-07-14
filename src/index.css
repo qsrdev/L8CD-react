@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-
 /* Utilities */
 
 .mright-200 {
@@ -16,10 +15,10 @@
 /* Common */
 
 :root {
-  --common-color-1: #251F32;
-  --common-color-2: #FEA82F;
-  --common-color-3: #677DB7;
-  --common-color-3: #FFB5B5;
+  --common-color-1: #251f32;
+  --common-color-2: #fea82f;
+  --common-color-3: #677db7;
+  --common-color-3: #ffb5b5;
 }
 
 li {
@@ -30,33 +29,57 @@ li {
 
 header {
   background-color: var(--common-color-2);
-  height: 60px;
-  padding-left:100px;
+  height: 70px;
+  padding-left: 100px;
   padding-right: 100px;
   color: #fff;
   font-size: 1.2rem;
-}
-.link-header{
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.link-header ul.d-flex{
-gap: 35px;
+
+div .link-header{
+  padding-right: 50px;
+
 }
-div.link-header{
+.search {
+  padding: 2px 10px;
+}
+.logo {
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+}
+.link-header {
+  display: flex;
+  padding-left: 30px;
+}
+ul.d-flex {
+  margin-left: 30px;
+}
+.link-header ul.d-flex {
+  gap: 35px;
+}
+div.link-header {
   margin-top: 15px;
 }
-.search{
-  background-color: rgba(241, 241, 241, 0.744);
+
+.search {
+  background-color: rgba(255, 255, 255, 0.724);
   border-radius: 30px;
-  border: 1px solid rgb(58, 58, 58);
-  padding: 7px 30px;
+  border: 1px solid var(--common-color-2);
+  padding: 7px 60px;
+  margin-right: 50px;
 }
-input{
-   transition: all 0.3s ease;
+
+
+input {
+  transition: all 0.3s ease;
 }
-.search:focus{
-    border-color: #7a798b; /* viola acceso */
-  background-color: #f0f0ff; 
+.search:focus {
+  background-color: #f0f0ff;
   box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
   outline: none;
 }
@@ -65,23 +88,22 @@ li a {
   color: #fff;
 }
 
-.header-logo{
+.header-logo {
   font-size: 2rem;
   font-weight: 700;
 }
-.fa-cart-shopping{
+.fa-cart-shopping {
   font-size: 25px;
 }
-.fa-cart-shopping:hover{
-    transform: scale(1.3);
-      transition: transform 1s ease;
-}
-li:hover{
-    transform: scale(1.1);
-    color: #fffce6;
-     text-shadow: 1px 1px 2px rgba(0, 0)
+
+li:hover {
+  transform: scale(1.1);
+  color: #fffce6;
 }
 
+.search-small-screen{
+  display: none;
+}
 /* MAIN */
 .hover-zoom {
   transition: transform 0.3s ease;
@@ -91,7 +113,7 @@ li:hover{
   transform: scale(1.05);
 }
 
-.card-title.name{
+.card-title.name {
   font-size: 16px;
 }
 
@@ -102,40 +124,44 @@ li:hover{
 .card-text.price {
   font-size: 12px;
 }
+
+.promo-color {
+  background-color: var(--common-color-3);
+}
+
 /* FOOTER */
-footer{
-background-color: #301F32;
- position: fixed;
-  bottom: 0;
+
+footer {
+  background-color: #301f32;
   width: 100%;
 }
-.footer-top{
+.footer-top {
   display: flex;
   justify-content: space-between;
 }
-.link-footer{
+.link-footer {
   gap: 20px;
   list-style: none;
   margin-top: 30px;
   display: flex;
 }
-.nav-footer{
+.nav-footer {
   text-decoration: none;
- color: #ffff;
- font-size: 1em;
+  color: #ffff;
+  font-size: 1em;
 }
-.sponsored-by{
-  margin-top:30px ;
+.sponsored-by {
+  margin-top: 30px;
   margin-right: 30px;
 }
 .l8cd-link {
- text-decoration: none;
- color: #ffff;
- font-weight: 700;
- font-size: 1.5em;
-   margin-bottom: 20px;
+  text-decoration: none;
+  color: #ffff;
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-bottom: 20px;
 }
-.diritti-riservati{
+.diritti-riservati {
   font-size: 0.7em;
   margin-left: 30px;
   margin-top: 10px;
@@ -143,55 +169,156 @@ background-color: #301F32;
 .footer-bottom {
   margin-top: 50px;
   margin-left: 30px;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   display: flex;
   text-align: center;
 }
-.nav-footer:hover{
- color: #f7cf60; 
+.nav-footer:hover {
+  color: #f7cf60;
 }
 
 /* MEDIA QUERY */
 
 @media screen and (max-width: 450px) {
-  footer{
+  footer {
     font-size: 0.9em;
   }
-  .footer-top{
+  .footer-top {
     display: inline;
-   text-align: center;
+    text-align: center;
   }
-  .link-footer{
+  .link-footer {
     display: inline;
   }
-  .sponsored-by{
-  margin-top:30px ;
-  margin-right: 1px;
-  font-size: 1.2em;
-  font-weight: 600;
-}
- .sponsored-by p{
- margin-bottom: 40px;
-
-}
-.link-footer li{
-margin-bottom: 20px;
-}
-.nav-footer{
-  color: #e4dede;
-}
-.footer-bottom {
-margin: 0 auto;
+  .sponsored-by {
+    margin-top: 30px;
+    margin-right: 1px;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  .sponsored-by p {
+    margin-bottom: 40px;
+  }
+  .link-footer li {
+    margin-bottom: 20px;
+  }
+  .nav-footer {
+    color: #e4dede;
+  }
+  .footer-bottom {
+    margin: 0 auto;
     display: inline;
-   text-align: center;
-}
-.diritti-riservati{
-  margin-left: 1px;
-}
+    text-align: center;
+  }
+  .diritti-riservati {
+    margin-left: 1px;
+  }
 }
 
 @media screen and (max-width: 1000px){
   .nav-footer{
  font-size: 0.8em;
 }
+
 }  
+
+
+ 
+
+@media screen and (max-width: 1300px){
+header {
+  padding-left:80px;
+  padding-right: 80px;
+}
+.search{
+  padding: 7px 40px;
+}
+} 
+@media screen and (max-width: 1050px){
+header {
+  padding-left:80px;
+  padding-right: 80px;
+}
+.search{
+  padding: 2px 10px;
+  margin: 15px;
+}
+} 
+@media screen and (min-width: 971px) and (max-width: 990px) {
+  .burger-menu {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 970px){
+  header{
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .fa-cart-shopping {
+    padding: 1px;
+    font-size: 20px;
+  }
+  .search {
+    display: none;
+  }
+  .search-small-screen {
+    display: block;
+    background-color: rgba(255, 149, 0, 0.333);
+    border: none;
+    padding: 15px;
+    box-shadow: 2px 6px 8px rgba(162, 162, 162, 0.5);
+  }
+  .search-small-screen:focus {
+    border-color: #7a798b;
+    outline: none;
+    background-color: rgba(211, 168, 111, 0.224);
+  }
+  .search-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+
+.link-header{
+  display: none;
+}
+.burger-menu {
+   align-self: flex-start;
+  top:0;
+  left: 90px;
+  right: 140px;
+  padding: 10px;
+  background-color: var(--common-color-2);
+  z-index: 9999;
+}
+.logo{
+  font-size: 1.4rem;
+}
+.burger-nav {
+  top: 60px; 
+  left: 0;
+  width: 100vw;
+  background-color: var(--common-color-2);
+    z-index: 9999;
+
+}
+.burger-nav li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+}
+.left-group {
+  display: flex;
+  align-items: center;
+}
+
+} 
+@media screen and (max-width: 500px){
+header {
+  padding-left:10px;
+  padding-right: 10px;
+}
+}
