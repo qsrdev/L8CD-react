@@ -21,12 +21,12 @@ const Shoes = () => {
     });
   }, [gender]);
 
-  const pageTitle = gender === "novita" ? "Novità" : gender ? `Scarpe per ${gender}` : "Tutte le scarpe";
+  const pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
 
   return (
     <main>
       <section className="container py-5">
-        <h1 className="text-center">Risultati di ricerca per '{gender}'</h1>
+        <h1 className="text-center"> {pageTitle} ({shoes.length} risultati)</h1>
         <div className="row g-3">
           {shoes.map((curShoe) => (
             <div key={curShoe.id} className="col-6 col-md-4">
