@@ -26,13 +26,6 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
   }, [cartItems, totalPrice]);
 
-  //array fittizio con dei prodotti finti
-  const products = [
-    { id: 1, name: "Pozione", price: 5 },
-    { id: 2, name: "Spada", price: 20 },
-    { id: 3, name: "Armatura", price: 40 },
-  ];
-
   //funzione che gestisce l'aggiunta di prodotti nuovi al carrello
   const addToCart = (newItem) => {
     const existingItem = cartItems.find((item) => item.id === newItem.id);
