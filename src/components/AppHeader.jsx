@@ -9,8 +9,8 @@ const AppHeader = () => {
 
   const linkNav = [
     {
-      title: "Novità",
-      url: "/shoes/novita",
+      title: "Offerte",
+      url: "/shoes/offerte",
     },
     {
       title: "Uomo",
@@ -46,7 +46,15 @@ const AppHeader = () => {
         </div>
 
         <div>
+
+          <input
+            type="text"
+            placeholder="Cerca il tuo articolo... "
+            className="search"
+          />
+
          <SearchInputDesktop/>
+
         </div>
         <div className="left-group d-flex align-items-center">
           <div>{<BurgerMenu />}</div>
