@@ -8,7 +8,7 @@ const Shoes = () => {
   const [shoes, setShoes] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
-  // INIZIO FILTRI 
+  // INIZIO FILTRI
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -19,13 +19,12 @@ const Shoes = () => {
   useEffect(() => {
     let url = "http://localhost:3000/shoes";
 
-
     const params = {};
 
     if (gender === "novita") {
-        url += "?isNew=true";
+      url += "?isNew=true";
     } else if (gender) {
-        url += `?gender=${gender}`;
+      url += `?gender=${gender}`;
     }
 
     if (minPrice) params.minPrice = minPrice;
@@ -34,9 +33,7 @@ const Shoes = () => {
     if (selectedBrand) params.brand = selectedBrand;
     if (searchTerm) params.q = searchTerm;
 
-
-
-    axios.get(url, { params}).then((resp) => {
+    axios.get(url, { params }).then((resp) => {
       setShoes(resp.data.data);
     });
   }, [gender, minPrice, maxPrice, selectedColor, selectedBrand]);
@@ -46,61 +43,38 @@ const Shoes = () => {
   return (
     <main>
       <section className="container py-5">
-
         <div className="d-flex justify-content-center align-items-center gap-3 mb-4 flex-wrap">
-              <h1 className="m-0 text-center">
-                {pageTitle} ({shoes.length} risultati)
-              </h1>
-                <button
-                  className="btn btn-outline-secondary custom-hover d-flex align-items-center"
-                  onClick={() => setShowFilters((prev) => !prev)}
-                >
-                  <i className="fa-solid fa-filter me-2"></i>
-                  <span className="d-none d-sm-inline">
-                    {showFilters ? "Nascondi filtri" : "Filtri"}
-                  </span>
-                </button>
-            </div>
-       {showFilters && ( 
-        <div className="filters d-flex flex-wrap gap-3 my-4">
-          <input
-            type="number"
-            placeholder="Prezzo minimo"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-            className="form-control"
-          />
-
-          <input
-            type="number"
-            placeholder="Prezzo massimo"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-            className="form-control"
-          />
-
-
-          <select
-            value={selectedBrand}
-            onChange={(e) => setSelectedBrand(e.target.value)}
-            className="form-select"
-          >
-            <option value="">Tutti i brand</option>
-            <option value="Nike">Nike</option>
-            <option value="Adidas">Adidas</option>
-            <option value="Puma">Puma</option>
-            <option value="New Balance">New Balance</option>
-            <option value="Merrell">Merrell</option>
-            <option value="Asics">Asics</option>
-            <option value="La Sportiva">La Sportiva</option>
-            <option value="Vans">Vans</option>
-            <option value="Solomon">Solomon</option>
-            <option value="The North Face">The North Face</option>
-            <option value="Columbia">Columbia</option>
-            <option value="Under Armour">Under Armour</option>
-            <option value="Converse">Converse</option>
-          </select>
+          <h1 className="m-0 text-center">
+            {pageTitle} ({shoes.length} risultati)
+          </h1>
+          <button className="btn btn-outline-secondary custom-hover d-flex align-items-center" onClick={() => setShowFilters((prev) => !prev)}>
+            <i className="fa-solid fa-filter me-2"></i>
+            <span className="d-none d-sm-inline">{showFilters ? "Nascondi filtri" : "Filtri"}</span>
+          </button>
         </div>
+        {showFilters && (
+          <div className="filters d-flex flex-wrap gap-3 my-4">
+            <input type="number" placeholder="Prezzo minimo" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="form-control" />
+
+            <input type="number" placeholder="Prezzo massimo" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="form-control" />
+
+            <select value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)} className="form-select">
+              <option value="">Tutti i brand</option>
+              <option value="Nike">Nike</option>
+              <option value="Adidas">Adidas</option>
+              <option value="Puma">Puma</option>
+              <option value="New Balance">New Balance</option>
+              <option value="Merrell">Merrell</option>
+              <option value="Asics">Asics</option>
+              <option value="La Sportiva">La Sportiva</option>
+              <option value="Vans">Vans</option>
+              <option value="Solomon">Solomon</option>
+              <option value="The North Face">The North Face</option>
+              <option value="Columbia">Columbia</option>
+              <option value="Under Armour">Under Armour</option>
+              <option value="Converse">Converse</option>
+            </select>
+          </div>
         )}
 
         <div className="row g-3">
@@ -115,4 +89,4 @@ const Shoes = () => {
   );
 };
 
-export default Shoes
+export default Shoes;
