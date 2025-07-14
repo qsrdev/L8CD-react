@@ -101,8 +101,6 @@ const Shoes = () => {
         </div>
         )}
 
-        <h1 className="text-center"> {pageTitle} ({shoes.length} risultati)</h1>
-
         <div className="row g-3">
           {shoes.map((curShoe) => (
             <div key={curShoe.id} className="col-6 col-md-4">
