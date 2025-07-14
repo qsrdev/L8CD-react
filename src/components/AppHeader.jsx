@@ -4,9 +4,8 @@ import BurgerMenu from "./BurgerMenu";
 import SearchInput from "./SearchInput";
 
 const AppHeader = () => {
-
-
   // Link per la navigazione di pagina in pagina
+
   const linkNav = [
     {
       title: "Novità",
@@ -45,7 +44,11 @@ const AppHeader = () => {
         </div>
 
         <div>
-          <input type="text" placeholder="Cerca il tuo articolo... " className="search" />
+          <input
+            type="text"
+            placeholder="Cerca il tuo articolo... "
+            className="search"
+          />
         </div>
         <div className="left-group d-flex align-items-center">
           <div>{<BurgerMenu />}</div>
@@ -61,6 +64,5 @@ const AppHeader = () => {
     </>
   );
 };
-
 
 export default AppHeader;
