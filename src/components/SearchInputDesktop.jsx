@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SearchInput = () => {
+const SearchInputDesktop = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -21,17 +21,15 @@ const SearchInput = () => {
       <input
         type="text"
         placeholder="Cerca il tuo articolo..."
-        className="w-100 search-small-screen"
+        className="search"
         value={search}
         onChange={handleInput}
         onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
 
-
       <button onClick={handleRedirect} className="btn btn-primary mx-2">
         Cerca
       </button>
-
 
       {search && (
         <button className="clear-btn" onClick={() => setSearch("")}>
@@ -42,4 +40,4 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
+export default SearchInputDesktop;
