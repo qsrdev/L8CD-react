@@ -33,38 +33,40 @@ const AppHeader = () => {
   return (
     <>
       <header className="header-color">
-
-        <div className="header-logo me-auto">
-          <Link className="logo" to="/">
-            L8CD
-          </Link>
-        </div>
-        <div className="link-header">
-          <ul className="d-flex text-white">
-            {linkNav.map((curLink, index) => (
-              <li key={index}>
-                <Link to={curLink.url}>{curLink.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-
-         <SearchInputDesktop/>
-
-        </div>
-        <div className="left-group d-flex align-items-center">
-          <div>{<BurgerMenu />}</div>
-          <div className="header-icons">
-            <Link to='/shoes/cart'>
-              <i className="fa-solid fa-cart-shopping text-white"></i>
+        {/* Non toccare il container, deve esserci */}
+          <div className="container d-flex justify-content-between">
+          {/* Logo */}
+          <div className="header-logo">
+            <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
+              L8CD
             </Link>
           </div>
-        </div>
-      <div className="line"></div>
+
+          {/* Nav-Link */}
+          <div>
+            <ul className="d-flex text-white gap-4">
+              {linkNav.map((curLink, index) => (
+                <li className="link-header" key={index}>
+                  <Link to={curLink.url}>{curLink.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Search */}
+          <SearchInputDesktop/>
+          {/* <div className="left-group d-flex align-items-center"> */}
+            <div>{<BurgerMenu />}</div>
+            {/* <div className="header-icons">
+              <Link to='/shoes/cart'>
+                <i className="fa-solid fa-cart-shopping text-white"></i>
+              </Link>
+            </div> */}
+          {/* </div> */}
+          </div>
       </header>
       <SearchInput />
+      
     </>
   );
 };
