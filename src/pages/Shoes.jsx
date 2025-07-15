@@ -47,26 +47,26 @@ const Shoes = () => {
 
   let pageTitle = gender === "offerte" ? "Offerte" : gender === "novita" ? "Novità" : gender ? capitalize(gender) : "Tutte le scarpe";
 
-  useEffect(() => {
-    let url = "http://localhost:3000/shoes";
-    const params = {};
+  // useEffect(() => {
+  //   let url = "http://localhost:3000/shoes";
+  //   const params = {};
 
-    if (gender === "novita") {
-      url += "?isNew=true";
-    } else if (gender) {
-      url += `?gender=${gender}`;
-    }
+  //   if (gender === "novita") {
+  //     url += "?isNew=true";
+  //   } else if (gender) {
+  //     url += `?gender=${gender}`;
+  //   }
 
-    if (minPrice) params.minPrice = minPrice;
-    if (maxPrice) params.maxPrice = maxPrice;
-    // if (selectedColor) params.color = selectedColor;
-    if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
-    if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
+  //   if (minPrice) params.minPrice = minPrice;
+  //   if (maxPrice) params.maxPrice = maxPrice;
+  //   // if (selectedColor) params.color = selectedColor;
+  //   if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
+  //   if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
 
-    axios.get(url, { params }).then((resp) => {
-      setShoes(resp.data.data);
-    });
-  }, [gender, minPrice, maxPrice, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
+  //   axios.get(url, { params }).then((resp) => {
+  //     setShoes(resp.data.data);
+  //   });
+  // }, [gender, minPrice, maxPrice, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
 
   pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
 
