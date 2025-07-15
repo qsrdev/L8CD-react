@@ -17,6 +17,7 @@ const Shoes = () => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
   const [onlyNew, setOnlyNew] = useState(false);
   const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
 
@@ -34,6 +35,7 @@ const Shoes = () => {
 
     if (minPrice) params.minPrice = minPrice;
     if (maxPrice) params.maxPrice = maxPrice;
+    if (selectedColor) params.color = selectedColor;
     if (onlyNew) params.isNew = true;
     if (selectedBrand || brandFromQuery)
       params.brand = selectedBrand || brandFromQuery;
@@ -48,6 +50,7 @@ const Shoes = () => {
     minPrice,
     maxPrice,
     onlyNew,
+    selectedColor,
     selectedBrand,
     searchTerm,
     brandFromQuery,
@@ -64,27 +67,6 @@ const Shoes = () => {
       : gender
       ? capitalize(gender)
       : "Tutte le scarpe";
-
-  // useEffect(() => {
-  //   let url = "http://localhost:3000/shoes";
-  //   const params = {};
-
-  //   if (gender === "novita") {
-  //     url += "?isNew=true";
-  //   } else if (gender) {
-  //     url += `?gender=${gender}`;
-  //   }
-
-  //   if (minPrice) params.minPrice = minPrice;
-  //   if (maxPrice) params.maxPrice = maxPrice;
-  //   // if (selectedColor) params.color = selectedColor;
-  //   if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
-  //   if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
-
-  //   axios.get(url, { params }).then((resp) => {
-  //     setShoes(resp.data.data);
-  //   });
-  // }, [gender, minPrice, maxPrice, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
 
   return (
     <main>
@@ -153,6 +135,26 @@ const Shoes = () => {
               <option value="Columbia">Columbia</option>
               <option value="Under Armour">Under Armour</option>
               <option value="Converse">Converse</option>
+            </select>
+
+            <select
+              value={selectedColor}
+              onChange={(e) => setSelectedColor(e.target.value)}
+              className="form-select"
+            >
+              <option value="">Tutti i colori</option>
+              <option value="Black">Nero</option>
+              <option value="White">Bianco</option>
+              <option value="Blue">Blu</option>
+              <option value="Red">Rosso</option>
+              <option value="Grey">Grigio</option>
+              <option value="Green">Verde</option>
+              <option value="Yellow">Giallo</option>
+              <option value="Pink">Rosa</option>
+              <option value="Brown">Marrone</option>
+              Black/White Green/White Black/White Black/Orange Black/White
+              White/Black Red/White Black/Red Blue/White Grey/Blue Black/Orange
+              White/Red Red/Black Black/White Blue/Black White/Red
             </select>
           </div>
         )}
