@@ -38,10 +38,7 @@ const Checkout = () => {
         })),
       };
 
-      const response = await axios.post(
-        "http://localhost:3000/shoes/store",
-        orderData
-      );
+      const response = await axios.post("http://localhost:3000/shoes/store", orderData);
 
       toast.success("ordine Completato");
       console.log("Ordine salvato con successo, ID:", response.data.order_id);
