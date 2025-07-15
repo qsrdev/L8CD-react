@@ -14,6 +14,7 @@ const SearchInputDesktop = () => {
     if (search.trim()) {
       // Usa il valore inserito, non un brand fisso
       navigate(`/shoes?q=${encodeURIComponent(search.trim())}`);
+      setSearch("");
     }
   };
 
