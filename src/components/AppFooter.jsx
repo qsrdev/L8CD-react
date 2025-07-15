@@ -18,8 +18,10 @@ const AppFooter = () => {
             </div>
             <div className="sponsored-by text-center">
               <p>Sponsored by</p>
-              <i className="fa-solid fa-poo fa-2x mx-2"></i>
-              <span>Poo Company S.P.A.</span>
+              <div className="d-flex align-items-center">
+                <i className="fa-solid fa-lemon fa-2x mx-2"></i>
+                <span>Lemon Company S.P.A.</span>
+              </div>
             </div>
           </div>
           {/* footer bottom */}
