@@ -17,6 +17,7 @@ const Shoes = () => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
   const [onlyNew, setOnlyNew] = useState(false);
   const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
   const [selectedColor, setSelectedColor] = useState("");
@@ -35,6 +36,8 @@ const Shoes = () => {
 
     if (minPrice) params.minPrice = minPrice;
     if (maxPrice) params.maxPrice = maxPrice;
+    if (selectedColor) params.color = selectedColor;
+
     if (onlyNew) params.isNew = true;
     if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
     if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
@@ -47,14 +50,15 @@ const Shoes = () => {
     minPrice,
     maxPrice,
     onlyNew,
-    selectedBrand,
     selectedColor,
+    selectedBrand,
     searchTerm,
     brandFromQuery,
     searchTermFromQuery,
   ]);
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
 
   let pageTitle = gender === "offerte" ? "Offerte" : gender === "novita" ? "Novità" : gender ? capitalize(gender) : "Tutte le scarpe";
 
@@ -81,6 +85,16 @@ const Shoes = () => {
 
 
   pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
+
+  let pageTitle =
+    gender === "offerte"
+      ? "Offerte"
+      : gender === "novita"
+      ? "Novità"
+      : gender
+      ? capitalize(gender)
+      : "Tutte le scarpe";
+
 
   return (
     <main>
@@ -128,6 +142,97 @@ const Shoes = () => {
               <option value="Under Armour">Under Armour</option>
               <option value="Converse">Converse</option>
             </select>
+          <button
+            className="btn btn-outline-secondary custom-hover d-flex align-items-center"
+            onClick={() => setShowFilters((prev) => !prev)}
+          >
+            <i className="fa-solid fa-filter me-2"></i>
+            <span className="d-none d-sm-inline">
+              {showFilters ? "Nascondi filtri" : "Filtri"}
+            </span>
+          </button>
+        </div>
+
+        {showFilters && (
+          <div className="filters bg-light p-4 rounded-4 shadow-sm mb-4 w-100">
+            <div className="d-flex flex-column gap-3">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="fa-solid fa-euro-sign"></i>
+                </span>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Prezzo minimo"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                />
+              </div>
+
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="fa-solid fa-euro-sign"></i>
+                </span>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Prezzo massimo"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                />
+              </div>
+
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="filter-new"
+                  checked={onlyNew}
+                  onChange={(e) => setOnlyNew(e.target.checked)}
+                />
+                <label className="form-check-label ms-2" htmlFor="filter-new">
+                  <i className="fa-solid fa-star me-1 text-warning"></i> Novità
+                </label>
+              </div>
+
+              <select
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.target.value)}
+                className="form-select"
+              >
+                <option value="">Tutti i brand</option>
+                <option value="Nike">Nike</option>
+                <option value="Adidas">Adidas</option>
+                <option value="Puma">Puma</option>
+                <option value="New Balance">New Balance</option>
+                <option value="Merrell">Merrell</option>
+                <option value="Asics">Asics</option>
+                <option value="La Sportiva">La Sportiva</option>
+                <option value="Vans">Vans</option>
+                <option value="Solomon">Solomon</option>
+                <option value="The North Face">The North Face</option>
+                <option value="Columbia">Columbia</option>
+                <option value="Under Armour">Under Armour</option>
+                <option value="Converse">Converse</option>
+              </select>
+
+              <select
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+                className="form-select"
+              >
+                <option value="">Tutti i colori</option>
+                <option value="Black">Nero</option>
+                <option value="White">Bianco</option>
+                <option value="Blue">Blu</option>
+                <option value="Red">Rosso</option>
+                <option value="Grey">Grigio</option>
+                <option value="Green">Verde</option>
+                <option value="Yellow">Giallo</option>
+                <option value="Pink">Rosa</option>
+                <option value="Brown">Marrone</option>
+              </select>
+            </div>
           </div>
         )}
 
