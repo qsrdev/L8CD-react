@@ -47,11 +47,17 @@ header {
   background-color: #f0f0ff;
 }
 
+.btn-search {
+  border: none;
+  background-color: var(--common-color-4);
+  color: white;
+  font-weight: bold;
+}
+
 .link-header {
   font-size: 18px;
   gap: 35px;
 }
-
 
 .search {
   background-color: rgba(255, 255, 255, 0.724);
@@ -60,7 +66,8 @@ header {
 }
 
 .btn-search-desktop{
-  background-color: #f7cf60;
+  background-color: var(--common-color-4);
+  border-radius: 20px;
   border: none;
   color: #fff;
   font-size: 20px;
@@ -392,10 +399,9 @@ font-weight: bold;
 
   .search-small-screen {
     display: block;
-    background-color: rgba(255, 149, 0, 0.333);
+    background-color: var(--common-color-1);
     border: none;
     padding: 15px;
-    box-shadow: 2px 6px 8px rgba(162, 162, 162, 0.5);
   }
 
   .search-small-screen:focus {
@@ -410,6 +416,9 @@ font-weight: bold;
     width: 100%;
   }
 
+  .btn-search-clear {
+    
+  }
 
 /* .link-header{
   display: none;
