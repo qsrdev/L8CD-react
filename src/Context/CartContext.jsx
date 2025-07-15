@@ -9,7 +9,6 @@ export const CartProvider = ({ children }) => {
 
   //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
 
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -80,6 +79,7 @@ export const CartProvider = ({ children }) => {
 
   //funzione che svuota tutto il carrello insieme e aggiorna lo stato dentro il local storage
   const clearCart = () => {
+    console.log("è stato chiamato clear cart")
     setCartItems([]);
     setTotalPrice(0);
     localStorage.removeItem("cartItems");
