@@ -40,7 +40,7 @@ export default function CardSlider({ array }) {
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
 
-     <Link to={`/shoes/product/${curElement.id}`}><img src={curElement.image} alt={curElement.name} /></Link>
+     <Link  to={`/shoes/product/${curElement.id}`} ><img src={curElement.image} alt={curElement.name} /></Link>
             <p className="promo-marklabel">PROMO</p>
 
           </SwiperSlide>
