@@ -29,7 +29,7 @@ const SearchInputDesktop = () => {
         />
 
         <button onClick={handleRedirect} className="btn-search-desktop">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
 
         {search && (

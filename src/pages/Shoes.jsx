@@ -49,6 +49,7 @@ const Shoes = () => {
     maxPrice,
     onlyNew,
     selectedBrand,
+    selectedColor,
     searchTerm,
     brandFromQuery,
     searchTermFromQuery,
@@ -56,7 +57,7 @@ const Shoes = () => {
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-  const pageTitle =
+  let pageTitle =
     gender === "offerte"
       ? "Offerte"
       : gender === "novita"
@@ -64,6 +65,32 @@ const Shoes = () => {
       : gender
       ? capitalize(gender)
       : "Tutte le scarpe";
+
+
+  useEffect(() => {
+  let url = "http://localhost:3000/shoes";
+  const params = {};
+
+  if (gender === "novita") {
+    url += "?isNew=true";
+  } else if (gender) {
+    url += `?gender=${gender}`;
+  }
+
+  if (minPrice) params.minPrice = minPrice;
+  if (maxPrice) params.maxPrice = maxPrice;
+  if (selectedColor) params.color = selectedColor;
+ if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
+  if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
+
+  axios.get(url, { params }).then((resp) => {
+    setShoes(resp.data.data);
+  });
+}, [gender, minPrice, maxPrice, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
+
+
+   pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
+
 
   return (
     <main>
@@ -74,12 +101,11 @@ const Shoes = () => {
           <button
             className="btn btn-outline-secondary custom-hover d-flex align-items-center"
             onClick={() => setShowFilters((prev) => !prev)}
-          >
+          />
             <i className="fa-solid fa-filter me-2"></i>
             <span className="d-none d-sm-inline">
               {showFilters ? "Nascondi filtri" : "Filtri"}
             </span>
-          </button>
         </div>
 
         {showFilters && (
@@ -117,7 +143,14 @@ const Shoes = () => {
               value={selectedBrand}
               onChange={(e) => setSelectedBrand(e.target.value)}
               className="form-select"
-            >
+            />
+
+            <input type="number" placeholder="Prezzo minimo" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="form-control" />
+
+            <input type="number" placeholder="Prezzo massimo" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="form-control" />
+
+            <select value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)} className="form-select">
+              
               <option value="">Tutti i brand</option>
               <option value="Nike">Nike</option>
               <option value="Adidas">Adidas</option>
@@ -150,7 +183,7 @@ const Shoes = () => {
             ))}
           </div>
         )}
-      </section>
+   </section>
     </main>
   );
 };
