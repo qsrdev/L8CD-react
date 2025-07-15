@@ -29,10 +29,7 @@ const SearchInputDesktop = () => {
         onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
 
-      <button
-        onClick={handleRedirect}
-        className="btn-search-desktop d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block"
-      >
+      <button onClick={handleRedirect} className="btn-search-desktop d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block">
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
       <div className="header-icons d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block">

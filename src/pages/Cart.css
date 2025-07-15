@@ -27,15 +27,11 @@
   font-size: 1.1rem;
 }
 
-
-
 .checkout {
   padding-top: 0.5rem;
   display: flex;
-  justify-content: center;  
-  font-weight: bold;       
-  font-size: 2rem;          
-  text-align: center;     
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
 }
-
-

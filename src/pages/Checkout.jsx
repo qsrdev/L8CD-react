@@ -65,72 +65,27 @@ const Checkout = () => {
             </Link>
           </header>
           <div className="container">
-            <form
-              onSubmit={handleOrderSubmit}
-              className="my-3 d-flex flex-column align-items-center"
-            >
+            <form onSubmit={handleOrderSubmit} className="my-3 d-flex flex-column align-items-center">
               <div className="mb-3 col-5">
-                <input
-                  id="custom_name"
-                  className="form-control"
-                  type="text"
-                  name="custom_name"
-                  placeholder="Nome"
-                  value={formData.custom_name}
-                  onChange={handleChange}
-                  required
-                />
+                <input id="custom_name" className="form-control" type="text" name="custom_name" placeholder="Nome" value={formData.custom_name} onChange={handleChange} required />
               </div>
               <div className="mb-3 col-5">
-                <input
-                  className="form-control"
-                  type="email"
-                  name="custom_email"
-                  placeholder="Email"
-                  value={formData.custom_email}
-                  onChange={handleChange}
-                  required
-                />
+                <input className="form-control" type="email" name="custom_email" placeholder="Email" value={formData.custom_email} onChange={handleChange} required />
               </div>
               <div className="mb-3 col-5">
-                <input
-                  className="form-control"
-                  type="text"
-                  name="custom_address"
-                  placeholder="Indirizzo"
-                  value={formData.custom_address}
-                  onChange={handleChange}
-                  required
-                />
+                <input className="form-control" type="text" name="custom_address" placeholder="Indirizzo" value={formData.custom_address} onChange={handleChange} required />
               </div>
               <div className="mb-3 col-5">
-                <input
-                  className="form-control"
-                  type="text"
-                  name="shipping_address"
-                  placeholder="Indirizzo spedizione"
-                  value={formData.shipping_address}
-                  onChange={handleChange}
-                />
+                <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
               </div>
               <div className="mb-3 col-5">
-                <select
-                  className="form-select"
-                  name="shipping_method"
-                  value={formData.shipping_method}
-                  onChange={handleChange}
-                >
+                <select className="form-select" name="shipping_method" value={formData.shipping_method} onChange={handleChange}>
                   <option value="standard">Standard</option>
                   <option value="express">Espressa</option>
                 </select>
               </div>
               <div className="mb-3 col-5">
-                <select
-                  className="form-select"
-                  name="payment_method"
-                  value={formData.payment_method}
-                  onChange={handleChange}
-                >
+                <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                   <option value="paypal">PayPal</option>
                   <option value="credit_card">Carta di credito</option>
                 </select>
@@ -145,10 +100,7 @@ const Checkout = () => {
         <div className="confirm-container">
           <div className="confirm-box">
             <h1>Ordine ricevuto con successo!</h1>
-            <p>
-              Grazie per il tuo acquisto. Ti invieremo presto la conferma via
-              email.
-            </p>
+            <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
             <button>
               <Link className="btn " to="/">
                 Continua con gli acquisti

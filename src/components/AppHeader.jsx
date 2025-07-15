@@ -34,8 +34,7 @@ const AppHeader = () => {
     <>
       <header className="header-color">
         {/* Occhio a toccare il container */}
-          <div className="container d-flex justify-content-between align-items-center">
-
+        <div className="container d-flex justify-content-between align-items-center">
           {/* Logo */}
           <div>
             <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
@@ -53,19 +52,15 @@ const AppHeader = () => {
               ))}
             </ul>
           </div>
-          
-          
+
           {/* Search */}
-          <SearchInputDesktop/>
+          <SearchInputDesktop />
 
           {/* Burger-Menu */}
           {<BurgerMenu />}
-
-          </div>
-
+        </div>
       </header>
       <SearchInput />
-      
     </>
   );
 };

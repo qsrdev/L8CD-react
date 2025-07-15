@@ -46,12 +46,7 @@ function App() {
   return (
     <>
       <NewsletterModal show={showModal} onClose={handleClose} />
-      <CartProvider
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        totalPrice={totalPrice}
-        setTotalPrice={setTotalPrice}
-      >
+      <CartProvider cartItems={cartItems} setCartItems={setCartItems} totalPrice={totalPrice} setTotalPrice={setTotalPrice}>
         <BrowserRouter>
           <Routes>
             <Route element={<GuestLayout />}>
@@ -61,8 +56,6 @@ function App() {
               <Route path="/shoes/product/:id" element={<ProductDetail />} />
               <Route path="/shoes/cart" element={<Cart />} />
               <Route path="/contacts" element={<Contacts />} />
-
-
             </Route>
             <Route path="/checkout" element={<Checkout />} />
           </Routes>

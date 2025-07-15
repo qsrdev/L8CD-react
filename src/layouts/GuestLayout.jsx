@@ -1,18 +1,16 @@
-import {Outlet} from "react-router-dom"
+import { Outlet } from "react-router-dom";
 
-import AppHeader from "../components/AppHeader"
-import AppFooter from "../components/AppFooter"
-
+import AppHeader from "../components/AppHeader";
+import AppFooter from "../components/AppFooter";
 
 const GuestLayout = () => {
+  return (
+    <>
+      <AppHeader />
+      <Outlet />
+      <AppFooter />
+    </>
+  );
+};
 
-    return (
-        <>
-            <AppHeader />
-            <Outlet />
-            <AppFooter />      
-        </>
-    )
-}
-
-export default GuestLayout
+export default GuestLayout;

@@ -3,9 +3,8 @@
   --common-color-2: #fea82f;
   --common-color-3: #677db7;
   --common-color-3: #ffb5b5;
-  --common-color-4: #FF6B6B;
+  --common-color-4: #ff6b6b;
 }
-
 
 img {
   float: left;
@@ -31,7 +30,6 @@ img {
   float: left;
 }
 
-
 .swiper-pagination {
   display: none;
 }
@@ -47,4 +45,3 @@ img {
   font-size: 12px;
   font-weight: bold;
 }
-
