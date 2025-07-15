@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
+import "../pages/Cart.css";
 
 const Cart = () => {
   const { cartItems, setCartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity } = useCart();
@@ -7,9 +8,17 @@ const Cart = () => {
     <>
       <div className="container py-4">
         <div className="row">
-          <h2 className="my-3">Carrello</h2>
-
           <div className="col-md-8">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h2>Carrello</h2>
+              {cartItems.length === 0 ? (
+                ""
+              ) : (
+                <button className="btn btn-outline-danger btn-sm p-2" onClick={clearCart}>
+                  <i class="bi bi-recycle"></i> Svuota carrello
+                </button>
+              )}
+            </div>
             {cartItems.length === 0 ? (
               <p>Il carrello è vuoto</p>
             ) : (
@@ -25,20 +34,20 @@ const Cart = () => {
                         <p className="card-text">{item.gender}</p>
                         <p className="card-text">
                           <small className="text-muted">
-                            Taglia: <b>{item.size}</b>
+                            Taglia: <b>{Math.trunc(item.size)}</b>
                           </small>
                         </p>
                         <p className="card-text fw-bold">{item.price} €</p>
                       </div>
                     </div>
                     <div className="col-md-3 d-flex align-items-center justify-content-center">
-                      <div className="btn-group" role="group">
-                        <button onClick={() => decreaseQuantity(item.id)} className="btn btn-outline-secondary">
-                          -
+                      <div className="counter-container btn-group">
+                        <button className="counter-btn" onClick={() => decreaseQuantity(item.id)}>
+                          <i className={`bi ${item.quantity === 1 ? "bi-trash" : "bi-dash"}`}></i>
                         </button>
-                        <span className="mx-2">{item.quantity}</span>
-                        <button onClick={() => increaseQuantity(item.id)} className="btn btn-outline-secondary">
-                          +
+                        <div className="counter-number">{item.quantity}</div>
+                        <button className="counter-btn" onClick={() => increaseQuantity(item.id)}>
+                          <i className="bi bi-plus"></i>
                         </button>
                       </div>
                     </div>
