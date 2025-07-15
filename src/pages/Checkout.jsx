@@ -22,8 +22,9 @@ const Checkout = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleOrderSubmit = async () => {
+  const handleOrderSubmit = async (e) => {
     try {
+      e.preventDefault;
       const orderData = {
         ...formData,
         total_amount: totalPrice,
@@ -45,8 +46,7 @@ const Checkout = () => {
       console.error("Errore durante il salvataggio dell'ordine:", error);
       alert("Errore durante l'invio dell'ordine.");
     }
-    };
-    
+  };
 
   return (
     <>

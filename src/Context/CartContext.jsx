@@ -79,6 +79,7 @@ export const CartProvider = ({ children }) => {
 
   //funzione che svuota tutto il carrello insieme e aggiorna lo stato dentro il local storage
   const clearCart = () => {
+    console.log("è stato chiamato clear cart")
     setCartItems([]);
     setTotalPrice(0);
     localStorage.removeItem("cartItems");
