@@ -36,6 +36,7 @@ const Shoes = () => {
     if (minPrice) params.minPrice = minPrice;
     if (maxPrice) params.maxPrice = maxPrice;
     if (selectedColor) params.color = selectedColor;
+
     if (onlyNew) params.isNew = true;
     if (selectedBrand || brandFromQuery)
       params.brand = selectedBrand || brandFromQuery;
@@ -84,7 +85,6 @@ const Shoes = () => {
             </span>
           </button>
         </div>
-
         {showFilters && (
           <div className="filters bg-light p-4 rounded-4 shadow-sm mb-4 w-100">
             <div className="d-flex flex-column gap-3">

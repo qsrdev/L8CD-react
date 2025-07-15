@@ -12,7 +12,7 @@ import "./CardSlider.css";
 
 import { Pagination, Navigation } from "swiper/modules";
 
-export default function CardSlider({ array }) {
+export default function CardSliderSP({ array }) {
   return (
     <>
       <Swiper
@@ -40,7 +40,16 @@ export default function CardSlider({ array }) {
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
 
-     <Link to={`/shoes/product/${curElement.id}`}><img src={curElement.image} alt={curElement.name} /></Link>
+    
+     <div>
+           <Link to={`/shoes/product/${curElement.id}`}>   <img src={curElement.image} alt={curElement.name} />    </Link>
+             <h6 className="py-3">{curElement.name}</h6>
+             <p className="fst-italic"> €{curElement.price}</p>
+     </div>
+
+     
+ 
+
             <p className="promo-marklabel">PROMO</p>
 
           </SwiperSlide>

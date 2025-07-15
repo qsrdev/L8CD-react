@@ -18,6 +18,7 @@ const SearchInput = () => {
 
   return (
     <div className="search-wrapper search-input">
+
       <input
         type="text"
         placeholder="Cerca il tuo articolo..."
@@ -31,8 +32,9 @@ const SearchInput = () => {
         Cerca
       </button>
 
+
       {search && (
-        <button className="clear-btn" onClick={() => setSearch("")}>
+        <button className="btn-search-clear" onClick={() => setSearch("")}>
           &#10005;
         </button>
       )}

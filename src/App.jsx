@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import NewsletterModal from "./components/Modal/NewsletterModal";
 import Cart from "./pages/Cart";
 import Contacts from "./pages/Contacts";
+import ProductDetail from "./pages/ProductDetail";
+import Checkout from "./pages/Checkout";
 
 function App() {
   // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
@@ -44,16 +46,25 @@ function App() {
   return (
     <>
       <NewsletterModal show={showModal} onClose={handleClose} />
-      <CartProvider cartItems={cartItems} setCartItems={setCartItems} totalPrice={totalPrice} setTotalPrice={setTotalPrice}>
+      <CartProvider
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        totalPrice={totalPrice}
+        setTotalPrice={setTotalPrice}
+      >
         <BrowserRouter>
           <Routes>
             <Route element={<GuestLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/shoes" element={<Shoes />} />
               <Route path="/shoes/:gender" element={<Shoes />} />
+              <Route path="/shoes/product/:id" element={<ProductDetail />} />
               <Route path="/shoes/cart" element={<Cart />} />
               <Route path="/contacts" element={<Contacts />} />
+
+
             </Route>
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
