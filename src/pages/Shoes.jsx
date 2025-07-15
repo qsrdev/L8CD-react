@@ -78,11 +78,12 @@ const Shoes = () => {
           <button
             className="btn btn-outline-secondary custom-hover d-flex align-items-center"
             onClick={() => setShowFilters((prev) => !prev)}
-          />
-          <i className="fa-solid fa-filter me-2"></i>
-          <span className="d-none d-sm-inline">
-            {showFilters ? "Nascondi filtri" : "Filtri"}
-          </span>
+          >
+            <i className="fa-solid fa-filter me-2"></i>
+            <span className="d-none d-sm-inline">
+              {showFilters ? "Nascondi filtri" : "Filtri"}
+            </span>
+          </button>
         </div>
         {showFilters && (
           <div className="filters bg-light p-4 rounded-4 shadow-sm mb-4 w-100">
