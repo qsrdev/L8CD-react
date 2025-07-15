@@ -86,9 +86,6 @@ const Shoes = () => {
   //   });
   // }, [gender, minPrice, maxPrice, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
 
-  pageTitle =
-    gender === "novita" ? "Novità" : gender ? gender : "Tutte le scarpe";
-
   return (
     <main>
       <section className="container py-5">
