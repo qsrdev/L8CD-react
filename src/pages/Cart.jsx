@@ -21,7 +21,9 @@ const Cart = () => {
         <p>
           <strong>Totale: €{totalPrice}</strong>
         </p>
-        <button onClick={clearCart}>Svota tutto</button>
+        <button className="btn btn-danger" onClick={clearCart}>Svota tutto</button>
+        <br />
+        <button className="btn btn-primary my-5"> Vai al Check-out</button>
       </div>
     </>
   );
