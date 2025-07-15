@@ -1,14 +1,15 @@
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardSliderSP from "../components/CardSlider/cardSliderSP";
 import { useCart } from "../Context/CartContext";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
     const [shoes, setShoes] = useState([]);
