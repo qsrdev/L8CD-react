@@ -167,7 +167,7 @@ const Shoes = () => {
             </div>
           </div>
         )}
-        )
+
         {shoes.length === 0 ? (
           <div className="text-center my-5">
             <h4>Nessun risultato trovato 😢</h4>
