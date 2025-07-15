@@ -49,7 +49,6 @@ const Shoes = () => {
     maxPrice,
     onlyNew,
     selectedBrand,
-    selectedColor,
     searchTerm,
     brandFromQuery,
     searchTermFromQuery,
@@ -86,7 +85,7 @@ const Shoes = () => {
   axios.get(url, { params }).then((resp) => {
     setShoes(resp.data.data);
   });
-}, [gender, minPrice, maxPrice, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
+}, [gender, minPrice, maxPrice,   selectedColor,selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
 
 
    pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
