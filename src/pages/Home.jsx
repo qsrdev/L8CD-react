@@ -23,7 +23,8 @@ const Home = () => {
   const freeShippingShoes = shoes.filter((shoe) => shoe.price >= 100).slice(0, 5);
 
   // 5 scarpe casuali per scopri i nostri brand
-  const randomShoes = shoes.filter((shoe) => (shoe.id = Math.floor(Math.random() * shoes.length))).slice(0, 5);
+  const shuffled = [...shoes].sort(() => 0.5 - Math.random());
+  const randomShoes = shuffled.slice(0, 5);
 
   return (
     <>
