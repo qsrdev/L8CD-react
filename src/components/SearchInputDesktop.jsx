@@ -23,16 +23,16 @@ const SearchInputDesktop = () => {
           <input
             type="text"
             placeholder="Cerca il tuo articolo..."
-            className="search"
+            className="search d-sm-none d-md-none d-lg-block"
             value={search}
             onChange={handleInput}
             onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
           />
 
-          <button onClick={handleRedirect} className="btn-search-desktop">
+          <button onClick={handleRedirect} className="btn-search-desktop d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block">
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
-          <div className="header-icons d-none d-md-none d-lg-block d-xl-block d-xxl-block">
+          <div className="header-icons d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block">
             <Link to='/shoes/cart'>
               <i className="fa-solid fa-cart-shopping text-white"></i>
             </Link>

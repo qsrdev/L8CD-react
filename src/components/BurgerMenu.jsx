@@ -14,7 +14,7 @@ const BurgerMenu = () => {
   ];
 
   return (
-    <div className="burger-menu  d-md-block d-lg-none">
+    <div className="burger-menu d-md-block d-lg-none">
       <div className="d-flex align-content-center">
         <button
           className="btn"
@@ -23,7 +23,7 @@ const BurgerMenu = () => {
         <i className="fa-solid fa-bars text-white"></i>
         </button>
         <div className="header-icon">
-          <Link to='/shoes/cart'>
+          <Link className="btn" to='/shoes/cart'>
             <i className="fa-solid fa-cart-shopping text-white"></i>
           </Link>
         </div>

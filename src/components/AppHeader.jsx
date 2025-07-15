@@ -34,7 +34,7 @@ const AppHeader = () => {
     <>
       <header className="header-color">
         {/* Occhio a toccare il container */}
-          <div className="container d-flex justify-content-between">
+          <div className="container d-flex justify-content-between align-items-center">
 
           {/* Logo */}
           <div>
@@ -44,7 +44,7 @@ const AppHeader = () => {
           </div>
 
           {/* Nav-Link */}
-          <div>
+          <div className="navlink-none d-sm-none d-md-none d-lg-block">
             <ul className="d-flex text-white gap-4">
               {linkNav.map((curLink, index) => (
                 <li className="link-header" key={index}>
