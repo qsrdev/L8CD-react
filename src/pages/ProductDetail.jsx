@@ -33,7 +33,7 @@ const ProductDetail = () => {
   return product ? (
     <>
   <div className="scroll-container">
-        <div className="d-flex justify-content-between vh-90 snap-section ">
+        <div className="d-flex justify-content-between vh-75 snap-section ">
             <div>
                   <img src={product.image} alt={product.name} className="single-product-image"/>
             </div>
