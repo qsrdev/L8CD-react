@@ -237,25 +237,6 @@ font-weight: bold;
   font-weight: bold;
   margin-top: 30px;
 }
-/* Contenitore scrollabile */
-.scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* Sezioni a scatto */
-.snap-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  scroll-snap-align: start;
-}
-.snap-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 
 /* MEDIA QUERY */

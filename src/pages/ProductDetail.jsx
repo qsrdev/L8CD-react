@@ -1,37 +1,17 @@
+
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import CardSlider from "../components/CardSlider/CardSlider";
+import CardSliderSP from "../components/CardSlider/cardSliderSP";
 import Slider from "../components/Slider/Slider";
-import { useRef, useEffect, useState } from "react";
 
 
-const useInView = (threshold = 0.3) => {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return  [ref, isVisible];
-};
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
     const [shoes, setShoes] = useState([]);
-    const [ref1, inView1] = useInView();
-const [ref2, inView2] = useInView();
-const [ref3, inView3] = useInView();
-const [ref4, inView4] = useInView();
+
 
 
   useEffect(() => {
@@ -42,9 +22,6 @@ const [ref4, inView4] = useInView();
 
   const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
 
-  const freeShippingShoes = shoes.filter((shoe) => shoe.price >= 100).slice(0, 5);
-
-  const randomShoes = shoes.filter((shoe) => (shoe.id = Math.floor(Math.random() * shoes.length))).slice(0, 5);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/shoes/${id}`).then((res) => {
@@ -56,7 +33,7 @@ const [ref4, inView4] = useInView();
   return product ? (
     <>
   <div className="scroll-container">
-        <div ref={ref1} className={`d-flex justify-content-between vh-90 snap-section ${inView1 ? "visible" : ""}`}>
+        <div className="d-flex justify-content-between vh-90 snap-section ">
             <div>
                   <img src={product.image} alt={product.name} className="single-product-image"/>
             </div>
@@ -129,33 +106,15 @@ const [ref4, inView4] = useInView();
         </div>
           </div>
    {/* SEZIONI AGGIUNTIVE */}
-       <section ref={ref2} className={`py-5 snap-section ${inView2 ? "visible" : ""}`}>
+       <section className= "py-5 snap-section">
               <div className="container g-4">
                 <div className="mb-5">
-                  <h2>Novità</h2>
-                  <p>Scopri gli ultimi arrivi</p>
+                  <h2>Ti potrebbe interessare anche</h2>
+                  <p>Lasciati ispirare da scelte che camminano verso di te</p>
                 </div>
-                <CardSlider array={newShoes} />
+                <CardSliderSP array={newShoes} />
               </div>
             </section>
-  <section ref={ref3} className={`promo-color py-5 snap-section ${inView3 ? "visible" : ""}`}>
-        <div className="container g-4">
-          <div className="mb-5 text-white">
-            <h2>Promo spedizione gratuita</h2>
-            <p>Approfitta ora della spedizione a costo zero</p>
-          </div>
-          <CardSlider array={freeShippingShoes} />
-        </div>
-      </section>
-<section ref={ref4} className={`py-5 snap-section ${inView4 ? "visible" : ""}`}>
-        <div className="container g-4">
-          <div className="mb-5">
-            <h2>Nuovi brand!</h2>
-            <p>Tutti gli ultimi arrivi</p>
-            <CardSlider array={randomShoes} />
-          </div>
-        </div>
-      </section>
       </div>
 </>
     

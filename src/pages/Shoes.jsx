@@ -74,7 +74,6 @@ const Shoes = () => {
 
     if (minPrice) params.minPrice = minPrice;
     if (maxPrice) params.maxPrice = maxPrice;
-    // if (selectedColor) params.color = selectedColor;
     if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
     if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
 
