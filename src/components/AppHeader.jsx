@@ -9,6 +9,10 @@ const AppHeader = () => {
 
   const linkNav = [
     {
+      title: "Catalogo",
+      url: "/shoes",
+    },
+    {
       title: "Offerte",
       url: "/shoes/offerte",
     },
@@ -46,12 +50,6 @@ const AppHeader = () => {
         </div>
 
         <div>
-
-          <input
-            type="text"
-            placeholder="Cerca il tuo articolo... "
-            className="search"
-          />
 
          <SearchInputDesktop/>
 
