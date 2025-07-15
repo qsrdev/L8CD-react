@@ -9,7 +9,6 @@ export const CartProvider = ({ children }) => {
 
   //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
 
   const [totalPrice, setTotalPrice] = useState(0);
 
