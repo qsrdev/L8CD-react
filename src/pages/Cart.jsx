@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
+
 
 const Cart = () => {
   const { cartItems, setCartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity } = useCart();
@@ -23,7 +25,7 @@ const Cart = () => {
         </p>
         <button className="btn btn-danger" onClick={clearCart}>Svota tutto</button>
         <br />
-        <button className="btn btn-primary my-5"> Vai al Check-out</button>
+        <Link to="/checkout" className="btn btn-primary my-5"> Vai al Check-out</Link>
       </div>
     </>
   );

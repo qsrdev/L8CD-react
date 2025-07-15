@@ -5,13 +5,10 @@ import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const Shoes = () => {
-  
-const location = useLocation();
-const queryParams = new URLSearchParams(location.search);
-const brandFromQuery = queryParams.get("brand");
-const searchTermFromQuery = queryParams.get("q");
-
-
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const brandFromQuery = queryParams.get("brand");
+  const searchTermFromQuery = queryParams.get("q");
 
   const { gender } = useParams();
   const [shoes, setShoes] = useState([]);
@@ -22,32 +19,47 @@ const searchTermFromQuery = queryParams.get("q");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
-const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
+  const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
   // FINE FILTRI
 
   useEffect(() => {
-  let url = "http://localhost:3000/shoes";
-  const params = {};
+    let url = "http://localhost:3000/shoes";
+    const params = {};
 
-  if (gender === "novita") {
-    url += "?isNew=true";
-  } else if (gender) {
-    url += `?gender=${gender}`;
-  }
+    if (gender === "novita") {
+      url += "?isNew=true";
+    } else if (gender) {
+      url += `?gender=${gender}`;
+    }
 
-  if (minPrice) params.minPrice = minPrice;
-  if (maxPrice) params.maxPrice = maxPrice;
-  if (selectedColor) params.color = selectedColor;
- if (selectedBrand || brandFromQuery) params.brand = selectedBrand || brandFromQuery;
-  if (searchTerm || searchTermFromQuery) params.q = searchTerm || searchTermFromQuery;
+    if (minPrice) params.minPrice = minPrice;
+    if (maxPrice) params.maxPrice = maxPrice;
+    if (selectedColor) params.color = selectedColor;
+    if (selectedBrand || brandFromQuery)
+      params.brand = selectedBrand || brandFromQuery;
+    if (searchTerm || searchTermFromQuery)
+      params.q = searchTerm || searchTermFromQuery;
 
-  axios.get(url, { params }).then((resp) => {
-    setShoes(resp.data.data);
-  });
-}, [gender, minPrice, maxPrice, selectedColor, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
+    axios.get(url, { params }).then((resp) => {
+      setShoes(resp.data.data);
+    });
+  }, [
+    gender,
+    minPrice,
+    maxPrice,
+    selectedColor,
+    selectedBrand,
+    searchTerm,
+    brandFromQuery,
+    searchTermFromQuery,
+  ]);
 
-
-  const pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
+  const pageTitle =
+    gender === "novita"
+      ? "Novità"
+      : gender
+      ? `Risultati per "${gender}"`
+      : "Tutte le scarpe";
 
   return (
     <main>
@@ -56,18 +68,39 @@ const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
           <h1 className="m-0 text-center">
             {pageTitle} ({shoes.length} risultati)
           </h1>
-          <button className="btn btn-outline-secondary custom-hover d-flex align-items-center" onClick={() => setShowFilters((prev) => !prev)}>
+          <button
+            className="btn btn-outline-secondary custom-hover d-flex align-items-center"
+            onClick={() => setShowFilters((prev) => !prev)}
+          >
             <i className="fa-solid fa-filter me-2"></i>
-            <span className="d-none d-sm-inline">{showFilters ? "Nascondi filtri" : "Filtri"}</span>
+            <span className="d-none d-sm-inline">
+              {showFilters ? "Nascondi filtri" : "Filtri"}
+            </span>
           </button>
         </div>
         {showFilters && (
           <div className="filters d-flex flex-wrap gap-3 my-4">
-            <input type="number" placeholder="Prezzo minimo" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="form-control" />
+            <input
+              type="number"
+              placeholder="Prezzo minimo"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+              className="form-control"
+            />
 
-            <input type="number" placeholder="Prezzo massimo" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="form-control" />
+            <input
+              type="number"
+              placeholder="Prezzo massimo"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+              className="form-control"
+            />
 
-            <select value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)} className="form-select">
+            <select
+              value={selectedBrand}
+              onChange={(e) => setSelectedBrand(e.target.value)}
+              className="form-select"
+            >
               <option value="">Tutti i brand</option>
               <option value="Nike">Nike</option>
               <option value="Adidas">Adidas</option>
@@ -93,20 +126,19 @@ const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
             </div>
           ))}
           {shoes.length === 0 ? (
-  <div className="text-center my-5">
-    <h4>Nessun risultato trovato 😢</h4>
-    <p>Prova a modificare i filtri o cerca un brand diverso.</p>
-  </div>
-) : (
-  <div className="row g-3">
-    {shoes.map((curShoe) => (
-      <div key={curShoe.id} className="col-6 col-md-4">
-        <ShoesCard shoe={curShoe} />
-      </div>
-    ))}
-  </div>
-)}
-
+            <div className="text-center my-5">
+              <h4>Nessun risultato trovato 😢</h4>
+              <p>Prova a modificare i filtri o cerca un brand diverso.</p>
+            </div>
+          ) : (
+            <div className="row g-3">
+              {shoes.map((curShoe) => (
+                <div key={curShoe.id} className="col-6 col-md-4">
+                  <ShoesCard shoe={curShoe} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
