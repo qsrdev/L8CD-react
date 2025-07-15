@@ -79,7 +79,7 @@ const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
 }, [gender, minPrice, maxPrice, selectedColor, selectedBrand, searchTerm, brandFromQuery, searchTermFromQuery]);
 
 
-  const pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
+   pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
 
 
   return (
@@ -92,7 +92,7 @@ const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
           <button
             className="btn btn-outline-secondary custom-hover d-flex align-items-center"
             onClick={() => setShowFilters((prev) => !prev)}
-          >
+          />
             <i className="fa-solid fa-filter me-2"></i>
             <span className="d-none d-sm-inline">
               {showFilters ? "Nascondi filtri" : "Filtri"}
@@ -143,7 +143,7 @@ const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
               value={selectedBrand}
               onChange={(e) => setSelectedBrand(e.target.value)}
               className="form-select"
-            >
+            />
 
             <input type="number" placeholder="Prezzo minimo" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="form-control" />
 
