@@ -42,7 +42,7 @@ export default function CardSliderSP({ array }) {
 
     
      <div>
-           <Link to={`/shoes/product/${curElement.id}`}>   <img src={curElement.image} alt={curElement.name} />    </Link>
+           <Link  to={`/shoes/product/${curElement.id}`}>   <img src={curElement.image} alt={curElement.name} />    </Link>
              <h6 className="py-3">{curElement.name}</h6>
              <p className="fst-italic"> €{curElement.price}</p>
      </div>
@@ -50,7 +50,7 @@ export default function CardSliderSP({ array }) {
      
  
 
-            <p className="promo-marklabel">PROMO</p>
+            <p className="promo-marklabel">Tra i più acquistati</p>
 
           </SwiperSlide>
         ))}

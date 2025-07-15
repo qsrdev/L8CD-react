@@ -12,6 +12,9 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
     const [shoes, setShoes] = useState([]);
 
+useEffect(() => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}, [id]);
 
 
   useEffect(() => {
