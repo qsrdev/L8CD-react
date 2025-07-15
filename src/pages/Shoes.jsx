@@ -19,6 +19,7 @@ const Shoes = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [onlyNew, setOnlyNew] = useState(false);
   const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
+  const [selectedColor, setSelectedColor] = useState("");
 
   useEffect(() => {
     let url = "http://localhost:3000/shoes";
