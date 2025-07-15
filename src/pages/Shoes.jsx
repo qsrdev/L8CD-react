@@ -86,76 +86,85 @@ const Shoes = () => {
         </div>
 
         {showFilters && (
-          <div className="filters d-flex flex-wrap gap-3 my-4">
-            <input
-              type="number"
-              placeholder="Prezzo minimo"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-              className="form-control"
-            />
+          <div className="filters bg-light p-4 rounded-4 shadow-sm mb-4 w-100">
+            <div className="d-flex flex-column gap-3">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="fa-solid fa-euro-sign"></i>
+                </span>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Prezzo minimo"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                />
+              </div>
 
-            <input
-              type="number"
-              placeholder="Prezzo massimo"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
-              className="form-control"
-            />
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="fa-solid fa-euro-sign"></i>
+                </span>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Prezzo massimo"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                />
+              </div>
 
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="filter-new"
-                checked={onlyNew}
-                onChange={(e) => setOnlyNew(e.target.checked)}
-              />
-              <label className="form-check-label" htmlFor="filter-new">
-                Aggiunte di recente
-              </label>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="filter-new"
+                  checked={onlyNew}
+                  onChange={(e) => setOnlyNew(e.target.checked)}
+                />
+                <label className="form-check-label ms-2" htmlFor="filter-new">
+                  <i className="fa-solid fa-star me-1 text-warning"></i> Novità
+                </label>
+              </div>
+
+              <select
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.target.value)}
+                className="form-select"
+              >
+                <option value="">Tutti i brand</option>
+                <option value="Nike">Nike</option>
+                <option value="Adidas">Adidas</option>
+                <option value="Puma">Puma</option>
+                <option value="New Balance">New Balance</option>
+                <option value="Merrell">Merrell</option>
+                <option value="Asics">Asics</option>
+                <option value="La Sportiva">La Sportiva</option>
+                <option value="Vans">Vans</option>
+                <option value="Solomon">Solomon</option>
+                <option value="The North Face">The North Face</option>
+                <option value="Columbia">Columbia</option>
+                <option value="Under Armour">Under Armour</option>
+                <option value="Converse">Converse</option>
+              </select>
+
+              <select
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+                className="form-select"
+              >
+                <option value="">Tutti i colori</option>
+                <option value="Black">Nero</option>
+                <option value="White">Bianco</option>
+                <option value="Blue">Blu</option>
+                <option value="Red">Rosso</option>
+                <option value="Grey">Grigio</option>
+                <option value="Green">Verde</option>
+                <option value="Yellow">Giallo</option>
+                <option value="Pink">Rosa</option>
+                <option value="Brown">Marrone</option>
+              </select>
             </div>
-
-            <select
-              value={selectedBrand}
-              onChange={(e) => setSelectedBrand(e.target.value)}
-              className="form-select"
-            >
-              <option value="">Tutti i brand</option>
-              <option value="Nike">Nike</option>
-              <option value="Adidas">Adidas</option>
-              <option value="Puma">Puma</option>
-              <option value="New Balance">New Balance</option>
-              <option value="Merrell">Merrell</option>
-              <option value="Asics">Asics</option>
-              <option value="La Sportiva">La Sportiva</option>
-              <option value="Vans">Vans</option>
-              <option value="Solomon">Solomon</option>
-              <option value="The North Face">The North Face</option>
-              <option value="Columbia">Columbia</option>
-              <option value="Under Armour">Under Armour</option>
-              <option value="Converse">Converse</option>
-            </select>
-
-            <select
-              value={selectedColor}
-              onChange={(e) => setSelectedColor(e.target.value)}
-              className="form-select"
-            >
-              <option value="">Tutti i colori</option>
-              <option value="Black">Nero</option>
-              <option value="White">Bianco</option>
-              <option value="Blue">Blu</option>
-              <option value="Red">Rosso</option>
-              <option value="Grey">Grigio</option>
-              <option value="Green">Verde</option>
-              <option value="Yellow">Giallo</option>
-              <option value="Pink">Rosa</option>
-              <option value="Brown">Marrone</option>
-              Black/White Green/White Black/White Black/Orange Black/White
-              White/Black Red/White Black/Red Blue/White Grey/Blue Black/Orange
-              White/Red Red/Black Black/White Blue/Black White/Red
-            </select>
           </div>
         )}
 
