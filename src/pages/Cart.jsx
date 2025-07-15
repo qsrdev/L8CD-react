@@ -11,7 +11,7 @@ const Cart = () => {
         ) : (
           cartItems.map((item) => (
             <p key={item.id}>
-              {item.name} × {item.quantity} = €{item.quantity * item.price}
+              {item.name} : { item.price }× {item.quantity} = €{item.quantity * item.price}
               <button className="btn btn-primary"
               onClick={() => increaseQuantity(item.id)}> + </button>
               <button className="btn btn-secondary" onClick={() => decreaseQuantity(item.id)}> - </button>
