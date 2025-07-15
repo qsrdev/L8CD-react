@@ -20,7 +20,7 @@ const Shoes = () => {
   const [selectedColor, setSelectedColor] = useState("");
   const [onlyNew, setOnlyNew] = useState(false);
   const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
-  const [selectedColor, setSelectedColor] = useState("");
+  
 
   useEffect(() => {
     let url = "http://localhost:3000/shoes";
@@ -86,7 +86,7 @@ const Shoes = () => {
 
   pageTitle = gender === "novita" ? "Novità" : gender ? `Risultati per "${gender}"` : "Tutte le scarpe";
 
-  let pageTitle =
+pageTitle =
     gender === "offerte"
       ? "Offerte"
       : gender === "novita"
@@ -151,7 +151,7 @@ const Shoes = () => {
               {showFilters ? "Nascondi filtri" : "Filtri"}
             </span>
           </button>
-        </div>
+        </div> )}
 
         {showFilters && (
           <div className="filters bg-light p-4 rounded-4 shadow-sm mb-4 w-100">
@@ -235,7 +235,8 @@ const Shoes = () => {
             </div>
           </div>
         )}
-
+      
+        )
         {shoes.length === 0 ? (
           <div className="text-center my-5">
             <h4>Nessun risultato trovato 😢</h4>
@@ -251,7 +252,7 @@ const Shoes = () => {
           </div>
         )}
       </section>
-    </main>
+    </main> 
   );
 };
 
