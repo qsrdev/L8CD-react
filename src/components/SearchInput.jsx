@@ -12,7 +12,7 @@ const SearchInput = () => {
   const handleRedirect = () => {
     if (search.trim()) {
       // Usa il valore inserito, non un brand fisso
-      navigate(`/shoes?brand=${encodeURIComponent(search.trim())}`);
+      navigate(`/shoes?q=${encodeURIComponent(search.trim())}`);
     }
   };
 
