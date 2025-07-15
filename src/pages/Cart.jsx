@@ -117,11 +117,6 @@ const Cart = () => {
             </div>
           </div>
         </div>
-
-        <br />
-        <Link to="/checkout" className="btn btn-primary my-5">
-          Vai al Check-out
-        </Link>
       </div>
     </>
   );
