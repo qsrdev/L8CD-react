@@ -7,10 +7,26 @@ const BurgerMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const linkNav = [
-    { title: "Offerte", url: "/offerte" },
-    { title: "Uomo", url: "/uomo" },
-    { title: "Donna", url: "/donna" },
-    { title: "Bambino", url: "/bambino" }
+    {
+      title: "Catalogo",
+      url: "/shoes",
+    },
+    {
+      title: "Offerte",
+      url: "/shoes/offerte",
+    },
+    {
+      title: "Uomo",
+      url: "/shoes/uomo",
+    },
+    {
+      title: "Donna",
+      url: "/shoes/donna",
+    },
+    {
+      title: "Bambino",
+      url: "/shoes/bambino",
+    },
   ];
 
   return (
@@ -20,18 +36,18 @@ const BurgerMenu = () => {
           className="btn"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-        <i className="fa-solid fa-bars text-white"></i>
+        <i className="fs-5 fa-solid fa-bars text-white"></i>
         </button>
         <div className="header-icon">
           <Link className="btn" to='/shoes/cart'>
-            <i className="fa-solid fa-cart-shopping text-white"></i>
+            <i className="fs-5 fa-solid fa-cart-shopping text-white"></i>
           </Link>
         </div>
       </div>
 
       {menuOpen && (
         <div className="container">
-        <ul className="burger-nav p-3 position-absolute ">
+        <ul className="burger-nav py-3 position-absolute">
           {linkNav.map((link, index) => (
             <li key={index} className="mb-2">
               <NavLink className="text-white" to={link.url}>

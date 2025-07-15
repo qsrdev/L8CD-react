@@ -10,12 +10,16 @@ const AppFooter = () => {
             <div>
               <ul className="link-footer">
                 <li>
-                  <Link className="nav-footer" to={`/contacts`}>Contatti</Link>
+                  <Link className="nav-footer" to={`/contacts`}>
+                    Contatti
+                  </Link>
                 </li>
               </ul>
             </div>
-            <div className="sponsored-by">
+            <div className="sponsored-by text-center">
               <p>Sponsored by</p>
+              <i className="fa-solid fa-poo fa-2x mx-2"></i>
+              <span>Poo Company S.P.A.</span>
             </div>
           </div>
           {/* footer bottom */}
