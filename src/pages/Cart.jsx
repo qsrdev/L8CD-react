@@ -15,7 +15,7 @@ const Cart = () => {
                 ""
               ) : (
                 <button className="btn btn-outline-danger btn-sm p-2" onClick={clearCart}>
-                  <i class="bi bi-recycle"></i> Svuota carrello
+                  <i className="bi bi-recycle"></i> Svuota carrello
                 </button>
               )}
             </div>

@@ -24,7 +24,7 @@ const Checkout = () => {
 
   const handleOrderSubmit = async (e) => {
     try {
-      e.preventDefault;
+      e.preventDefault();
       const orderData = {
         ...formData,
         total_amount: totalPrice,
