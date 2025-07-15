@@ -14,10 +14,10 @@
 
 ## 📦 Repository Principali
 
-| Sezione      | Link                   |
-| ------------ | ---------------------- |
-| **Frontend** | _[inserisci link qui]_ |
-| **Backend**  | _[inserisci link qui]_ |
+| Sezione      | Link                                                    |
+| ------------ | ------------------------------------------------------- |
+| **Frontend** | _[https://github.com/qsrdev/L8CD-react]_                |
+| **Backend**  | _[https://github.com/EdoardoPosfortunato/l8cd-express]_ |
 
 ---
 
