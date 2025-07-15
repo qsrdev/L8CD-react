@@ -18,23 +18,25 @@ const SearchInput = () => {
 
   return (
     <div className="search-wrapper search-input">
-      <input
-        type="text"
-        placeholder="Cerca il tuo articolo..."
-        className="w-100 search-small-screen"
-        value={search}
-        onChange={handleInput}
-        onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
-      />
+      <div className="d-flex">
+        <input
+          type="text"
+          placeholder="Cerca il tuo articolo..."
+          className="w-100 search-small-screen"
+          value={search}
+          onChange={handleInput}
+          onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
+        />
 
 
-      <button onClick={handleRedirect} className="btn btn-primary mx-2">
-        Cerca
-      </button>
+        <button onClick={handleRedirect} className="btn-search">
+          Cerca
+        </button>
+      </div>
 
 
       {search && (
-        <button className="clear-btn" onClick={() => setSearch("")}>
+        <button className="btn-search-clear" onClick={() => setSearch("")}>
           &#10005;
         </button>
       )}
