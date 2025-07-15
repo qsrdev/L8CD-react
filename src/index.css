@@ -217,6 +217,86 @@ footer {
 .nav-footer:hover {
   color: #f7cf60;
 }
+/* SINGLE PRODUCT STYLING */
+.single-product-image{
+  margin: 30px 80px;
+height: 85vh;
+width: 37vw;
+}
+.single-product-details{
+  background-color: #ff9f874f;
+  padding: 80px 70px;
+  width: 40vw;
+}
+.description{
+  color: #5f5757;
+  padding: 20px 0px;
+}
+.price{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+font-weight: bold;
+}
+.categoria-prodotto{
+  font-style: oblique;
+}
+.custom-accordion-btn {
+  background-color: inherit !important;
+  color: inherit;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: none;
+}
+
+.custom-accordion-btn:focus {
+  background-color: inherit !important;
+  color: inherit;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.add-to-cart{
+  background-color: #FF6B6B;
+  color: #fff;
+  border: none;
+  padding: 15px 60px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+/* Contenitore scrollabile */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Sezioni a scatto */
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Animazione CSS */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 /* MEDIA QUERY */
 

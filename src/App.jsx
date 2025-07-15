@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import NewsletterModal from "./components/Modal/NewsletterModal";
 import Cart from "./pages/Cart";
 import Contacts from "./pages/Contacts";
+import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 
 function App() {
@@ -57,8 +58,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/shoes" element={<Shoes />} />
               <Route path="/shoes/:gender" element={<Shoes />} />
+              <Route path="/shoes/product/:id" element={<ProductDetail />} />
               <Route path="/shoes/cart" element={<Cart />} />
               <Route path="/contacts" element={<Contacts />} />
+
+
             </Route>
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
