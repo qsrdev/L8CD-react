@@ -33,10 +33,11 @@ const AppHeader = () => {
   return (
     <>
       <header className="header-color">
-        {/* Non toccare il container, deve esserci */}
+        {/* Occhio a toccare il container */}
           <div className="container d-flex justify-content-between">
+
           {/* Logo */}
-          <div className="header-logo">
+          <div>
             <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
               L8CD
             </Link>
@@ -52,18 +53,16 @@ const AppHeader = () => {
               ))}
             </ul>
           </div>
-
+          
+          
           {/* Search */}
           <SearchInputDesktop/>
-          {/* <div className="left-group d-flex align-items-center"> */}
-            <div>{<BurgerMenu />}</div>
-            {/* <div className="header-icons">
-              <Link to='/shoes/cart'>
-                <i className="fa-solid fa-cart-shopping text-white"></i>
-              </Link>
-            </div> */}
-          {/* </div> */}
+
+          {/* Burger-Menu */}
+          {<BurgerMenu />}
+
           </div>
+
       </header>
       <SearchInput />
       

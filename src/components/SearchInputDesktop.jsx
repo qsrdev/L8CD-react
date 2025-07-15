@@ -32,7 +32,7 @@ const SearchInputDesktop = () => {
           <button onClick={handleRedirect} className="btn-search-desktop">
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
-          <div className="header-icons">
+          <div className="header-icons d-none d-md-none d-lg-block d-xl-block d-xxl-block">
             <Link to='/shoes/cart'>
               <i className="fa-solid fa-cart-shopping text-white"></i>
             </Link>
