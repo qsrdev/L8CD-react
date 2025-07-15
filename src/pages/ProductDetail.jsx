@@ -1,13 +1,38 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardSlider from "../components/CardSlider/CardSlider";
 import Slider from "../components/Slider/Slider";
+import { useRef, useEffect, useState } from "react";
+
+
+const useInView = (threshold = 0.3) => {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return  [ref, isVisible];
+};
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
     const [shoes, setShoes] = useState([]);
+    const [ref1, inView1] = useInView();
+const [ref2, inView2] = useInView();
+const [ref3, inView3] = useInView();
+const [ref4, inView4] = useInView();
+
 
   useEffect(() => {
     axios.get("http://localhost:3000/shoes").then((resp) => {
@@ -31,7 +56,7 @@ const ProductDetail = () => {
   return product ? (
     <>
   <div className="scroll-container">
-        <div className="d-flex justify-content-between vh-90 snap-section">
+        <div ref={ref1} className={`d-flex justify-content-between vh-90 snap-section ${inView1 ? "visible" : ""}`}>
             <div>
                   <img src={product.image} alt={product.name} className="single-product-image"/>
             </div>
@@ -104,7 +129,7 @@ const ProductDetail = () => {
         </div>
           </div>
    {/* SEZIONI AGGIUNTIVE */}
-       <section className="py-5 snap-section">
+       <section ref={ref2} className={`py-5 snap-section ${inView2 ? "visible" : ""}`}>
               <div className="container g-4">
                 <div className="mb-5">
                   <h2>Novità</h2>
@@ -113,7 +138,7 @@ const ProductDetail = () => {
                 <CardSlider array={newShoes} />
               </div>
             </section>
-  <section className="promo-color py-5 snap-section">
+  <section ref={ref3} className={`promo-color py-5 snap-section ${inView3 ? "visible" : ""}`}>
         <div className="container g-4">
           <div className="mb-5 text-white">
             <h2>Promo spedizione gratuita</h2>
@@ -122,7 +147,7 @@ const ProductDetail = () => {
           <CardSlider array={freeShippingShoes} />
         </div>
       </section>
-<section className="py-5 snap-section">
+<section ref={ref4} className={`py-5 snap-section ${inView4 ? "visible" : ""}`}>
         <div className="container g-4">
           <div className="mb-5">
             <h2>Nuovi brand!</h2>
