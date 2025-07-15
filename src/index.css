@@ -251,39 +251,6 @@ font-weight: bold;
   margin-top: 30px;
 }
 
-/* Contenitore scrollabile */
-.scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* Sezioni a scatto */
-.snap-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-}
-
-/* Animazione CSS */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
 
 /* MEDIA QUERY */
 

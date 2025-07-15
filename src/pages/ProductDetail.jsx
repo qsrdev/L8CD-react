@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import CardSlider from "../components/CardSlider/CardSlider";
+import CardSliderSP from "../components/CardSlider/cardSliderSP";
 import Slider from "../components/Slider/Slider";
+
+
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
     const [shoes, setShoes] = useState([]);
+
+
 
   useEffect(() => {
     axios.get("http://localhost:3000/shoes").then((resp) => {
@@ -17,9 +22,6 @@ const ProductDetail = () => {
 
   const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
 
-  const freeShippingShoes = shoes.filter((shoe) => shoe.price >= 100).slice(0, 5);
-
-  const randomShoes = shoes.filter((shoe) => (shoe.id = Math.floor(Math.random() * shoes.length))).slice(0, 5);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/shoes/${id}`).then((res) => {
@@ -31,7 +33,7 @@ const ProductDetail = () => {
   return product ? (
     <>
   <div className="scroll-container">
-        <div className="d-flex justify-content-between vh-90 snap-section">
+        <div className="d-flex justify-content-between vh-75 snap-section ">
             <div>
                   <img src={product.image} alt={product.name} className="single-product-image"/>
             </div>
@@ -104,33 +106,15 @@ const ProductDetail = () => {
         </div>
           </div>
    {/* SEZIONI AGGIUNTIVE */}
-       <section className="py-5 snap-section">
+       <section className= "py-5 snap-section">
               <div className="container g-4">
                 <div className="mb-5">
-                  <h2>Novità</h2>
-                  <p>Scopri gli ultimi arrivi</p>
+                  <h2>Ti potrebbe interessare anche</h2>
+                  <p>Lasciati ispirare da scelte che camminano verso di te</p>
                 </div>
-                <CardSlider array={newShoes} />
+                <CardSliderSP array={newShoes} />
               </div>
             </section>
-  <section className="promo-color py-5 snap-section">
-        <div className="container g-4">
-          <div className="mb-5 text-white">
-            <h2>Promo spedizione gratuita</h2>
-            <p>Approfitta ora della spedizione a costo zero</p>
-          </div>
-          <CardSlider array={freeShippingShoes} />
-        </div>
-      </section>
-<section className="py-5 snap-section">
-        <div className="container g-4">
-          <div className="mb-5">
-            <h2>Nuovi brand!</h2>
-            <p>Tutti gli ultimi arrivi</p>
-            <CardSlider array={randomShoes} />
-          </div>
-        </div>
-      </section>
       </div>
 </>
     
