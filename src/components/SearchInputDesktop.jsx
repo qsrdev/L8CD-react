@@ -40,12 +40,6 @@ const SearchInputDesktop = () => {
           <i className="fa-solid fa-cart-shopping text-white"></i>
         </Link>
       </div>
-
-      {search && (
-        <button className="clear-btn" onClick={() => setSearch("")}>
-          &#10005;
-        </button>
-      )}
     </div>
   );
 };
