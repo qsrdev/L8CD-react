@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
 
   //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
-  console.log("sto inizializzando" + cartItems);
+  console.log(cartItems);
 
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -61,7 +61,7 @@ export const CartProvider = ({ children }) => {
 
     const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
     setCartItems(updatedItems);
-    setTotalPrice((prev) => parseFloat(prev) + parseFloat(item.price))
+    setTotalPrice((prev) => parseFloat(prev) + parseFloat(item.price));
   };
 
   //funzione che gestisce il bottone di sottrazione nel carrello
