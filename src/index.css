@@ -260,7 +260,34 @@ font-weight: bold;
     opacity: 1;
   }
 }
-
+.add-to-cart {
+  background-color: #FF6B6B;
+  color: #fff;
+  border: none;
+  padding: 15px 60px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.add-to-cart:active {
+  transform: scale(1.08);
+  background-color: #e04a4a;
+}
+.add-to-cart-all{
+   background-color: #FF6B6B;
+  color: #fff;
+  border: none;
+  padding: 5px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.add-to-cart-all:active {
+  transform: scale(1.08);
+  background-color: #e04a4a;
+}
 
 /* MEDIA QUERY */
 

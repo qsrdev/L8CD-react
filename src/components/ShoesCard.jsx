@@ -17,6 +17,7 @@ const ShoesCard = ({ shoe }) => {
           <p className="card-text description">{description}</p>
           <p className="card-text price"> {price}€ </p>
           <button
+          className="add-to-cart-all "
             onClick={(e) => {
               e.preventDefault();
               addToCart(shoe);

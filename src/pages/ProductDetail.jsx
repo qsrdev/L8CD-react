@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardSliderSP from "../components/CardSlider/cardSliderSP";
-import Slider from "../components/Slider/Slider";
+import { useCart } from "../Context/CartContext";
 
 
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
     const [shoes, setShoes] = useState([]);
 
@@ -104,7 +105,10 @@ useEffect(() => {
 </div>
 
 {/* BOTTONE AGGIUNGI AL CARRELLO */}
-<button className="add-to-cart">Aggiungi al carrello</button>
+<button className="add-to-cart bottone-carrello-SP" onClick={(e) => {
+              e.preventDefault();
+              addToCart(product);
+            }}>Aggiungi al carrello</button>
 
         </div>
           </div>
