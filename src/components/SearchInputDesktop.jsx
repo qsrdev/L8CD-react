@@ -17,25 +17,27 @@ const SearchInputDesktop = () => {
   };
 
   return (
-    <div className="search-wrapper d-flex">
-      <input
-        type="text"
-        placeholder="Cerca il tuo articolo..."
-        className="search"
-        value={search}
-        onChange={handleInput}
-        onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
-      />
+    <div className="container">
+      <div className="search-wrapper d-flex">
+        <input
+          type="text"
+          placeholder="Cerca il tuo articolo..."
+          className="search"
+          value={search}
+          onChange={handleInput}
+          onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
+        />
 
-      <button onClick={handleRedirect} className="btn-search-desktop">
-        Cerca
-      </button>
-
-      {search && (
-        <button className="clear-btn" onClick={() => setSearch("")}>
-          &#10005;
+        <button onClick={handleRedirect} className="btn-search-desktop">
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
-      )}
+
+        {search && (
+          <button className="clear-btn" onClick={() => setSearch("")}>
+            &#10005;
+          </button>
+        )}
+      </div>
     </div>
   );
 };

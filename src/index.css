@@ -79,21 +79,24 @@ div.link-header {
   border: 1px solid var(--common-color-2);
   padding: 7px 60px;
 }
+
 .btn-search-desktop{
   background-color: #f7cf60;
   border: none;
   color: #fff;
-  padding: 5px 10px;
 border-radius: 30px 10px 30px 10px;
 padding: 0px 20px;
 margin-right: 20px;
 }
+
 .search-input{
   display: none;
 }
+
 input {
   transition: all 0.3s ease;
 }
+
 .search:focus {
   background-color: #f0f0ff;
   box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
@@ -108,6 +111,7 @@ li a {
   font-size: 2rem;
   font-weight: 700;
 }
+
 .fa-cart-shopping {
   font-size: 25px;
 }
@@ -179,11 +183,13 @@ footer {
   margin-top: 30px;
   display: flex;
 }
+
 .nav-footer {
   text-decoration: none;
   color: #ffff;
   font-size: 1em;
 }
+
 .sponsored-by {
   margin-top: 30px;
 }
@@ -305,6 +311,9 @@ margin-right: 3px;
   }
   .btn-search-desktop{
     display: none;
+  }
+  .search-input{
+    display: block;
   }
   .search-small-screen {
     display: block;
