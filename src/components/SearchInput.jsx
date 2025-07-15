@@ -12,27 +12,25 @@ const SearchInput = () => {
   const handleRedirect = () => {
     if (search.trim()) {
       // Usa il valore inserito, non un brand fisso
-      navigate(`/shoes?brand=${encodeURIComponent(search.trim())}`);
+      navigate(`/shoes?query=${encodeURIComponent(search.trim())}`);
     }
   };
 
   return (
     <div className="search-wrapper search-input">
-      <div className="d-flex">
-        <input
-          type="text"
-          placeholder="Cerca il tuo articolo..."
-          className="w-100 search-small-screen"
-          value={search}
-          onChange={handleInput}
-          onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
-        />
 
+      <input
+        type="text"
+        placeholder="Cerca il tuo articolo..."
+        className="w-100 search-small-screen"
+        value={search}
+        onChange={handleInput}
+        onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
+      />
 
-        <button onClick={handleRedirect} className="btn-search">
-          Cerca
-        </button>
-      </div>
+      <button onClick={handleRedirect} className="btn btn-primary mx-2">
+        Cerca
+      </button>
 
 
       {search && (
