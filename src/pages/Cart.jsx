@@ -84,9 +84,6 @@ const Cart = () => {
           </div>
         </div>
 
-        <button className="btn btn-danger" onClick={clearCart}>
-          Svota tutto
-        </button>
         <br />
         <Link to="/checkout" className="btn btn-primary my-5">
           {" "}
