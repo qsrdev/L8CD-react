@@ -521,7 +521,10 @@ font-size: 0.5rem;
     background-color: var(--common-color-2);
     z-index: 9999;
   }
-
+li:hover {
+  transform: scale(1.1);
+  color: #fffce6;
+}
   .logo {
     font-size: 1.4rem;
   }
