@@ -8,14 +8,14 @@ const ShoesCard = ({ shoe }) => {
 
   return (
     <Link to={`/shoes/product/${id}`} className="text-decoration-none text-dark">
-      <div className="h-100 hover-zoom">
-        <img src={image} className="card-img-top" alt={name} />
+      <div className="h-100 hover-zoom mb-2">
         <div className="card-body">
-          <h5 className="card-title name">
-            {name} - {brand}
-          </h5>
-          <p className="card-text description">{description}</p>
-          <p className="card-text price"> {price}€ </p>
+        <img src={image} className="card-img-top img-shoes-card" alt={name} />
+        <h5 className="card-title name">
+          {name} - {brand}
+        </h5>
+        <p className="card-text description">{description}</p>
+        <p className="card-text price"> {price}€ </p>
           {/* <button
             className="add-to-cart-all "
             onClick={(e) => {

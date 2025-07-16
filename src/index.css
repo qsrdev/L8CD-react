@@ -129,11 +129,20 @@ li:hover {
 }
 
 .card-text.description {
+  padding: 0;
+  margin: 15px 0 !important;
   font-size: 14px;
 }
 
 .card-text.price {
+  font-weight: bolder;
   font-size: 16px;
+  color: var(--common-color-1);
+  text-shadow: none;
+}
+
+.img-shoes-card {
+  margin-bottom: 15px;
 }
 
 .promo-color {
@@ -149,6 +158,24 @@ li:hover {
 
 .btn-outline-secondary.custom-hover {
   transition: all 0.2s ease-in-out;
+}
+
+.btn-custom-filter {
+  background-color: var(--common-color-2);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-custom-filter:hover {
+  background-color: var(--common-color-1);
+}
+
+.btn-custom-filter:active {
+  background-color: var(--common-color-1);
+  transition: background-color 0.1s ease-in-out;
 }
 
 /* FOOTER */

@@ -70,11 +70,11 @@ const Shoes = () => {
   return (
     <main>
       <section className="container py-5">
-        <div className="d-flex justify-content-center align-items-center gap-3 mb-4 flex-wrap">
-          <h1 className="m-0 text-center">{pageTitle} </h1>
+        <div className="d-flex justify-content-center align-items-center gap-3 my-5 flex-wrap">
+          <h1 className="m-0 text-center">{pageTitle}</h1>
           <span className="text-muted fs-6">({shoes.length} risultati)</span>
           <button
-            className="btn btn-outline-secondary custom-hover d-flex align-items-center"
+            className="btn-custom-filter custom-hover d-flex align-items-center"
             onClick={() => setShowFilters((prev) => !prev)}
           >
             <i className="fa-solid fa-filter me-2"></i>
