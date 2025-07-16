@@ -118,15 +118,17 @@ const Checkout = () => {
           </div>
         </>
       ) : (
-        <div className="confirm-container">
-          <div className="confirm-box">
-            <h1>Ordine ricevuto con successo!</h1>
-            <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
-            <button>
-              <Link className="btn btn-primary" to="/">
-                Continua con gli acquisti
-              </Link>
-            </button>
+        <div className="container">
+          <div className="confirm-container d-flex justify-content-center">
+            <div className="confirm-box">
+              <h1>Ordine ricevuto con successo!</h1>
+              <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
+              <button>
+                <Link className="btn text-white" to="/">
+                  Continua con gli acquisti
+                </Link>
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
+import { useState } from "react";
 import "../pages/Cart.css";
 import { useState } from "react";
 
@@ -13,7 +14,6 @@ const Cart = () => {
     decreaseQuantity,
   } = useCart();
 
-
   const [discountCode, setDiscountCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [isDiscountApplied, setIsDiscountApplied] = useState(false);
@@ -23,7 +23,7 @@ const Cart = () => {
 
     if (isDiscountApplied) return;
 
-    if (code === "SUMMER15") {
+    if (code === "VILLA15") {
       setDiscount(0.15); // 15%
       setIsDiscountApplied(true);
     } else {
@@ -33,7 +33,6 @@ const Cart = () => {
   };
 
   const discountedTotal = totalPrice - totalPrice * discount;
-
 
   return (
     <>
@@ -132,8 +131,6 @@ const Cart = () => {
                 </span>
               </div>
 
-
-
               {cartItems.length === 0 ? (
                 <>
                   <button className="btn btn-secondary w-100 mb-2" disabled>
@@ -152,12 +149,13 @@ const Cart = () => {
                     Vai al pagamento
                   </Link>
                   <Link
-                    className="btn btn-outline-secondary w-100 mb-3" to='/checkout/Paypal'>
+                    className="btn btn-outline-secondary w-100 mb-3"
+                    to="/checkout/Paypal"
+                  >
                     PayPal
                   </Link>
                 </>
               )}
-
 
               <div className="mb-3">
                 <label className="form-label">
@@ -184,10 +182,9 @@ const Cart = () => {
                 </div>
                 {isDiscountApplied && (
                   <div className="form-text text-success">
-                    Codice "SUMMER15" applicato con successo!
+                    Codice "VILLA15" applicato con successo!
                   </div>
                 )}
-
               </div>
             </div>
           </div>
