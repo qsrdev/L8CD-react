@@ -6,7 +6,7 @@ import "../pages/Checkout.css";
 import "../index.css";
 
 const Checkout = () => {
-  const { cartItems, setCartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity } = useCart();;
+  const { cartItems, setCartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity } = useCart();
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
 
@@ -57,10 +57,8 @@ const Checkout = () => {
     <>
       {!showSuccess ? (
         <>
-
           {/* Header-checkout */}
           <header className="header-color-checkout">
-
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="header-logo">
@@ -79,7 +77,6 @@ const Checkout = () => {
                   </Link>
                 </div>
               </div>
-
             </div>
           </header>
 
