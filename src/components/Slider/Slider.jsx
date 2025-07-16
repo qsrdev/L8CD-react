@@ -22,7 +22,7 @@ const slides = [
     text: "Nike ZoomX",
     description:
       "Pensata per la velocità. Perfetta per la corsa ad alte prestazioni.",
-    link: "/shoes/product/1",
+    link: "/shoes/product/31",
   },
   {
     id: 3,
