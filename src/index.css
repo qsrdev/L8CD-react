@@ -279,7 +279,9 @@ footer {
   transform: scale(1.08);
   background-color: #e04a4a;
 }
-
+.product-title{
+  display: none;
+}
 
 @media screen and (max-width:990px){
   .SP-section{
