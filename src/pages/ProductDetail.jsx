@@ -27,7 +27,6 @@ const ProductDetail = () => {
   useEffect(() => {
     axios.get(`http://localhost:3000/shoes/${slug}`).then((res) => {
       setProduct(res.data.data);
-      console.log(res.data.data);
     });
   }, [slug]);
 
