@@ -203,7 +203,6 @@ footer {
   width: 37vw;
 }
 .single-product-details {
-  background-color: #ff9f874f;
   padding: 80px 70px;
   width: 40vw;
 }
@@ -311,6 +310,7 @@ footer {
   .single-product-details{
         width: 100%;
         text-align: center;
+        background-color: #f1ebeb6e;
     }
   .accordion{
     margin: 0 auto;
@@ -342,6 +342,9 @@ footer {
 @media screen and (max-width:390px){
   .accordion{
     text-align: center;
+  }
+  .swiper-slide img{
+    padding: 30px;
   }
 }
 /* MEDIA QUERY */
