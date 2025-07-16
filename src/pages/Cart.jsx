@@ -11,6 +11,29 @@ const Cart = () => {
     increaseQuantity,
     decreaseQuantity,
   } = useCart();
+
+
+  const [discountCode, setDiscountCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [isDiscountApplied, setIsDiscountApplied] = useState(false);
+
+  const applyDiscountCode = () => {
+    const code = discountCode.trim().toUpperCase();
+
+    if (isDiscountApplied) return;
+
+    if (code === "SUMMER15") {
+      setDiscount(0.15); // 15%
+      setIsDiscountApplied(true);
+    } else {
+      setDiscount(0);
+      alert("Codice sconto non valido");
+    }
+  };
+
+  const discountedTotal = totalPrice - totalPrice * discount;
+
+
   return (
     <>
       <div className="container py-4">
@@ -94,10 +117,22 @@ const Cart = () => {
                   <span>{totalPrice > 100 ? "Gratis" : "5.99 €"}</span>
                 </li>
               </ul>
+              {discount > 0 && (
+                <div className="d-flex justify-content-between text-success mb-2">
+                  <span>Sconto</span>
+                  <span>-{(totalPrice * discount).toFixed(2)} €</span>
+                </div>
+              )}
+
               <div className="d-flex justify-content-between fw-bold mb-3">
                 <span>Totale</span>
-                <span>{totalPrice === 0 ? "---" : totalPrice} €</span>
+                <span>
+                  {totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €
+                </span>
               </div>
+
+
+
               {cartItems.length === 0 ? (
                 <>
                   <button className="btn btn-secondary w-100 mb-2" disabled>
@@ -122,15 +157,36 @@ const Cart = () => {
                 </>
               )}
 
+
               <div className="mb-3">
                 <label className="form-label">
                   Hai un codice promozionale?
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Inserisci codice"
-                />
+
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Inserisci codice"
+                    value={discountCode}
+                    onChange={(e) => setDiscountCode(e.target.value)}
+                    disabled={isDiscountApplied}
+                  />
+                  <button
+                    className="btn btn-outline-dark"
+                    type="button"
+                    onClick={applyDiscountCode}
+                    disabled={isDiscountApplied}
+                  >
+                    Applica
+                  </button>
+                </div>
+                {isDiscountApplied && (
+                  <div className="form-text text-success">
+                    Codice "SUMMER15" applicato con successo!
+                  </div>
+                )}
+
               </div>
             </div>
           </div>
