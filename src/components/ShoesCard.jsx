@@ -4,10 +4,10 @@ import { use } from "react";
 
 const ShoesCard = ({ shoe }) => {
   const { addToCart } = useCart();
-  const { id, name, description, brand, price, image, gender } = shoe;
+  const { id, name, description, brand, price, image, gender, slug } = shoe;
 
   return (
-    <Link to={`/shoes/product/${id}`} className="text-decoration-none text-dark">
+    <Link to={`/shoes/product/${slug}`} className="text-decoration-none text-dark">
       <div className="card h-100 hover-zoom">
         <img src={image} className="card-img-top" alt={name} />
         <div className="card-body">
