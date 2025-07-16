@@ -46,7 +46,7 @@ const BurgerMenu = () => {
           <ul className="burger-nav py-3 position-absolute">
             {linkNav.map((link, index) => (
               <li key={index} className="mb-2">
-                <NavLink className="text-white" to={link.url}>
+                <NavLink to={link.url}>
                   {link.title}
                 </NavLink>
               </li>
