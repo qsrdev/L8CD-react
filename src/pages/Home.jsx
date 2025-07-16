@@ -34,7 +34,7 @@ const Home = () => {
       <section>
         <div className="coupons-cta py-3">
           <h3 className="text-center fs-4 text-white text-decoration-underline">
-            Usa il codice SUMMER15 per avere il 15% di sconto sui prodotti
+            Usa il codice VILLA15 per avere il 15% di sconto sui prodotti
           </h3>
         </div>
       </section>
