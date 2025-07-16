@@ -6,9 +6,13 @@ import AppFooter from "../components/AppFooter";
 const GuestLayout = () => {
   return (
     <>
-      <AppHeader />
-      <Outlet />
-      <AppFooter />
+      <div className="layout-container">
+        <AppHeader />
+        <main className="layout-content">
+          <Outlet />
+        </main>
+        <AppFooter />
+      </div>
     </>
   );
 };

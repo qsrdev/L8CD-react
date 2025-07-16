@@ -44,7 +44,7 @@ const AppHeader = () => {
 
           {/* Nav-Link */}
           <div className="navlink-none d-sm-none d-md-none d-lg-block">
-            <ul className="d-flex text-white gap-4">
+            <ul className="d-flex text-white gap-4 navlink-list">
               {linkNav.map((curLink, index) => (
                 <li className="link-header" key={index}>
                   <Link to={curLink.url}>{curLink.title}</Link>
