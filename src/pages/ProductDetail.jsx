@@ -5,12 +5,16 @@ import { useCart } from "../Context/CartContext";
 import { useParams, useNavigate } from "react-router-dom";
 
 const ProductDetail = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [shoes, setShoes] = useState([]);
   const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [slug]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/shoes").then((resp) => {
@@ -19,18 +23,18 @@ const ProductDetail = () => {
   }, []);
   
 
-  const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
+  const newShoes = shoes.filter((shoe) => shoe.slug >= shoes.length - 9);
   
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/shoes/${id}`).then((res) => {
+    axios.get(`http://localhost:3000/shoes/${slug}`).then((res) => {
       setProduct(res.data.data);
       console.log(res.data.data);
     });
-  }, [id]);
+  }, [slug]);
 
   return product ? (
     <>
