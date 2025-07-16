@@ -39,7 +39,7 @@ const Cart = () => {
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="img-fluid rounded-start"
+                        className="rounded-start cart-img"
                       />
                     </div>
                     <div className="col-md-6">
