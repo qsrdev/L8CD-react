@@ -35,4 +35,14 @@
   font-size: 2rem;
   text-align: center;
 }
+.cart-img{
+height: 100%;
+max-width: 100%;
+}
 
+
+@media screen and (max-width:1200px){
+  .cart-img{
+    width: 100%;
+  }
+}
