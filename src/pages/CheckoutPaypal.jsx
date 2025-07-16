@@ -2,10 +2,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import axios from "axios";
-import "../pages/Checkout.css";
-import "../index.css";
 
-const Checkout = () => {
+import "../pages/Checkout.css";
+
+const CheckoutPaypal = () => {
   const { cartItems, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
@@ -16,7 +16,7 @@ const Checkout = () => {
     custom_address: "",
     shipping_address: "",
     shipping_method: "standard",
-    payment_method: "paypal",
+    payment_method: "Paypal",
     coupon_id: null,
     status: "pending",
     tracking_number: "prova",
@@ -55,14 +55,16 @@ const Checkout = () => {
         <>
           <header className="header-color d-flex justify-content-between">
             <div className="header-logo">
-              <Link className="logo" to="/">
+              <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
                 L8CD
               </Link>
             </div>
             <p className="checkout">Checkout Sicuro</p>
-            <Link to="/shoes/cart">
-              <i className="fa-solid fa-cart-shopping text-white"></i>
-            </Link>
+        <div className="header-icon">
+          <Link className="btn" to="/shoes/cart">
+            <i className="fs-5 fa-solid fa-cart-shopping text-white"></i>
+          </Link>
+        </div>
           </header>
           <div className="container">
             <form onSubmit={handleOrderSubmit} className="my-3 d-flex flex-column align-items-center">
@@ -85,10 +87,8 @@ const Checkout = () => {
                 </select>
               </div>
               <div className="mb-3 col-5">
-                <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
-                  <option value="paypal">PayPal</option>
-                  <option value="credit_card">Carta di credito</option>
-                </select>
+                <input className="form-control" name="payment_method" value={formData.payment_method} disabled>
+                </input>
               </div>
               <button type="submit" className="btn btn-primary my-2">
                 Conferma Ordine
@@ -113,4 +113,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckoutPaypal;
