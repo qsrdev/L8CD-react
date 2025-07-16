@@ -42,6 +42,8 @@ const Checkout = () => {
       await axios.post("http://localhost:3000/api/mail/checkout", {
         email: formData.custom_email,
         cartItems: cartItems,
+        name: formData.custom_name,
+        total: totalPrice,
       });
 
       console.log("Ordine salvato con successo, ID:", response.data.order_id);
