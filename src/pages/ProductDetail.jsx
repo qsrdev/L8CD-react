@@ -12,16 +12,17 @@ const ProductDetail = () => {
   const [shoes, setShoes] = useState([]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [id]);
-
-  useEffect(() => {
     axios.get("http://localhost:3000/shoes").then((resp) => {
       setShoes(resp.data.data);
     });
   }, []);
+  
 
   const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/shoes/${id}`).then((res) => {
@@ -33,7 +34,8 @@ const ProductDetail = () => {
   return product ? (
     <>
       <div className="scroll-container">
-        <div className="d-flex justify-content-between vh-75 snap-section ">
+        <div className="vh-75 SP-section">
+             <h1 className="fw-5 product-title">{product.name}</h1>
           <div>
             <img src={product.image} alt={product.name} className="single-product-image" />
           </div>
