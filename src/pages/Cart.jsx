@@ -35,6 +35,7 @@ const Cart = () => {
 
   return (
     <>
+    <section className="cart-section">
       <div className="container py-4">
         <div className="row">
           <div className="col-md-8">
@@ -189,6 +190,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
+    </section>
     </>
   );
 };
