@@ -16,23 +16,17 @@
   font-size: 1.5rem;
 }
 
-.confirm-container {
-  height: 100vh; /* altezza viewport */
-  background-color: var(--common-color-2); /* azzurro chiaro */
-  padding: 20px;
+.confirm-box {
+  border: 1px solid var(--common-color-2);
+  border-radius: 40px;
+  margin: 200px 0;
+  padding: 50px 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
-.confirm-box {
-  background: white;
-  border-radius: 10px;
-  padding: 30px 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-}
-
 .confirm-box h1 {
-  color: #029640; /* verde positivo */
+  color: #19c251; /* verde positivo */
   margin-bottom: 20px;
 }
 
@@ -44,9 +38,7 @@
 
 .confirm-box button {
   background-color: var(--common-color-2);
-  color: rgb(255, 255, 255);
   border: none;
-  padding: 12px 25px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
@@ -54,7 +46,7 @@
 }
 
 .confirm-box button:hover {
-  background-color: #8f5d18;
+  background-color: var(--common-color-1);
 }
 
 .btn-confirm {
