@@ -174,7 +174,7 @@ const Shoes = () => {
         ) : (
           <div className="row g-3">
             {shoes.map((curShoe) => (
-              <div key={curShoe.id} className="col-6 col-md-4">
+              <div key={curShoe.id} className="col-lg-4 col-md-6 col-sm-12">
                 <ShoesCard shoe={curShoe} />
               </div>
             ))}

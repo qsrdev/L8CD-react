@@ -370,7 +370,7 @@ footer {
 }
 
 /* MEDIA QUERY */
-
+/* FOOTER */
 @media screen and (max-width: 450px) {
   footer {
     font-size: 0.9em;
@@ -411,6 +411,22 @@ footer {
 
   .diritti-riservati {
     margin-left: 1px;
+  }
+  .sponsored-by{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sponsored-by p{
+    margin-bottom: 0;
+  }
+  .lemon-company{
+justify-content: center;
+font-size: 0.5rem;
+  }
+  .diritti-riservati p{
+    margin: 0;
+    padding: 10px;
   }
 }
 
