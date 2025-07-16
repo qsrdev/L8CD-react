@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
 
 const SearchInputDesktop = () => {
-  
-  const { cartItems } = useCart()
+  const { cartItems } = useCart();
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -32,13 +31,18 @@ const SearchInputDesktop = () => {
         onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
 
-      <button onClick={handleRedirect} className="btn-search-desktop d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block">
+      <button
+        onClick={handleRedirect}
+        className="btn-search-desktop d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block"
+      >
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
       <div className="header-icons d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block relative">
         <Link to="/shoes/cart">
           <i className="fa-solid fa-cart-shopping text-white"></i>
-          <span className="cart-badge">{cartItems.length}</span>
+          {cartItems.length > 0 ? (
+            <span className="cart-badge">{cartItems.length}</span>
+          ) : null}
         </Link>
       </div>
     </div>
