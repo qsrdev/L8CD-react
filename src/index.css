@@ -125,6 +125,7 @@ li:hover {
 
 .card-title.name {
   font-size: 16px;
+  font-weight: bold;
 }
 
 .card-text.description {
@@ -132,7 +133,7 @@ li:hover {
 }
 
 .card-text.price {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .promo-color {
