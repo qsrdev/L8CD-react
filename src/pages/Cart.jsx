@@ -12,6 +12,7 @@ const Cart = () => {
     decreaseQuantity,
   } = useCart();
 
+
   const [discountCode, setDiscountCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [isDiscountApplied, setIsDiscountApplied] = useState(false);
@@ -31,6 +32,7 @@ const Cart = () => {
   };
 
   const discountedTotal = totalPrice - totalPrice * discount;
+
 
   return (
     <>
@@ -128,16 +130,39 @@ const Cart = () => {
                   {totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €
                 </span>
               </div>
-              <Link className="btn btn-dark w-100 mb-2" to="/checkout">
-                Vai al pagamento
-              </Link>
-              <button className="btn btn-outline-secondary w-100 mb-3">
-                PayPal
-              </button>
+
+
+
+              {cartItems.length === 0 ? (
+                <>
+                  <button className="btn btn-secondary w-100 mb-2" disabled>
+                    Vai al pagamento
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary w-100 mb-3"
+                    disabled
+                  >
+                    PayPal
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link className="btn btn-dark w-100 mb-2" to="/checkout">
+                    Vai al pagamento
+                  </Link>
+                  <Link
+                    className="btn btn-outline-secondary w-100 mb-3" to='/checkout/Paypal'>
+                    PayPal
+                  </Link>
+                </>
+              )}
+
+
               <div className="mb-3">
                 <label className="form-label">
                   Hai un codice promozionale?
                 </label>
+
                 <div className="input-group">
                   <input
                     type="text"
@@ -161,6 +186,7 @@ const Cart = () => {
                     Codice "SUMMER15" applicato con successo!
                   </div>
                 )}
+
               </div>
             </div>
           </div>

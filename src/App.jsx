@@ -10,6 +10,7 @@ import Contacts from "./pages/Contacts";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/404NotFound";
+import CheckoutPaypal from "./pages/CheckoutPaypal";
 
 function App() {
   // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
@@ -60,6 +61,7 @@ function App() {
               <Route path="/contacts" element={<Contacts />} />
             </Route>
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/Paypal" element={<CheckoutPaypal />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
