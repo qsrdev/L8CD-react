@@ -40,7 +40,6 @@ const ProductDetail = () => {
     <>
       <div className="scroll-container">
         <div className="vh-75 SP-section">
-          <h1 className="fw-5 product-title">{product.name}</h1>
           <div>
             <img src={product.image} alt={product.name} className="single-product-image" />
           </div>

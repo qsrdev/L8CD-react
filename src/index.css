@@ -318,10 +318,6 @@ footer {
   transform: scale(1.08);
   background-color: #e04a4a;
 }
-.product-title{
-  display: none;
-}
-
 @media screen and (max-width:990px){
   .SP-section{
   flex-wrap: wrap;
@@ -336,10 +332,6 @@ footer {
   .accordion{
     margin: 0 auto;
   }
-    .product-title{
-      display: block;
-      padding-top: 20px;
-    }
      .single-product-image{
       width: 80vw;
       height: auto;
@@ -529,7 +521,10 @@ font-size: 0.5rem;
     background-color: var(--common-color-2);
     z-index: 9999;
   }
-
+li:hover {
+  transform: scale(1.1);
+  color: #fffce6;
+}
   .logo {
     font-size: 1.4rem;
   }
