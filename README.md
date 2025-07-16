@@ -1,4 +1,4 @@
-## Progetto Fine anno
+## Progetto Fine anno **L8CD**
 
 **L8CD** è un e-commerce che vende principalmente _Scarpe_, creato con passione da un team di sviluppatori emergenti.
 
@@ -21,7 +21,7 @@
 
 ---
 
-## 🚀 CDettagli Tecnici
+## 🚀 Dettagli Tecnici
 
 > Ulteriori dettagli tecnici verranno aggiunti man mano che il progetto si sviluppa.
 
