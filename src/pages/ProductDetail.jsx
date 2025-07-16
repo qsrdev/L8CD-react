@@ -21,10 +21,11 @@ const ProductDetail = () => {
       setShoes(resp.data.data);
     });
   }, []);
-  
 
   const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
+
   
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug]);
@@ -39,13 +40,9 @@ const ProductDetail = () => {
     <>
       <div className="scroll-container">
         <div className="vh-75 SP-section">
-             <h1 className="fw-5 product-title">{product.name}</h1>
+          <h1 className="fw-5 product-title">{product.name}</h1>
           <div>
-            <img
-              src={product.image}
-              alt={product.name}
-              className="single-product-image"
-            />
+            <img src={product.image} alt={product.name} className="single-product-image" />
           </div>
           <div className="single-product-details">
             <h1 className="fw-5">{product.name}</h1>
@@ -70,16 +67,9 @@ const ProductDetail = () => {
                     Spedizioni e resi gratuiti
                   </button>
                 </h2>
-                <div
-                  id="collapseShipping"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingShipping"
-                  data-bs-parent="#infoAccordion"
-                >
+                <div id="collapseShipping" className="accordion-collapse collapse" aria-labelledby="headingShipping" data-bs-parent="#infoAccordion">
                   <div className="accordion-body">
-                    Offriamo spedizioni rapide e gratuite su tutti gli ordini.
-                    Se non sei completamente soddisfatta del tuo acquisto, puoi
-                    effettuare un reso gratuito entro 30 giorni dalla consegna.
+                    Offriamo spedizioni rapide e gratuite su tutti gli ordini. Se non sei completamente soddisfatta del tuo acquisto, puoi effettuare un reso gratuito entro 30 giorni dalla consegna.
                     La procedura è facile, veloce e senza costi aggiuntivi.
                   </div>
                 </div>
@@ -99,18 +89,10 @@ const ProductDetail = () => {
                     Ulteriori informazioni
                   </button>
                 </h2>
-                <div
-                  id="collapseDetails"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingDetails"
-                  data-bs-parent="#infoAccordion"
-                >
+                <div id="collapseDetails" className="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#infoAccordion">
                   <div className="accordion-body">
-                    Tutti i nostri prodotti sono selezionati con cura e
-                    realizzati con materiali di alta qualità. Offriamo supporto
-                    clienti dedicato per aiutarti in ogni fase del tuo acquisto,
-                    dalla scelta del modello fino alla consegna. Consulta la
-                    sezione FAQ o contattaci per qualsiasi domanda.
+                    Tutti i nostri prodotti sono selezionati con cura e realizzati con materiali di alta qualità. Offriamo supporto clienti dedicato per aiutarti in ogni fase del tuo acquisto, dalla
+                    scelta del modello fino alla consegna. Consulta la sezione FAQ o contattaci per qualsiasi domanda.
                   </div>
                 </div>
               </div>
@@ -132,21 +114,10 @@ const ProductDetail = () => {
             {/* TOAST DI CONFERMA PRODOTTO AGGIUNTO AL CARRELLO */}
             {showToast && (
               <div className="toast-container position-fixed bottom-0 end-0 p-3">
-                <div
-                  className="toast show align-items-center text-bg-success border-0"
-                  role="alert"
-                  aria-live="assertive"
-                  aria-atomic="true"
-                >
+                <div className="toast show align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
                   <div className="d-flex">
-                    <div className="toast-body">
-                      {product.name} aggiunta al carrello!
-                    </div>
-                    <button
-                      type="button"
-                      className="btn-close btn-close-white me-2 m-auto"
-                      onClick={() => setShowToast(false)}
-                    ></button>
+                    <div className="toast-body">{product.name} aggiunta al carrello!</div>
+                    <button type="button" className="btn-close btn-close-white me-2 m-auto" onClick={() => setShowToast(false)}></button>
                   </div>
                 </div>
               </div>

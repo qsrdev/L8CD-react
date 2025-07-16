@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 
@@ -12,6 +11,7 @@ import "./CardSlider.css";
 import { Pagination, Navigation } from "swiper/modules";
 
 export default function CardSliderSP({ array }) {
+  
   return (
     <>
       <Swiper
