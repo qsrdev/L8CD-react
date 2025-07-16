@@ -448,3 +448,22 @@ footer {
 /* @media screen and (max-width: 500px){
 
 } */
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: 20px;
+  text-align: center;
+}
+
+.relative {
+  position: relative !important;
+}
