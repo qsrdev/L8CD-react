@@ -22,9 +22,10 @@ export default function NewsletterModal({ show, onClose }) {
     }
 
     axios
-      .post("http://localhost:3000/api/newsletter/subscribe", { email })
+      .post("http://localhost:3000/api/mail/subscribe", { email })
       .then((res) => {
         setStatus("Iscrizione avvenuta con successo!");
+        console.log("successo " + email);
         setEmail("");
         // chiudiamo il modale e settiamo la variabile modalshown a true in modo tale che non apre più
         localStorage.setItem("promoModalShown", "true");

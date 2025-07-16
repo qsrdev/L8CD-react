@@ -39,6 +39,10 @@ const Checkout = () => {
       };
 
       const response = await axios.post("http://localhost:3000/shoes/store", orderData);
+      await axios.post("http://localhost:3000/api/mail/checkout", {
+        email: formData.custom_email,
+        cartItems: cartItems,
+      });
 
       console.log("Ordine salvato con successo, ID:", response.data.order_id);
       clearCart();
