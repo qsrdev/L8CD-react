@@ -14,7 +14,7 @@ const slides = [
     text: "Nike Air Max",
     description:
       "Comfort, stile e performance. Scopri la nuova collezione Air Max.",
-    link: "/shoes/product/28",
+    link: "/shoes?q=nike",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const slides = [
     text: "Nike ZoomX",
     description:
       "Pensata per la velocità. Perfetta per la corsa ad alte prestazioni.",
-    link: "/shoes/product/1",
+    link: "/shoes?q=nike",
   },
   {
     id: 3,
