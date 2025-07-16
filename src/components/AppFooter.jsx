@@ -18,7 +18,7 @@ const AppFooter = () => {
             </div>
             <div className="sponsored-by text-center">
               <p>Sponsored by</p>
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center lemon-company py-2">
                 <i className="fa-solid fa-lemon fa-2x mx-2"></i>
                 <span>Lemon Company S.P.A.</span>
               </div>
