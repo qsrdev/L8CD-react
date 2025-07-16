@@ -1,18 +1,22 @@
 
+:root {
+  --common-color-1: #251f32;
+  --common-color-2: #fea82f;
+  --common-color-3: #677db7;
+  --common-color-3: #ffb5b5;
+  --common-color-4: #ff6b6b;
+}
+
+.header-color-checkout {
+  background-color: var(--common-color-1);
+}
 
 .checkout {
-  padding-top: 0.5rem;
-  display: flex;
-  justify-content: center;
   font-weight: bold;
-  font-size: 2rem;
-  text-align: center;
+  font-size: 1.5rem;
 }
 
 .confirm-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh; /* altezza viewport */
   background-color: var(--common-color-2); /* azzurro chiaro */
   padding: 20px;
@@ -51,4 +55,13 @@
 
 .confirm-box button:hover {
   background-color: #8f5d18;
+}
+
+.btn-confirm {
+  border: 0;
+  border-radius: 20px;
+  background-color: var(--common-color-2);
+  padding: 12px 20px;
+  color: white;
+  font-weight: bold;
 }
