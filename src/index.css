@@ -279,27 +279,7 @@ footer {
   transform: scale(1.08);
   background-color: #e04a4a;
 }
-.product-title{
-  display: none;
-}
-/* SINGLE PRODUCT PAGE media query */
-@media screen and (max-width:2500px){
-    .single-product-image{
-        width: 50vw;
-    }
-    .single-product-details{
-          padding: 40px 50px;
-    }
-    .add-to-cart{
-      margin-top: 10px;
-    }
-  
-}
-@media screen and (max-width:1175px){
-.add-to-cart{
-  padding: 10px 23px;
-}
-}
+
 
 @media screen and (max-width:990px){
   .SP-section{
@@ -347,6 +327,7 @@ footer {
     padding: 30px;
   }
 }
+
 /* MEDIA QUERY */
 
 @media screen and (max-width: 450px) {

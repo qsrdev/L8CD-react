@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import Contacts from "./pages/Contacts";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
+import NotFound from "./pages/404NotFound";
 
 function App() {
   // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
@@ -49,11 +50,12 @@ function App() {
       <CartProvider cartItems={cartItems} setCartItems={setCartItems} totalPrice={totalPrice} setTotalPrice={setTotalPrice}>
         <BrowserRouter>
           <Routes>
+            <Route path="*" element={<NotFound/>}/>
             <Route element={<GuestLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/shoes" element={<Shoes />} />
               <Route path="/shoes/:gender" element={<Shoes />} />
-              <Route path="/shoes/product/:id" element={<ProductDetail />} />
+              <Route path="/shoes/product/:slug" element={<ProductDetail />} />
               <Route path="/shoes/cart" element={<Cart />} />
               <Route path="/contacts" element={<Contacts />} />
             </Route>

@@ -20,7 +20,9 @@ const Home = () => {
   const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
 
   //scarpe che hanno il prezzo superiore a 100 euro - solo i primi 5 risultati
-  const freeShippingShoes = shoes.filter((shoe) => shoe.price >= 100).slice(0, 5);
+  const freeShippingShoes = shoes
+    .filter((shoe) => shoe.price >= 100)
+    .slice(0, 5);
 
   // 5 scarpe casuali per scopri i nostri brand
   const shuffled = [...shoes].sort(() => 0.5 - Math.random());
@@ -31,7 +33,9 @@ const Home = () => {
       <Slider />
       <section>
         <div className="coupons-cta py-3">
-          <h3 className="text-center fs-4 text-white text-decoration-underline">Usa il codice SUMMER15 per avere il 15% di sconto sui prodotti</h3>
+          <h3 className="text-center fs-4 text-white text-decoration-underline">
+            Usa il codice SUMMER15 per avere il 15% di sconto sui prodotti
+          </h3>
         </div>
       </section>
 
