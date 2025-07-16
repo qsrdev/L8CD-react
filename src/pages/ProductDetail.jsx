@@ -23,7 +23,7 @@ const ProductDetail = () => {
   }, []);
   
 
-  const newShoes = shoes.filter((shoe) => shoe.slug >= shoes.length - 9);
+  const newShoes = shoes.filter((shoe) => shoe.id >= shoes.length - 9);
   
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
