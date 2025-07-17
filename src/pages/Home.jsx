@@ -5,6 +5,7 @@ import Slider from "../components/Slider/Slider";
 import CardSlider from "../components/CardSlider/CardSlider";
 import { useCart } from "../Context/CartContext";
 import Loader from "../components/Loader/Loader";
+import ChatBot from "../components/ChatBotAI/ChatBot";
 
 const Home = () => {
   const [shoes, setShoes] = useState([]);
@@ -74,6 +75,10 @@ const Home = () => {
             <CardSlider array={randomShoes} />
           </div>
         </div>
+      </section>
+
+      <section>
+        <ChatBot/>
       </section>
     </>
     )}
