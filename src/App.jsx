@@ -12,8 +12,8 @@ import Checkout from "./pages/Checkout";
 import NotFound from "./pages/404NotFound";
 import CheckoutPaypal from "./pages/CheckoutPaypal";
 
+
 function App() {
-  // Per vedere il modale dentro la pagina basta switchare lo stato da false a true
   const [showModal, setShowModal] = useState(false);
 
   //settiamo gli stati del carrello e del prezzo totale

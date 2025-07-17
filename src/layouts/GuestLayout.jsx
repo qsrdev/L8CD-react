@@ -1,4 +1,5 @@
 import { Outlet} from "react-router-dom";
+import ChatBotToggle from "../components/ChatBotToggle";
 
 import AppHeader from "../components/AppHeader";
 import AppFooter from "../components/AppFooter";
@@ -9,11 +10,13 @@ const GuestLayout = () => {
     <>
       <div className="layout-container">
         <AppHeader />
+        <ChatBotToggle/>
         <main className="layout-content">
-        <Outlet />
-        </main>
+        <Outlet />   
+        </main>  
         <AppFooter />
       </div>
+    
     </>
   );
 };
