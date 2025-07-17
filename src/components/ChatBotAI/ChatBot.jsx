@@ -6,29 +6,30 @@ const ChatBot = () => {
     const [chatLog, setChatLog] = useState([])
 
     const shoeKeywords = [
-    "scarpe",
-    "sneakers",
-    "stivali",
-    "sandali",
-    "tacchi",
-    "sportive",
-    "eleganti",
-    "modelli",
-    "taglia",
-    "numero",
-    "colore",
-    "prezzo",
-    "offerta",
-    "acquisto",
-    "spedizione",
-    "reso",
-    "catalogo",
-    "disponibilità",
-    "brand",
-    "materiale",
-    "running",
-    "calzature",
-    "shopping",
+    // "scarpe",
+    // "sneakers",
+    // "stivali",
+    // "sandali",
+    // "tacchi",
+    // "sportive",
+    // "eleganti",
+    // "modelli",
+    // "taglia",
+    // "numero",
+    // "colore",
+    // "prezzo",
+    // "offerta",
+    // "acquisto",
+    // "spedizione",
+    // "reso",
+    // "catalogo",
+    // "disponibilità",
+    // "brand",
+    // "materiale",
+    // "running",
+    // "calzature",
+    // "shopping",
+    "meteo",
   ];
 
     const isShoeRelated = (text) => {
@@ -43,8 +44,8 @@ const ChatBot = () => {
     setChatLog((prev) => [...prev, userMessage]);
     setMessage("");
 
-    // Check if the user's message is on topic
-    if (!isShoeRelated(message)) {
+   // Check if the user's message is on topic
+    if (isShoeRelated(message)) {
       const offTopicResponse = {
         sender: "Gemini",
         text: "Mi dispiace, sono un assistente virtuale specializzato in scarpe. Posso aiutarti con domande su modelli, taglie, acquisti o qualsiasi altra cosa riguardi le calzature! Come posso assisterti riguardo alle scarpe?",
@@ -54,7 +55,7 @@ const ChatBot = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5173/api/chat", {
+      const res = await fetch("http://localhost:3000/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
