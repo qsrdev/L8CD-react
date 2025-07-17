@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Slider from "../components/Slider/Slider";
 import CardSlider from "../components/CardSlider/CardSlider";
 import { useCart } from "../Context/CartContext";
+import Loader from "../components/Loader/Loader";
 
 const Home = () => {
   const [shoes, setShoes] = useState([]);
@@ -30,6 +31,12 @@ const Home = () => {
 
   return (
     <>
+    {shoes.length === 0 ? (
+      <div className="d-flex justify-content-center py-5">
+        <Loader/>
+      </div>
+    ) : (
+      <>
       <Slider />
       <section>
         <div className="coupons-cta py-3">
@@ -69,6 +76,8 @@ const Home = () => {
         </div>
       </section>
     </>
+    )}
+  </>
   );
 };
 

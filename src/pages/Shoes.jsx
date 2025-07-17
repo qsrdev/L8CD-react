@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShoesCard from "../components/ShoesCard.jsx";
 import { useParams, useLocation } from "react-router-dom";
+import Loader from "../components/Loader/Loader.jsx";
 
 const Shoes = () => {
   const location = useLocation();
@@ -69,7 +70,10 @@ const Shoes = () => {
 
   return (
     <main>
-      <section className="container py-5">
+      {/* {shoes.length === 0 ? (
+        <Loader/>
+      ) : ( */}
+        <section className="container py-5">
         <div className="d-flex justify-content-center align-items-center gap-3 my-5 flex-wrap">
           <h1 className="m-0 text-center">{pageTitle}</h1>
           <span className="text-muted fs-6">({shoes.length} risultati)</span>
@@ -166,7 +170,7 @@ const Shoes = () => {
           </div>
         )}
 
-        {shoes.length === 0 ? (
+        {shoes && shoes.length === 0 ? (
           <div className="text-center my-5">
             <h4>Nessun risultato trovato 😢</h4>
             <p>Prova a modificare i filtri o cerca un brand diverso.</p>
@@ -181,6 +185,7 @@ const Shoes = () => {
           </div>
         )}
       </section>
+      {/* )} */}
     </main>
   );
 };
