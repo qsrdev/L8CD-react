@@ -32,7 +32,7 @@ const ChatBotToggle = () => {
         {showChat ? "Chiudi chat" : "Apri chat"}
       </button>
 
-    {showChat && <div style={{ border: "2px solid red" }}><ChatBot /></div>}
+    {showChat &&<ChatBot />}
     </>
   );
 };
