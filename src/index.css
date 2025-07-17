@@ -28,10 +28,9 @@ li {
 }
 
 body {
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   font-optical-sizing: auto !important;
 }
-
 
 /* HEADER */
 
@@ -276,7 +275,7 @@ footer {
   padding: 80px 70px;
   width: 40vw;
 }
-.SP-section{
+.SP-section {
   display: flex;
   justify-content: space-between;
 }
@@ -294,6 +293,14 @@ footer {
 
 .categoria-prodotto {
   font-style: oblique;
+}
+
+.my-toast {
+  height: 80px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .custom-accordion-btn {
@@ -349,36 +356,36 @@ footer {
   transform: scale(1.08);
   background-color: #e04a4a;
 }
-@media screen and (max-width:990px){
-.SP-section{
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 15px;
-}
+@media screen and (max-width: 990px) {
+  .SP-section {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 15px;
+  }
 
-  .single-product-details{
-        width: 100%;
-        text-align: center;
-        background-color: #f1ebeb6e;
-    }
-  .accordion{
+  .single-product-details {
+    width: 100%;
+    text-align: center;
+    background-color: #f1ebeb6e;
+  }
+  .accordion {
     margin: 0 auto;
   }
-     .single-product-image{
-      width: 80vw;
-      height: auto;
-  object-fit: contain;
-  margin: 0;
-    }
-    .add-to-cart{
-      display: flex;
-  justify-content: center; 
-  align-items: center; 
-    }
+  .single-product-image {
+    width: 80vw;
+    height: auto;
+    object-fit: contain;
+    margin: 0;
+  }
+  .add-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-@media screen and (max-width:768px){
-  .single-product-image{
+@media screen and (max-width: 768px) {
+  .single-product-image {
     width: 80vw;
     height: auto;
     object-fit: contain;
@@ -386,11 +393,11 @@ footer {
   }
 }
 
-@media screen and (max-width:390px){
-  .accordion{
+@media screen and (max-width: 390px) {
+  .accordion {
     text-align: center;
   }
-  .swiper-slide img{
+  .swiper-slide img {
     padding: 30px;
   }
 }
@@ -438,22 +445,20 @@ footer {
   .diritti-riservati {
     margin-left: 1px;
   }
-  .sponsored-by{
+  .sponsored-by {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .sponsored-by p{
+  .sponsored-by p {
     margin-bottom: 0;
   }
-  
-  .lemon-company{
 
-  justify-content: center;
-  font-size: 0.5rem;
-
+  .lemon-company {
+    justify-content: center;
+    font-size: 0.5rem;
   }
-  .diritti-riservati p{
+  .diritti-riservati p {
     margin: 0;
     padding: 10px;
   }
@@ -464,7 +469,6 @@ footer {
     font-size: 0.8em;
   }
 }
-
 
 @media screen and (max-width: 970px) {
   header {
@@ -526,10 +530,10 @@ footer {
     background-color: var(--common-color-2);
     z-index: 9999;
   }
-li:hover {
-  transform: scale(1.1);
-  color: #fffce6;
-}
+  li:hover {
+    transform: scale(1.1);
+    color: #fffce6;
+  }
   .logo {
     font-size: 1.4rem;
   }
@@ -549,7 +553,7 @@ li:hover {
   }
 
   li a:hover {
-  color: var(--common-color-1);
+    color: var(--common-color-1);
   }
 
   /* .left-group {
