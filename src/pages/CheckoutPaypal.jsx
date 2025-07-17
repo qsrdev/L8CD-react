@@ -74,13 +74,13 @@ const CheckoutPaypal = () => {
             </div>
           </header>
           <div className="container">
-            <div className="order-summary mb-4 p-3 border rounded">
+            <div className="order-summary mb-4 p-3 border rounded border bottom my-3">
               <h5>Riepilogo ordine</h5>
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between border-bottom my-3">
                 <span>Subtotale:</span>
                 <span>{totalPrice.toFixed(2)} €</span>
               </div>
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between border-bottom my-3">
                 <span>Sconto:</span>
                 <span>-{discount.toFixed(2)} €</span>
               </div>
