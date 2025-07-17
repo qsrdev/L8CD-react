@@ -59,76 +59,128 @@ const Checkout = () => {
     <>
       {!showSuccess ? (
         <>
-          {/* Header-checkout */}
-          <header className="header-color-checkout">
-            <div className="container">
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="header-logo">
-                  <Link className="logo text-white text-decoration-none fw-bold fs-5" to="/">
-                    L8CD
-                  </Link>
-                </div>
-
-                <div>
-                  <h1 className="checkout">Checkout</h1>
-                </div>
-
-                <div>
-                  <Link to="/shoes/cart">
-                    <i className="fa-solid fa-cart-shopping text-white"></i>
-                  </Link>
-                </div>
-              </div>
+          {/* Header */}
+          <header className="header-color-checkout py-3 mb-4">
+            <div className="container d-flex justify-content-between align-items-center text-white">
+              <Link className="logo text-white fw-bold fs-5 text-decoration-none" to="/">
+                L8CD
+              </Link>
+              <h1 className="checkout m-0">Ci sei quasi</h1>
+              <Link to="/shoes/cart">
+                <i className="fa-solid fa-cart-shopping text-white"></i>
+              </Link>
             </div>
           </header>
 
-          {/* Form ckeckout */}
-          <div className="container">
-            <form onSubmit={handleOrderSubmit} className="mt-5 d-flex flex-column align-items-center">
-              <h2 className="mb-5">Ci sei quasi!</h2>
-              <div className="mb-3 col-12 col-md-8 col-lg-6">
-                <input id="custom_name" className="form-control" type="text" name="custom_name" placeholder="Nome" value={formData.custom_name} onChange={handleChange} required />
+          {/* Main layout */}
+          <div className="container mb-5">
+            <div className="row">
+              {/* Colonna sinistra */}
+              <div className="col-lg-7">
+                <h4 className="mb-4">Opzioni di consegna</h4>
+
+                {/* <div className="d-flex mb-4">
+                  <button
+                    type="button"
+                    className={`btn me-2 ${formData.shipping_method === "standard" ? "btn-dark" : "btn-outline-dark"}`}
+                    onClick={() => setFormData({ ...formData, shipping_method: "standard" })}
+                  >
+                    <i className="fa-solid fa-truck me-2"></i> Spedizione
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn ${formData.shipping_method === "pickup" ? "btn-dark" : "btn-outline-dark"}`}
+                    onClick={() => setFormData({ ...formData, shipping_method: "pickup" })}
+                  >
+                    <i className="fa-solid fa-map-marker-alt me-2"></i> Ritiro
+                  </button>
+                </div> */}
+
+                {/* FORM */}
+                <form onSubmit={handleOrderSubmit}>
+                  <div className="mb-3">
+                    <input className="form-control" type="email" name="custom_email" placeholder="E-mail*" value={formData.custom_email} onChange={handleChange} required />
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <input className="form-control" type="text" name="custom_name" placeholder="Nome*" value={formData.custom_name} onChange={handleChange} required />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <input className="form-control" type="text" name="custom_surname" placeholder="Cognome*" onChange={handleChange} required />
+                    </div>
+                  </div>
+
+                  <div className="mb-3">
+                    <input className="form-control" type="text" name="custom_address" placeholder="Inizia a digitare l'indirizzo" value={formData.custom_address} onChange={handleChange} required />
+                  </div>
+
+                  <div className="mb-3">
+                    <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
+                  </div>
+
+                  <div className="mb-3">
+                    <input className="form-control" type="tel" name="phone" placeholder="Numero di telefono*" onChange={handleChange} required />
+                  </div>
+
+                  <div className="mb-3">
+                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                      <option value="paypal">PayPal</option>
+                      <option value="credit_card">Carta di credito</option>
+                    </select>
+                  </div>
+
+                  <button type="submit" className="btn btn-dark w-100">
+                    Conferma Ordine
+                  </button>
+                </form>
               </div>
-              <div className="mb-3 col-12 col-md-8 col-lg-6">
-                <input className="form-control" type="email" name="custom_email" placeholder="Email" value={formData.custom_email} onChange={handleChange} required />
+
+              {/* Colonna destra */}
+              <div className="col-lg-5">
+                <h5 className="fw-bold">Nel carrello</h5>
+                <div className="d-flex justify-content-between border-bottom py-2">
+                  <span>Subtotale</span>
+                  <span>{totalPrice.toFixed(2)} €</span>
+                </div>
+                <div className="d-flex justify-content-between border-bottom py-2">
+                  <span>Costi di spedizione stimati</span>
+                  <span>0,00 €</span>
+                </div>
+                <div className="d-flex justify-content-between fw-bold fs-5 my-3">
+                  <span>Totale</span>
+                  <span>{totalPrice.toFixed(2)} €</span>
+                </div>
+
+                <p className="text-muted">
+                  Arriva entro il giorno <strong>mer 23 lug</strong>
+                </p>
+
+                {cartItems.map((item, index) => (
+                  <div className="d-flex mb-3" key={index}>
+                    <img src={item.image} alt={item.name} className="me-3" width="60" />
+                    <div>
+                      <div className="fw-bold">{item.name}</div>
+                      <small className="text-muted">{item.description?.slice(0, 40)}...</small>
+                      <br />
+                      <small>
+                        Quantità: {item.quantity} | Misura: {item.size}
+                      </small>
+                      <div>{item.price} €</div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="mb-3 col-12 col-md-8 col-lg-6">
-                <input className="form-control" type="text" name="custom_address" placeholder="Indirizzo" value={formData.custom_address} onChange={handleChange} required />
-              </div>
-              <div className="mb-3 col-12 col-md-8 col-lg-6">
-                <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
-              </div>
-              <div className="mb-3 col-12 col-md-8 col-lg-6">
-                <select className="form-select" name="shipping_method" value={formData.shipping_method} onChange={handleChange}>
-                  <option value="standard">Standard</option>
-                  <option value="express">Espressa</option>
-                </select>
-              </div>
-              <div className="mb-4 col-12 col-md-8 col-lg-6">
-                <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
-                  <option value="paypal">PayPal</option>
-                  <option value="credit_card">Carta di credito</option>
-                </select>
-              </div>
-              <button type="submit" className="btn-confirm my-3">
-                Conferma Ordine
-              </button>
-            </form>
+            </div>
           </div>
         </>
       ) : (
-        <div className="container">
-          <div className="confirm-container d-flex justify-content-center">
-            <div className="confirm-box">
-              <h1>Ordine ricevuto con successo!</h1>
-              <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
-              <button>
-                <Link className="btn text-white" to="/">
-                  Continua con gli acquisti
-                </Link>
-              </button>
-            </div>
-          </div>
+        <div className="container text-center mt-5">
+          <h1>Ordine ricevuto con successo!</h1>
+          <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
+          <Link to="/" className="btn btn-dark mt-3">
+            Continua con gli acquisti
+          </Link>
         </div>
       )}
     </>
