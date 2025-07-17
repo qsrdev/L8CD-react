@@ -26,7 +26,7 @@ const Checkout = () => {
     custom_address: "",
     shipping_address: "",
     shipping_method: "standard",
-    payment_method: "paypal",
+    payment_method: "PayPal",
     coupon_id: null,
     status: "pending",
     tracking_number: "prova",
