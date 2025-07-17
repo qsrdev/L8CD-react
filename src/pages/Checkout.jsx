@@ -4,6 +4,8 @@ import { useCart } from "../Context/CartContext";
 import axios from "axios";
 import "../pages/Checkout.css";
 import "../index.css";
+import CartAccordion from "../components/CartAccordion";
+
 
 const Checkout = () => {
   const { cartItems, setCartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity } = useCart();
@@ -130,6 +132,10 @@ const Checkout = () => {
                     </select>
                   </div>
 
+   {/* visualizzazione small colonna destra */}
+              <div className="col-lg-5 right-column-small">
+                <CartAccordion cartItems={cartItems} totalPrice={totalPrice}/>
+              </div>
                   <button type="submit" className="btn btn-dark w-100">
                     Conferma Ordine
                   </button>
@@ -137,7 +143,7 @@ const Checkout = () => {
               </div>
 
               {/* Colonna destra */}
-              <div className="col-lg-5">
+              <div className="col-lg-5 right-column-desktop">
                 <h5 className="fw-bold">Nel carrello</h5>
                 <div className="d-flex justify-content-between border-bottom py-2">
                   <span>Subtotale</span>
@@ -171,6 +177,7 @@ const Checkout = () => {
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
         </>
