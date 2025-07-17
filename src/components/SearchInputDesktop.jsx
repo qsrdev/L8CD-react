@@ -9,9 +9,11 @@ const SearchInputDesktop = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+
   const handleInput = (event) => {
     setSearch(event.target.value);
   };
+
 
   const handleRedirect = () => {
     const trimmed = search.trim();
@@ -27,7 +29,7 @@ const SearchInputDesktop = () => {
     } else {
       navigate(newPath);
     }
-  };
+   };
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);

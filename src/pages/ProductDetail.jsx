@@ -3,6 +3,7 @@ import axios from "axios";
 import CardSliderSP from "../components/CardSlider/cardSliderSP";
 import { useCart } from "../Context/CartContext";
 import { useParams, useNavigate } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -137,7 +138,9 @@ const ProductDetail = () => {
       </div>
     </>
   ) : (
-    <p>Caricamento...</p>
+    <div className="d-flex justify-content-center py-5">
+      <Loader/>
+    </div>
   );
 };
 
