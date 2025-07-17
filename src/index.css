@@ -125,6 +125,10 @@ li a:hover {
   background-color: var(--common-color-4);
 }
 
+.rem-5 {
+  margin-top: 0.5rem;
+}
+
 .hover-zoom {
   transition: transform 0.3s ease;
 }
@@ -247,6 +251,7 @@ footer {
   display: flex;
   text-align: center;
 }
+
 .nav-footer:hover {
   color: #f7cf60;
 }
