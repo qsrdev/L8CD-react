@@ -80,7 +80,7 @@ const CheckoutPaypal = () => {
                 <span>Subtotale:</span>
                 <span>{totalPrice.toFixed(2)} €</span>
               </div>
-              <div className="d-flex justify-content-between border-bottom my-3">
+              <div className="d-flex justify-content-between border-bottom text-muted">
                 <span>Sconto:</span>
                 <span>-{discount.toFixed(2)} €</span>
               </div>
@@ -88,6 +88,30 @@ const CheckoutPaypal = () => {
                 <span>Totale:</span>
                 <span>{totalWithDiscount} €</span>
               </div>
+              <p className="text-muted my-3">
+                Arriva entro il giorno <strong>mer 23 lug</strong>
+              </p>
+              {cartItems.map((item, index) => (
+                <div className="d-flex" key={index}>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="mx-3"
+                    width="60"
+                  />
+                  <div>
+                    <div className="fw-bold">{item.name}</div>
+                    <small className="text-muted">
+                      {item.description?.slice(0, 40)}...
+                    </small>
+                    <br />
+                    <small>
+                      Quantità: {item.quantity} | Misura: {item.size}
+                    </small>
+                    <div>{item.price} €</div>
+                  </div>
+                </div>
+              ))}
             </div>
             <form
               onSubmit={handleOrderSubmit}
