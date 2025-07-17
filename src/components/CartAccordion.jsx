@@ -36,7 +36,7 @@ const CartAccordion = ({ cartItems, totalPrice }) => {
           </p>
 
           {cartItems.map((item, index) => (
-            <div className="d-flex mb-3" key={index}>
+            <div className="d-flex flex-wrap mb-3" key={index}>
               <img src={item.image} alt={item.name} className="me-3" width="60" />
               <div>
                 <div className="fw-bold">{item.name}</div>
