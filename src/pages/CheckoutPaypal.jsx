@@ -6,7 +6,8 @@ import axios from "axios";
 import "../pages/Checkout.css";
 
 const CheckoutPaypal = () => {
-  const { cartItems, totalPrice, clearCart } = useCart();
+  const { cartItems, totalPrice, clearCart, discount } = useCart();
+  const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
 
@@ -31,14 +32,17 @@ const CheckoutPaypal = () => {
       e.preventDefault();
       const orderData = {
         ...formData,
-        total_amount: totalPrice,
+        total_amount: parseFloat(totalWithDiscount),
         products: cartItems.map((item) => ({
           product_id: item.id,
           quantity: item.quantity,
         })),
       };
 
-      const response = await axios.post("http://localhost:3000/shoes/store", orderData);
+      const response = await axios.post(
+        "http://localhost:3000/shoes/store",
+        orderData
+      );
 
       console.log("Ordine salvato con successo, ID:", response.data.order_id);
       clearCart();
@@ -55,40 +59,102 @@ const CheckoutPaypal = () => {
         <>
           <header className="header-color d-flex justify-content-between">
             <div className="header-logo">
-              <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
+              <Link
+                className="logo text-white text-decoration-none fw-bold fs-4"
+                to="/"
+              >
                 L8CD
               </Link>
             </div>
             <p className="checkout">Checkout Sicuro</p>
-        <div className="header-icon">
-          <Link className="btn" to="/shoes/cart">
-            <i className="fs-5 fa-solid fa-cart-shopping text-white"></i>
-          </Link>
-        </div>
+            <div className="header-icon">
+              <Link className="btn" to="/shoes/cart">
+                <i className="fs-5 fa-solid fa-cart-shopping text-white"></i>
+              </Link>
+            </div>
           </header>
           <div className="container">
-            <form onSubmit={handleOrderSubmit} className="my-3 d-flex flex-column align-items-center">
+            <div className="order-summary mb-4 p-3 border rounded">
+              <h5>Riepilogo ordine</h5>
+              <div className="d-flex justify-content-between">
+                <span>Subtotale:</span>
+                <span>{totalPrice.toFixed(2)} €</span>
+              </div>
+              <div className="d-flex justify-content-between">
+                <span>Sconto:</span>
+                <span>-{discount.toFixed(2)} €</span>
+              </div>
+              <div className="d-flex justify-content-between fw-bold fs-5 mt-3">
+                <span>Totale:</span>
+                <span>{totalWithDiscount} €</span>
+              </div>
+            </div>
+            <form
+              onSubmit={handleOrderSubmit}
+              className="my-3 d-flex flex-column align-items-center"
+            >
               <div className="mb-3 col-5">
-                <input id="custom_name" className="form-control" type="text" name="custom_name" placeholder="Nome" value={formData.custom_name} onChange={handleChange} required />
+                <input
+                  id="custom_name"
+                  className="form-control"
+                  type="text"
+                  name="custom_name"
+                  placeholder="Nome"
+                  value={formData.custom_name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="mb-3 col-5">
-                <input className="form-control" type="email" name="custom_email" placeholder="Email" value={formData.custom_email} onChange={handleChange} required />
+                <input
+                  className="form-control"
+                  type="email"
+                  name="custom_email"
+                  placeholder="Email"
+                  value={formData.custom_email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="mb-3 col-5">
-                <input className="form-control" type="text" name="custom_address" placeholder="Indirizzo" value={formData.custom_address} onChange={handleChange} required />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="custom_address"
+                  placeholder="Indirizzo"
+                  value={formData.custom_address}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="mb-3 col-5">
-                <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="shipping_address"
+                  placeholder="Indirizzo spedizione"
+                  value={formData.shipping_address}
+                  onChange={handleChange}
+                />
               </div>
               <div className="mb-3 col-5">
-                <select className="form-select" name="shipping_method" value={formData.shipping_method} onChange={handleChange}>
+                <select
+                  className="form-select"
+                  name="shipping_method"
+                  value={formData.shipping_method}
+                  onChange={handleChange}
+                >
                   <option value="standard">Standard</option>
                   <option value="express">Espressa</option>
                 </select>
               </div>
               <div className="mb-3 col-5">
-                <input className="form-control" name="payment_method" value={formData.payment_method} disabled>
-                </input>
+                <input
+                  className="form-control"
+                  name="payment_method"
+                  value={formData.payment_method}
+                  disabled
+                ></input>
               </div>
               <button type="submit" className="btn btn-primary my-2">
                 Conferma Ordine
@@ -100,7 +166,10 @@ const CheckoutPaypal = () => {
         <div className="confirm-container">
           <div className="confirm-box">
             <h1>Ordine ricevuto con successo!</h1>
-            <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
+            <p>
+              Grazie per il tuo acquisto. Ti invieremo presto la conferma via
+              email.
+            </p>
             <button>
               <Link className="btn " to="/">
                 Continua con gli acquisti

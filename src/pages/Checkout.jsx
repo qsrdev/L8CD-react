@@ -6,7 +6,15 @@ import "../pages/Checkout.css";
 import "../index.css";
 
 const Checkout = () => {
-  const { cartItems, setCartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity } = useCart();
+  const {
+    cartItems,
+    totalPrice,
+    discount,
+    clearCart,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
+  const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
 
@@ -31,19 +39,22 @@ const Checkout = () => {
       e.preventDefault();
       const orderData = {
         ...formData,
-        total_amount: totalPrice,
+        total_amount: parseFloat(totalWithDiscount),
         products: cartItems.map((item) => ({
           product_id: item.id,
           quantity: item.quantity,
         })),
       };
 
-      const response = await axios.post("http://localhost:3000/shoes/store", orderData);
+      const response = await axios.post(
+        "http://localhost:3000/shoes/store",
+        orderData
+      );
       await axios.post("http://localhost:3000/api/mail/checkout", {
         email: formData.custom_email,
         cartItems: cartItems,
         name: formData.custom_name,
-        total: totalPrice,
+        total: totalWithDiscount,
       });
 
       console.log("Ordine salvato con successo, ID:", response.data.order_id);
@@ -62,7 +73,10 @@ const Checkout = () => {
           {/* Header */}
           <header className="header-color-checkout py-3 mb-4">
             <div className="container d-flex justify-content-between align-items-center text-white">
-              <Link className="logo text-white fw-bold fs-5 text-decoration-none" to="/">
+              <Link
+                className="logo text-white fw-bold fs-5 text-decoration-none"
+                to="/"
+              >
                 L8CD
               </Link>
               <h1 className="checkout m-0">Ci sei quasi</h1>
@@ -99,32 +113,82 @@ const Checkout = () => {
                 {/* FORM */}
                 <form onSubmit={handleOrderSubmit}>
                   <div className="mb-3">
-                    <input className="form-control" type="email" name="custom_email" placeholder="E-mail*" value={formData.custom_email} onChange={handleChange} required />
+                    <input
+                      className="form-control"
+                      type="email"
+                      name="custom_email"
+                      placeholder="E-mail*"
+                      value={formData.custom_email}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
 
                   <div className="row">
                     <div className="col-md-6 mb-3">
-                      <input className="form-control" type="text" name="custom_name" placeholder="Nome*" value={formData.custom_name} onChange={handleChange} required />
+                      <input
+                        className="form-control"
+                        type="text"
+                        name="custom_name"
+                        placeholder="Nome*"
+                        value={formData.custom_name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="col-md-6 mb-3">
-                      <input className="form-control" type="text" name="custom_surname" placeholder="Cognome*" onChange={handleChange} required />
+                      <input
+                        className="form-control"
+                        type="text"
+                        name="custom_surname"
+                        placeholder="Cognome*"
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <input className="form-control" type="text" name="custom_address" placeholder="Inizia a digitare l'indirizzo" value={formData.custom_address} onChange={handleChange} required />
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="custom_address"
+                      placeholder="Inizia a digitare l'indirizzo"
+                      value={formData.custom_address}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
 
                   <div className="mb-3">
-                    <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="shipping_address"
+                      placeholder="Indirizzo spedizione"
+                      value={formData.shipping_address}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="mb-3">
-                    <input className="form-control" type="tel" name="phone" placeholder="Numero di telefono*" onChange={handleChange} required />
+                    <input
+                      className="form-control"
+                      type="tel"
+                      name="phone"
+                      placeholder="Numero di telefono*"
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
 
                   <div className="mb-3">
-                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                    <select
+                      className="form-select"
+                      name="payment_method"
+                      value={formData.payment_method}
+                      onChange={handleChange}
+                    >
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
                     </select>
@@ -147,9 +211,13 @@ const Checkout = () => {
                   <span>Costi di spedizione stimati</span>
                   <span>0,00 €</span>
                 </div>
+                <div className="d-flex justify-content-between">
+                  <span>Sconto:</span>
+                  <span>-{discount.toFixed(2)} €</span>
+                </div>
                 <div className="d-flex justify-content-between fw-bold fs-5 my-3">
                   <span>Totale</span>
-                  <span>{totalPrice.toFixed(2)} €</span>
+                  <span>{totalWithDiscount} €</span>
                 </div>
 
                 <p className="text-muted">
@@ -158,10 +226,17 @@ const Checkout = () => {
 
                 {cartItems.map((item, index) => (
                   <div className="d-flex mb-3" key={index}>
-                    <img src={item.image} alt={item.name} className="me-3" width="60" />
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="me-3"
+                      width="60"
+                    />
                     <div>
                       <div className="fw-bold">{item.name}</div>
-                      <small className="text-muted">{item.description?.slice(0, 40)}...</small>
+                      <small className="text-muted">
+                        {item.description?.slice(0, 40)}...
+                      </small>
                       <br />
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
@@ -177,7 +252,10 @@ const Checkout = () => {
       ) : (
         <div className="container text-center mt-5">
           <h1>Ordine ricevuto con successo!</h1>
-          <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
+          <p>
+            Grazie per il tuo acquisto. Ti invieremo presto la conferma via
+            email.
+          </p>
           <Link to="/" className="btn btn-dark mt-3">
             Continua con gli acquisti
           </Link>

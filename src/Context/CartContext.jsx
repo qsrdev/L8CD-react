@@ -12,20 +12,30 @@ export const CartProvider = ({ children }) => {
 
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // =================== GESTIONE SCONTO =======================
+  const [discount, setDiscount] = useState(0);
+  const [isDiscountApplied, setIsDiscountApplied] = useState(false);
+
   //vado a prendere lo stato da localstorage del mio carrello e del prezzo totale del carrello
   useEffect(() => {
     const localCartItems = localStorage.getItem("cartItems");
     const localTotalPrice = localStorage.getItem("totalPrice");
+    const localDiscount = localStorage.getItem("discount");
     if (localCartItems) {
       setCartItems(JSON.parse(localCartItems));
       setTotalPrice(JSON.parse(localTotalPrice));
+    }
+
+    if (localDiscount) {
+      setDiscount(parseFloat(localDiscount));
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-  }, [cartItems, totalPrice]);
+    localStorage.setItem("discount", JSON.stringify(discount));
+  }, [cartItems, totalPrice, discount]);
 
   //funzione che gestisce l'aggiunta di prodotti nuovi al carrello
   const addToCart = (newItem) => {
@@ -33,7 +43,9 @@ export const CartProvider = ({ children }) => {
 
     if (existingItem) {
       // Se esiste, incrementa quantità
-      const updatedItems = cartItems.map((item) => (item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item));
+      const updatedItems = cartItems.map((item) =>
+        item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
       setCartItems(updatedItems);
     } else {
       // Se non esiste, aggiungi al carrello
@@ -58,7 +70,9 @@ export const CartProvider = ({ children }) => {
     const item = cartItems.find((item) => item.id === id);
     if (!item) return;
 
-    const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
+    const updatedItems = cartItems.map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    );
     setCartItems(updatedItems);
     setTotalPrice((prev) => parseFloat(prev) + parseFloat(item.price));
   };
@@ -71,7 +85,9 @@ export const CartProvider = ({ children }) => {
     if (item.quantity === 1) {
       removeItemCompletely(id);
     } else {
-      const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item));
+      const updatedItems = cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+      );
       setCartItems(updatedItems);
       setTotalPrice((prev) => prev - item.price);
     }
@@ -82,11 +98,26 @@ export const CartProvider = ({ children }) => {
     console.log("è stato chiamato clear cart");
     setCartItems([]);
     setTotalPrice(0);
+    setDiscount(0);
+    setIsDiscountApplied(false);
     localStorage.removeItem("cartItems");
     localStorage.removeItem("totalPrice");
+    localStorage.removeItem("discount");
   };
 
-  const value = { cartItems, totalPrice, addToCart, removeItemCompletely, increaseQuantity, decreaseQuantity, clearCart };
+  const value = {
+    cartItems,
+    totalPrice,
+    addToCart,
+    removeItemCompletely,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+    discount,
+    setDiscount,
+    isDiscountApplied,
+    setIsDiscountApplied,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
