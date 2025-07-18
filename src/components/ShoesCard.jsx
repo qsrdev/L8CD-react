@@ -18,7 +18,7 @@ const ShoesCard = ({ shoe }) => {
             {name} - {brand}
           </h5>
           <p className="card-text description">{description}</p>
-          <p className="card-text price"> €{price} </p>
+          <p className="card-text price">{price} €</p>
           {/* <button
             className="add-to-cart-all "
             onClick={(e) => {

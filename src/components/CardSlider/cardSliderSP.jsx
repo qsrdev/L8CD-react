@@ -43,8 +43,8 @@ export default function CardSliderSP({ array }) {
                 {" "}
                 <img src={curElement.image} alt={curElement.name} />{" "}
               </Link>
-              <h6 className="py-3">{curElement.name}</h6>
-              <p className="fst-italic"> €{curElement.price}</p>
+              <h6 className="card-title name py-3">{curElement.name}</h6>
+              <p className="card-text price">{curElement.price} €</p>
             </div>
 
             <p className="promo-marklabel">Tra i più acquistati</p>

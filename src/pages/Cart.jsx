@@ -71,6 +71,7 @@ const Cart = () => {
                   </button>
                 )}
               </div>
+
               {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
                 <>
@@ -93,14 +94,14 @@ const Cart = () => {
                       </div>
                       <div className="col-md-6">
                         <div className="card-body">
-                          <h5 className="card-title">{item.name}</h5>
+                          <h5 className="card-title name">{item.name}</h5>
                           <p className="card-text">{item.gender}</p>
                           <p className="card-text">
                             <small className="text-muted">
                               Taglia: <b>{Math.trunc(item.size)}</b>
                             </small>
                           </p>
-                          <p className="card-text fw-bold">€ {item.price}</p>
+                          <p className="card-text fw-bold">{item.price} €</p>
                         </div>
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">
@@ -129,7 +130,8 @@ const Cart = () => {
                 ))
               )}
             </div>
-{cartItems.length > 0 && (
+
+            {cartItems.length > 0 && (
             <div className="col-md-4">
               <div className="card p-3">
                 <h4 className="card-title mb-3">Riepilogo</h4>
@@ -214,7 +216,8 @@ const Cart = () => {
                 </div> 
               </div>
             </div>
-          )};
+          )}
+
           </div> 
         </div>
       </section>

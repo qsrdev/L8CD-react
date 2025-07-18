@@ -49,7 +49,7 @@ const ProductDetail = () => {
           <div className="single-product-details">
             <h1 className="fw-5">{product.name}</h1>
             <p className="description">{product.description}</p>
-            <p className="price"> €{product.price}</p>
+            <p className="price">{product.price} €</p>
             <p className="categoria-prodotto">Scarpa {product.gender}</p>
 
             {/* accordion */}
