@@ -1,6 +1,6 @@
 .chat-container {
   position: fixed;
-  bottom: 20px;
+bottom: 125px;
   right: 20px;
   width: 340px;
   max-height: 500px;
@@ -10,7 +10,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   overflow: hidden;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 1001;
   overflow-y: scroll;
 }
 
