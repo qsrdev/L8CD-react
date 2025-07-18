@@ -182,7 +182,7 @@ const Checkout = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Numero di Telefono*</label>
-                    <input inputMode="numeric" maxLength={15} required autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} />
+                    <input inputMode="numeric" maxLength={12} required autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} />
                   </div>
 
                   <div className="mb-3">
