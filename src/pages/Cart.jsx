@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../pages/Cart.css";
 
 const Cart = () => {
@@ -17,6 +17,20 @@ const Cart = () => {
   } = useCart();
 
   const [discountCode, setDiscountCode] = useState("");
+
+  useEffect(() => {
+    if (isDiscountApplied) {
+      setDiscount(totalPrice * 0.15);
+    }
+  }, [totalPrice, isDiscountApplied]);
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      setIsDiscountApplied(false);
+      setDiscount(0);
+      setDiscountCode("");
+    }
+  }, [cartItems]);
 
   const applyDiscountCode = () => {
     const code = discountCode.trim().toUpperCase();
@@ -76,7 +90,7 @@ const Cart = () => {
                               Taglia: <b>{Math.trunc(item.size)}</b>
                             </small>
                           </p>
-                          <p className="card-text fw-bold">{item.price} €</p>
+                          <p className="card-text fw-bold">€ {item.price}</p>
                         </div>
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">

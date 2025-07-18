@@ -173,10 +173,12 @@ const Checkout = () => {
                   <span>Costi di spedizione stimati</span>
                   <span>0,00 €</span>
                 </div>
-                <div className="d-flex justify-content-between">
-                  <span>Sconto:</span>
-                  <span>-{discount.toFixed(2)} €</span>
-                </div>
+                {discount > 0 && (
+                  <div className="d-flex justify-content-between">
+                    <span>Sconto:</span>
+                    <span>-{discount.toFixed(2)} €</span>
+                  </div>
+                )}
                 <div className="d-flex justify-content-between fw-bold fs-5 my-3">
                   <span>Totale</span>
                   <span>{totalWithDiscount} €</span>
@@ -196,7 +198,7 @@ const Checkout = () => {
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div>{item.price} €</div>
+                      <div>€ {item.price}</div>
                     </div>
                   </div>
                 ))}
