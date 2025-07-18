@@ -25,19 +25,6 @@ useEffect(() => {
       <button
         onClick={toggleChat}
         className="chatbox-btn"
-        style={{
-          opacity: showChat ? 0.5 : 1,
-          position: "fixed",
-          bottom: "80px",
-          right: "20px",
-          backgroundColor: "#f4ae3f",
-          color: "#000",
-          border: "none",
-          padding: "10px 16px",
-          borderRadius: "50px",
-          cursor: "pointer",
-          zIndex: 10000,
-        }}
       >
         {showChat ? "Chiudi chat" : "Apri chat"}
       </button>
