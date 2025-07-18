@@ -5,12 +5,20 @@ import axios from "axios";
 import "../pages/Checkout.css";
 import "../index.css";
 import CartAccordion from "../components/CartAccordion";
-
+import Loader from "../components/Loader/Loader";
 const Checkout = () => {
-  const { cartItems, totalPrice, discount, clearCart, increaseQuantity, decreaseQuantity } = useCart();
+  const {
+    cartItems,
+    totalPrice,
+    discount,
+    clearCart,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
   const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,12 +43,14 @@ const Checkout = () => {
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     if (!isEmailValid(formData.custom_email)) {
       alert("Inserisci un indirizzo email valido.");
+      setIsSubmitting(false);
       return;
     }
-
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     try {
       const orderData = {
         ...formData,
@@ -51,7 +61,10 @@ const Checkout = () => {
         })),
       };
 
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/shoes/store`, orderData);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/shoes/store`,
+        orderData
+      );
       await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/checkout`, {
         email: formData.custom_email,
         cartItems: cartItems,
@@ -75,7 +88,10 @@ const Checkout = () => {
           {/* Header */}
           <header className="header-color-checkout py-3 mb-4">
             <div className="container d-flex justify-content-between align-items-center text-white">
-              <Link className="logo text-white fw-bold fs-5 text-decoration-none" to="/">
+              <Link
+                className="logo text-white fw-bold fs-5 text-decoration-none"
+                to="/"
+              >
                 L8CD
               </Link>
               <h1 className="checkout m-0">Ci sei quasi</h1>
@@ -110,7 +126,10 @@ const Checkout = () => {
                 </div> */}
 
                 {/* FORM */}
-                <form onSubmit={handleOrderSubmit} className="rounded border p-4">
+                <form
+                  onSubmit={handleOrderSubmit}
+                  className="rounded border p-4"
+                >
                   <div className="mb-3">
                     <label className="form-label">E-mail*</label>
                     <input
@@ -162,7 +181,9 @@ const Checkout = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label">Indirizzo di Fatturazione*</label>
+                    <label className="form-label">
+                      Indirizzo di Fatturazione*
+                    </label>
                     <input
                       autoComplete="off"
                       className="form-control"
@@ -176,18 +197,43 @@ const Checkout = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label">Indirizzo di Spedizione</label>
-                    <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
+                    <label className="form-label">
+                      Indirizzo di Spedizione
+                    </label>
+                    <input
+                      autoComplete="off"
+                      className="form-control"
+                      type="text"
+                      name="shipping_address"
+                      placeholder="es. Via Cavour 76"
+                      value={formData.shipping_address}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="mb-3">
                     <label className="form-label">Numero di Telefono*</label>
-                    <input inputMode="numeric" maxLength={12} required autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} />
+                    <input
+                      inputMode="numeric"
+                      maxLength={12}
+                      required
+                      autoComplete="off"
+                      className="form-control"
+                      type="tel"
+                      name="phone"
+                      placeholder="es. 3326951222"
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
-                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                    <select
+                      className="form-select"
+                      name="payment_method"
+                      value={formData.payment_method}
+                      onChange={handleChange}
+                    >
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
                     </select>
@@ -195,10 +241,31 @@ const Checkout = () => {
 
                   {/* visualizzazione small colonna destra */}
                   <div className="col-lg-5 right-column-small">
-                    <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
+                    <CartAccordion
+                      cartItems={cartItems}
+                      totalPrice={totalPrice}
+                    />
                   </div>
-                  <button type="submit" className="btn btn-dark w-100">
-                    Conferma Ordine
+                  {/* BOTTONE DISABLED DOPO CHE E' STATO CLICCATO */}
+                  <button
+                    type="submit"
+                    className="btn btn-dark w-100"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Loader />
+                        <span className="ms-2">Invio in corso...</span>
+                      </div>
+                    ) : (
+                      "Conferma ordine"
+                    )}
                   </button>
                 </form>
               </div>
@@ -231,10 +298,17 @@ const Checkout = () => {
 
                 {cartItems.map((item, index) => (
                   <div className="d-flex mb-3" key={index}>
-                    <img src={item.image} alt={item.name} className="me-3" width="60" />
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="me-3"
+                      width="60"
+                    />
                     <div>
                       <div className="fw-bold">{item.name}</div>
-                      <small className="text-muted">{item.description?.slice(0, 40)}...</small>
+                      <small className="text-muted">
+                        {item.description?.slice(0, 40)}...
+                      </small>
                       <br />
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
@@ -250,7 +324,10 @@ const Checkout = () => {
       ) : (
         <div className="container text-center mt-5">
           <h1>Ordine ricevuto con successo!</h1>
-          <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
+          <p>
+            Grazie per il tuo acquisto. Ti invieremo presto la conferma via
+            email.
+          </p>
           <Link to="/" className="btn btn-dark mt-3">
             Continua con gli acquisti
           </Link>
