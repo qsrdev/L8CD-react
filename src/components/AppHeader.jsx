@@ -60,7 +60,6 @@ const AppHeader = () => {
           {<BurgerMenu />}
         </div>
       </header>
-      <SearchInput />
     </>
   );
 };
