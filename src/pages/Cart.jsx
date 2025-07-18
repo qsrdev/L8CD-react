@@ -78,7 +78,7 @@ const Cart = () => {
                 <p>Quando aggiungerai il primo prodotto al carrello, apparirà qui. Inizia ad esplorare!</p>
                 <button className="btn btn-dark"
                 onClick={() => navigate("/shoes")}
-                > Esplora <i class="fa-solid fa-arrow-right"></i></button>
+                > Esplora <i className="fa-solid fa-arrow-right"></i></button>
                 </>
               ) : (
                 cartItems.map((item) => (
