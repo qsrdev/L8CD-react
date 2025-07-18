@@ -12,7 +12,6 @@ import Checkout from "./pages/Checkout";
 import NotFound from "./pages/404NotFound";
 import CheckoutPaypal from "./pages/CheckoutPaypal";
 
-
 function App() {
   const [showModal, setShowModal] = useState(false);
 
@@ -51,7 +50,7 @@ function App() {
       <CartProvider cartItems={cartItems} setCartItems={setCartItems} totalPrice={totalPrice} setTotalPrice={setTotalPrice}>
         <BrowserRouter>
           <Routes>
-            <Route path="*" element={<NotFound/>}/>
+            <Route path="*" element={<NotFound />} />
             <Route element={<GuestLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/shoes" element={<Shoes />} />
