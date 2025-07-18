@@ -5,7 +5,6 @@ import Slider from "../components/Slider/Slider";
 import CardSlider from "../components/CardSlider/CardSlider";
 import { useCart } from "../Context/CartContext";
 import Loader from "../components/Loader/Loader";
-import ChatBot from "../components/ChatBotAI/ChatBot";
 import CouponToast from "../components/CouponToast";
 
 const Home = () => {
@@ -13,7 +12,7 @@ const Home = () => {
 
   //lascio l'array vuoto perché voglio che la chiamata venga sempre fatta quando carico la pagina
   useEffect(() => {
-    axios.get("http://localhost:3000/shoes").then((resp) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/shoes`).then((resp) => {
       setShoes(resp.data.data);
     });
   }, []);
@@ -74,7 +73,6 @@ const Home = () => {
           </section>
 
           <section>
-            <ChatBot />
           </section>
         </>
       )}

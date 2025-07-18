@@ -1,38 +1,48 @@
-import { useState } from "react";
-import ChatBot from "./ChatBotAI/ChatBot";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import ChatBot from "./ChatBotAI/ChatBot";
 
 const ChatBotToggle = () => {
   const [showChat, setShowChat] = useState(false);
   const location = useLocation();
+  const prevPathRef = useRef(location.pathname);
 
-  useEffect(() => {
+useEffect(() => {
+  if (location.pathname !== prevPathRef.current) {
     setShowChat(false);
-  }, [location]);
+    prevPathRef.current = location.pathname;
+  }
+}, [location.pathname]);
+
+
+
+  const toggleChat = () => {
+    setShowChat((prev) => !prev);
+  };
+
   return (
     <>
       <button
-        onClick={() => setShowChat(!showChat)}
-    
-           style={{
-    position: "fixed",
-    bottom: "80px",
-    right: "20px",
-    backgroundColor: "#f4ae3fff",
-    color: "#000",
-    border: "none",
-    padding: "10px 16px",
-    borderRadius: "50px",
-    cursor: "pointer",
-    zIndex: 9999,
-    opacity: showChat ? 0.5 : 1,
+        onClick={toggleChat}
+        className="chatbox-btn"
+        style={{
+          opacity: showChat ? 0.5 : 1,
+          position: "fixed",
+          bottom: "80px",
+          right: "20px",
+          backgroundColor: "#f4ae3f",
+          color: "#000",
+          border: "none",
+          padding: "10px 16px",
+          borderRadius: "50px",
+          cursor: "pointer",
+          zIndex: 10000,
         }}
       >
         {showChat ? "Chiudi chat" : "Apri chat"}
       </button>
 
-    {showChat &&<ChatBot />}
+      {showChat && <ChatBot />}
     </>
   );
 };

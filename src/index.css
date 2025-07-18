@@ -588,3 +588,16 @@ footer {
 .relative {
   position: relative !important;
 }
+
+.chatbox-btn{
+   position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #f4ae3fff;
+    color: #000;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 9999;
+}

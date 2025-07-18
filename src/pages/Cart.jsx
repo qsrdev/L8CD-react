@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../pages/Cart.css";
+import { useNavigate } from "react-router-dom";
+import AppHeader from "../components/AppHeader";
 
 const Cart = () => {
   const {
@@ -17,6 +19,21 @@ const Cart = () => {
   } = useCart();
 
   const [discountCode, setDiscountCode] = useState("");
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isDiscountApplied) {
+      setDiscount(totalPrice * 0.15);
+    }
+  }, [totalPrice, isDiscountApplied]);
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      setIsDiscountApplied(false);
+      setDiscount(0);
+      setDiscountCode("");
+    }
+  }, [cartItems]);
 
   const applyDiscountCode = () => {
     const code = discountCode.trim().toUpperCase();
@@ -54,8 +71,15 @@ const Cart = () => {
                   </button>
                 )}
               </div>
+              {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
-                <p>Il carrello è vuoto</p>
+                <>
+                <h2> OPS! IL TUO CARRELLO È VUOTO</h2>
+                <p>Quando aggiungerai il primo prodotto al carrello, apparirà qui. Inizia ad esplorare!</p>
+                <button className="btn btn-dark"
+                onClick={() => navigate("/shoes")}
+                > Esplora <i className="fa-solid fa-arrow-right"></i></button>
+                </>
               ) : (
                 cartItems.map((item) => (
                   <div key={item.id} className="card mb-3">
@@ -76,7 +100,7 @@ const Cart = () => {
                               Taglia: <b>{Math.trunc(item.size)}</b>
                             </small>
                           </p>
-                          <p className="card-text fw-bold">{item.price} €</p>
+                          <p className="card-text fw-bold">€ {item.price}</p>
                         </div>
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">
@@ -105,14 +129,14 @@ const Cart = () => {
                 ))
               )}
             </div>
-
+{cartItems.length > 0 && (
             <div className="col-md-4">
               <div className="card p-3">
                 <h4 className="card-title mb-3">Riepilogo</h4>
                 <ul className="list-group list-group-flush mb-3">
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Subtotale</span>
-                    <span>{totalPrice} €</span>
+                    <span>{totalPrice.toFixed(2)} €</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Costi di spedizione</span>
@@ -187,10 +211,11 @@ const Cart = () => {
                       Codice "VILLA15" applicato con successo!
                     </div>
                   )}
-                </div>
+                </div> 
               </div>
             </div>
-          </div>
+          )};
+          </div> 
         </div>
       </section>
     </>

@@ -18,7 +18,7 @@ const ProductDetail = () => {
   }, [slug]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/shoes").then((resp) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/shoes`).then((resp) => {
       setShoes(resp.data.data);
     });
   }, []);
@@ -30,7 +30,7 @@ const ProductDetail = () => {
   }, [slug]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/shoes/${slug}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/shoes/${slug}`).then((res) => {
       setProduct(res.data.data);
     });
   }, [slug]);
@@ -130,24 +130,19 @@ const ProductDetail = () => {
 
             {/* TOAST DI CONFERMA PRODOTTO AGGIUNTO AL CARRELLO */}
             {showToast && (
-              <div className="toast-container position-fixed bottom-0 end-0 p-3">
-                <div
-                  className="toast show my-toast align-items-center text-bg-success border-0"
-                  role="alert"
-                  aria-live="assertive"
-                  aria-atomic="true"
-                >
-                  <div className="d-flex">
-                    <div className="toast-body">
-                      {product.name} aggiunta al carrello!
-                    </div>
-                    <button
-                      type="button"
-                      className="btn-close btn-close-white me-2 m-auto"
-                      onClick={() => setShowToast(false)}
-                    ></button>
-                  </div>
-                </div>
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: 20,
+                  right: 20,
+                  backgroundColor: "#251f32",
+                  color: "white",
+                  padding: ".5rem 1rem",
+                  borderRadius: "0.25rem",
+                  zIndex: 9999,
+                }}
+              >
+                {product.name} aggiunta al carrello!
               </div>
             )}
           </div>
@@ -167,7 +162,7 @@ const ProductDetail = () => {
     </>
   ) : (
     <div className="d-flex justify-content-center py-5">
-      <Loader/>
+      <Loader />
     </div>
   );
 };

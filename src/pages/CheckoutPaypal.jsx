@@ -6,16 +6,8 @@ import "../pages/Checkout.css";
 import "../index.css";
 import CartAccordion from "../components/CartAccordion";
 
-
 const Checkout = () => {
-  const {
-    cartItems,
-    totalPrice,
-    discount,
-    clearCart,
-    increaseQuantity,
-    decreaseQuantity,
-  } = useCart();
+  const { cartItems, totalPrice, discount, clearCart, increaseQuantity, decreaseQuantity } = useCart();
   const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
@@ -48,11 +40,8 @@ const Checkout = () => {
         })),
       };
 
-      const response = await axios.post(
-        "http://localhost:3000/shoes/store",
-        orderData
-      );
-      await axios.post("http://localhost:3000/api/mail/checkout", {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/shoes/store`, orderData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/checkout`, {
         email: formData.custom_email,
         cartItems: cartItems,
         name: formData.custom_name,
@@ -75,10 +64,7 @@ const Checkout = () => {
           {/* Header */}
           <header className="header-color-checkout py-3 mb-4">
             <div className="container d-flex justify-content-between align-items-center text-white">
-              <Link
-                className="logo text-white fw-bold fs-5 text-decoration-none"
-                to="/"
-              >
+              <Link className="logo text-white fw-bold fs-5 text-decoration-none" to="/">
                 L8CD
               </Link>
               <h1 className="checkout m-0">Ci sei quasi</h1>
@@ -115,88 +101,38 @@ const Checkout = () => {
                 {/* FORM */}
                 <form onSubmit={handleOrderSubmit}>
                   <div className="mb-3">
-                    <input
-                      className="form-control"
-                      type="email"
-                      name="custom_email"
-                      placeholder="E-mail*"
-                      value={formData.custom_email}
-                      onChange={handleChange}
-                      required
-                    />
+                    <input className="form-control" type="email" name="custom_email" placeholder="E-mail*" value={formData.custom_email} onChange={handleChange} required />
                   </div>
 
                   <div className="row">
                     <div className="col-md-6 mb-3">
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="custom_name"
-                        placeholder="Nome*"
-                        value={formData.custom_name}
-                        onChange={handleChange}
-                        required
-                      />
+                      <input className="form-control" type="text" name="custom_name" placeholder="Nome*" value={formData.custom_name} onChange={handleChange} required />
                     </div>
                     <div className="col-md-6 mb-3">
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="custom_surname"
-                        placeholder="Cognome*"
-                        onChange={handleChange}
-                        required
-                      />
+                      <input className="form-control" type="text" name="custom_surname" placeholder="Cognome*" onChange={handleChange} required />
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <input
-                      className="form-control"
-                      type="text"
-                      name="custom_address"
-                      placeholder="Inizia a digitare l'indirizzo"
-                      value={formData.custom_address}
-                      onChange={handleChange}
-                      required
-                    />
+                    <input className="form-control" type="text" name="custom_address" placeholder="Inizia a digitare l'indirizzo" value={formData.custom_address} onChange={handleChange} required />
                   </div>
 
                   <div className="mb-3">
-                    <input
-                      className="form-control"
-                      type="text"
-                      name="shipping_address"
-                      placeholder="Indirizzo spedizione"
-                      value={formData.shipping_address}
-                      onChange={handleChange}
-                    />
+                    <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
                   </div>
 
                   <div className="mb-3">
-                    <input
-                      className="form-control"
-                      type="tel"
-                      name="phone"
-                      placeholder="Numero di telefono*"
-                      onChange={handleChange}
-                      required
-                    />
+                    <input className="form-control" type="tel" name="phone" placeholder="Numero di telefono*" onChange={handleChange} required />
                   </div>
 
                   <div className="mb-3">
-                    <input
-                      className="form-control disabled"
-                      name="payment_method"
-                      value={formData.payment_method}
-                    >
-                    </input>
+                    <input className="form-control disabled" name="payment_method" value={formData.payment_method}></input>
                   </div>
 
-   {/* visualizzazione small colonna destra */}
-              <div className="col-lg-5 right-column-small">
-                <CartAccordion cartItems={cartItems} totalPrice={totalPrice}/>
-              </div>
+                  {/* visualizzazione small colonna destra */}
+                  <div className="col-lg-5 right-column-small">
+                    <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
+                  </div>
                   <button type="submit" className="btn btn-dark w-100">
                     Conferma Ordine
                   </button>
@@ -214,10 +150,12 @@ const Checkout = () => {
                   <span>Costi di spedizione stimati</span>
                   <span>0,00 €</span>
                 </div>
-                <div className="d-flex justify-content-between">
-                  <span>Sconto:</span>
-                  <span>-{discount.toFixed(2)} €</span>
-                </div>
+                {discount > 0 && (
+                  <div className="d-flex justify-content-between">
+                    <span>Sconto:</span>
+                    <span>-{discount.toFixed(2)} €</span>
+                  </div>
+                )}
                 <div className="d-flex justify-content-between fw-bold fs-5 my-3">
                   <span>Totale</span>
                   <span>{totalWithDiscount} €</span>
@@ -229,37 +167,26 @@ const Checkout = () => {
 
                 {cartItems.map((item, index) => (
                   <div className="d-flex mb-3" key={index}>
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="me-3"
-                      width="60"
-                    />
+                    <img src={item.image} alt={item.name} className="me-3" width="60" />
                     <div>
                       <div className="fw-bold">{item.name}</div>
-                      <small className="text-muted">
-                        {item.description?.slice(0, 40)}...
-                      </small>
+                      <small className="text-muted">{item.description?.slice(0, 40)}...</small>
                       <br />
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div>{item.price} €</div>
+                      <div>€ {item.price}</div>
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </>
       ) : (
         <div className="container text-center mt-5">
           <h1>Ordine ricevuto con successo!</h1>
-          <p>
-            Grazie per il tuo acquisto. Ti invieremo presto la conferma via
-            email.
-          </p>
+          <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
           <Link to="/" className="btn btn-dark mt-3">
             Continua con gli acquisti
           </Link>
