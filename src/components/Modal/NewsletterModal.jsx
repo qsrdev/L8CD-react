@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./NewsletterModal.css";
 import Loader from "../Loader/Loader";
@@ -7,6 +7,19 @@ export default function NewsletterModal({ show, onClose }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false)
+
+ useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+        onClose()
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast, onClose]);
+
 
   const isValidEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,20 +44,22 @@ export default function NewsletterModal({ show, onClose }) {
         console.log("successo " + email);
         setEmail("");
         localStorage.setItem("promoModalShown", "true");
-        onClose();
+        setShowToast(true)
       })
       .catch((err) => {
         console.error("Errore durante la richiesta:", err);
         setStatus("Errore durante l'iscrizione.");
       })
       .finally(() => {
-        setIsLoading(false);
+        if (!showToast) {
+          setIsLoading(false);
+        }
       });
   };
 
   return (
     <div className="modal-backdrop-custom">
-      <div className="modal-content-custom container">
+      <div className="modal-content-custom container p-0">
         <button className="btn-close-custom" onClick={onClose}>
           ×
         </button>
@@ -63,7 +78,7 @@ export default function NewsletterModal({ show, onClose }) {
                 required
                 disabled={isLoading}
               />
-              <button type="submit" className="text-decoration-underline btn btn-dark w-100 text-uppercase fw-bold d-flex justify-content-center align-items-center" disabled={isLoading}>
+              <button type="submit" className="text-decoration-underline btn-modal w-100 text-uppercase fw-bold d-flex justify-content-center align-items-center" disabled={isLoading}>
                 {isLoading ? <Loader /> : "Iscriviti"}
               </button>
               {status && <p className="mt-3 text-center">{status}</p>}
@@ -75,6 +90,23 @@ export default function NewsletterModal({ show, onClose }) {
           </div>
         </div>
       </div>
+
+      {showToast && (
+        <div
+            style={{
+                position: "fixed",
+                bottom: 20,
+                right: 20,
+                backgroundColor: "#fea82f",
+                color: "white",
+                padding: ".5rem 1rem",
+                borderRadius: "0.25rem",
+                zIndex: 9999,
+            }}
+            >
+            E-mail inviata con successo!
+            </div>
+      )}
     </div>
   );
 }
