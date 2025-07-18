@@ -23,7 +23,7 @@ const Shoes = () => {
   const searchTerm = searchTermFromQuery || "";
 
   useEffect(() => {
-    let url = "http://localhost:3000/shoes";
+    let url = `${import.meta.env.VITE_API_URL}/shoes`;
     const params = {};
 
     if (gender === "offerte") {

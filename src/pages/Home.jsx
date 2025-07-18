@@ -13,7 +13,7 @@ const Home = () => {
 
   //lascio l'array vuoto perché voglio che la chiamata venga sempre fatta quando carico la pagina
   useEffect(() => {
-    axios.get("http://localhost:3000/shoes").then((resp) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/shoes`).then((resp) => {
       setShoes(resp.data.data);
     });
   }, []);
