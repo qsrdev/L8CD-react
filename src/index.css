@@ -274,6 +274,23 @@ footer {
 
 /* SINGLE PRODUCT STYLING */
 
+.price-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.discount-price {
+  color: #e60023; /* rosso vivo */
+  font-weight: bold;
+}
+
+
 .single-product-image {
   margin: 30px 80px;
   height: 85vh;

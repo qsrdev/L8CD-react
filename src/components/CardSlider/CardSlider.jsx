@@ -34,10 +34,18 @@ export default function CardSlider({ array }) {
       >
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
-            <Link to={`/shoes/product/${curElement.slug} `} onClick={() => console.log("Clicked", curElement.slug)}>
+            <Link
+              to={`/shoes/product/${curElement.slug} `}
+              onClick={() => console.log("Clicked", curElement.slug)}
+            >
               <img src={curElement.image} alt={curElement.name} />
             </Link>
-            <p className="promo-marklabel">PROMO</p>
+            {curElement.discount_price &&
+            curElement.price !== curElement.discount_price ? (
+              <p className="promo-marklabel-green">PROMO</p>
+            ) : curElement.price >= 100 ? (
+              <p className="promo-marklabel">spedizione gratuita</p>
+            ) : null}
           </SwiperSlide>
         ))}
       </Swiper>

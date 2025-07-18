@@ -23,7 +23,7 @@ const Home = () => {
 
   //scarpe che hanno il prezzo superiore a 100 euro - solo i primi 5 risultati
   const freeShippingShoes = shoes
-    .filter((shoe) => shoe.price >= 100)
+    .filter((shoe) => shoe.discount_price != null)
     .slice(0, 5);
 
   // 5 scarpe casuali per scopri i nostri brand
