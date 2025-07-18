@@ -110,13 +110,14 @@ const Checkout = () => {
                 </div> */}
 
                 {/* FORM */}
-                <form onSubmit={handleOrderSubmit}>
+                <form onSubmit={handleOrderSubmit} className="rounded border p-4">
                   <div className="mb-3">
+                    <label class="form-label">E-mail*</label>
                     <input
                       className="form-control"
                       type="email"
                       name="custom_email"
-                      placeholder="E-mail*"
+                      placeholder="E-mail"
                       value={formData.custom_email}
                       onChange={handleChange}
                       required
@@ -126,26 +127,41 @@ const Checkout = () => {
 
                   <div className="row">
                     <div className="col-md-6 mb-3">
-                      <input className="form-control" type="text" name="custom_name" placeholder="Nome*" value={formData.custom_name} onChange={handleChange} required />
+                      <label class="form-label">Nome*</label>
+                      <input autoComplete="off" className="form-control" type="text" name="custom_name" placeholder="Mario" value={formData.custom_name} onChange={handleChange} required />
                     </div>
                     <div className="col-md-6 mb-3">
-                      <input className="form-control" type="text" name="custom_surname" placeholder="Cognome*" onChange={handleChange} required />
+                      <label class="form-label">Cognome*</label>
+                      <input autoComplete="off" className="form-control" type="text" name="custom_surname" placeholder="Rossi" onChange={handleChange} required />
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <input className="form-control" type="text" name="custom_address" placeholder="Inizia a digitare l'indirizzo" value={formData.custom_address} onChange={handleChange} required />
+                    <label class="form-label">Indirizzo di Fatturazione*</label>
+                    <input
+                      autoComplete="off"
+                      className="form-control"
+                      type="text"
+                      name="custom_address"
+                      placeholder="es. Via Panisperna 7"
+                      value={formData.custom_address}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
 
                   <div className="mb-3">
-                    <input className="form-control" type="text" name="shipping_address" placeholder="Indirizzo spedizione" value={formData.shipping_address} onChange={handleChange} />
+                    <label class="form-label">Indirizzo di Spedizione</label>
+                    <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
                   </div>
 
                   <div className="mb-3">
-                    <input className="form-control" type="tel" name="phone" placeholder="Numero di telefono*" onChange={handleChange} required />
+                    <label class="form-label">Numero di Telefono*</label>
+                    <input autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} required />
                   </div>
 
                   <div className="mb-3">
+                    <label class="form-label">Metodo di Pagamento</label>
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
