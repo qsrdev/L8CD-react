@@ -105,7 +105,7 @@ const Cart = () => {
                 ))
               )}
             </div>
-
+{cartItems.length > 0 && (
             <div className="col-md-4">
               <div className="card p-3">
                 <h4 className="card-title mb-3">Riepilogo</h4>
@@ -187,10 +187,11 @@ const Cart = () => {
                       Codice "VILLA15" applicato con successo!
                     </div>
                   )}
-                </div>
+                </div> 
               </div>
             </div>
-          </div>
+          )};
+          </div> 
         </div>
       </section>
     </>
