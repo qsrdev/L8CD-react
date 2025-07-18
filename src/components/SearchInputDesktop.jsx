@@ -46,9 +46,12 @@ const SearchInputDesktop = () => {
         className="search d-sm-none d-md-none d-lg-block"
         value={search}
         onChange={handleInput}
-        onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
+        // onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
       />
 
+
+      {/* Il search viene avviato al premere del button */}
+      {/* Togliere il commento su onKeyDown se si vuole la ricerca al tasto Invio */}
       <button
         onClick={handleRedirect}
         className="btn-search-desktop d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block"

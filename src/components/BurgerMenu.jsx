@@ -43,7 +43,7 @@ const BurgerMenu = () => {
     <div className="burger-menu d-md-block d-lg-none">
 
 
-      <div className="d-flex align-content-center">
+      <div className="d-flex align-content-center gap-1">
 
         {/* Link-cart */}
         <div className="header-icon">
@@ -52,6 +52,17 @@ const BurgerMenu = () => {
           </Link>
         </div>
 
+        {/* Search Button */}
+        <div>
+          <button className="btn btn-search-small-screen" onClick={() => setSearchMobile(!searchMobile)}>
+            <i className="fs-5 fa-solid fa-magnifying-glass text-white"></i>
+          </button>
+        </div>
+
+        {searchMobile && (
+          <SearchInput onClick={handleSearchClick}/>
+        )}
+
         {/* Burger menu link */}
         <div>
           <button className="btn" onClick={() => setMenuOpen(!menuOpen)}>
@@ -59,12 +70,6 @@ const BurgerMenu = () => {
           </button>
         </div>
 
-        {/* Search Button */}
-        <div>
-          <button className="btn btn-search" onClick={() => setSearchMobile(!searchMobile)}>
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
 
       </div>
 
@@ -80,10 +85,6 @@ const BurgerMenu = () => {
             ))}
           </ul>
         </div>
-      )}
-
-      {searchMobile && (
-        <SearchInput onClick={handleSearchClick}/>
       )}
     </div>
   );

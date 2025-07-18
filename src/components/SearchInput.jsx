@@ -35,7 +35,7 @@ const SearchInput = () => {
   }, [location.search]);
 
   return (
-    <div className="search-wrapper search-input">
+    <div className="search-wrapper search-input position-absolute top-100 start-0 ">
       <div className="d-flex">
         <input
           type="text"
@@ -43,9 +43,12 @@ const SearchInput = () => {
           className="w-100 search-small-screen"
           value={search}
           onChange={handleInput}
-          onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
+          // onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
         />
 
+
+        {/* Il search viene avviato al premere del button */}
+        {/* Togliere il commento su onKeyDown se si vuole la ricerca al tasto Invio */}
         <button onClick={handleRedirect} className="btn-search">
           Cerca
         </button>
