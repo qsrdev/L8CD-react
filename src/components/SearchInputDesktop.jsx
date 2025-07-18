@@ -58,6 +58,7 @@ const SearchInputDesktop = () => {
       >
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
+
       <div className="header-icons d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block relative">
         <Link to="/shoes/cart">
           <i className="fa-solid fa-cart-shopping text-white"></i>
@@ -66,6 +67,7 @@ const SearchInputDesktop = () => {
           ) : null}
         </Link>
       </div>
+      
     </div>
   );
 };
