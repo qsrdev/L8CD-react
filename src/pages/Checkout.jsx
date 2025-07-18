@@ -43,12 +43,14 @@ const Checkout = () => {
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     if (!isEmailValid(formData.custom_email)) {
       alert("Inserisci un indirizzo email valido.");
+      setIsSubmitting(false);
       return;
     }
-
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     try {
       const orderData = {
         ...formData,
@@ -57,11 +59,6 @@ const Checkout = () => {
           product_id: item.id,
           quantity: item.quantity,
         })),
-      };
-
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
       };
 
       const response = await axios.post(
@@ -256,10 +253,16 @@ const Checkout = () => {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      <>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
                         <Loader />
                         <span className="ms-2">Invio in corso...</span>
-                      </>
+                      </div>
                     ) : (
                       "Conferma ordine"
                     )}
