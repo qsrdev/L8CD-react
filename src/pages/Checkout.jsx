@@ -6,7 +6,6 @@ import "../pages/Checkout.css";
 import "../index.css";
 import CartAccordion from "../components/CartAccordion";
 
-
 const Checkout = () => {
   const {
     cartItems,
@@ -196,10 +195,13 @@ const Checkout = () => {
                     </select>
                   </div>
 
-   {/* visualizzazione small colonna destra */}
-              <div className="col-lg-5 right-column-small">
-                <CartAccordion cartItems={cartItems} totalPrice={totalPrice}/>
-              </div>
+                  {/* visualizzazione small colonna destra */}
+                  <div className="col-lg-5 right-column-small">
+                    <CartAccordion
+                      cartItems={cartItems}
+                      totalPrice={totalPrice}
+                    />
+                  </div>
                   <button type="submit" className="btn btn-dark w-100">
                     Conferma Ordine
                   </button>
@@ -217,10 +219,12 @@ const Checkout = () => {
                   <span>Costi di spedizione stimati</span>
                   <span>0,00 €</span>
                 </div>
-                <div className="d-flex justify-content-between">
-                  <span>Sconto:</span>
-                  <span>-{discount.toFixed(2)} €</span>
-                </div>
+                {discount > 0 && (
+                  <div className="d-flex justify-content-between">
+                    <span>Sconto:</span>
+                    <span>-{discount.toFixed(2)} €</span>
+                  </div>
+                )}
                 <div className="d-flex justify-content-between fw-bold fs-5 my-3">
                   <span>Totale</span>
                   <span>{totalWithDiscount} €</span>
@@ -247,12 +251,11 @@ const Checkout = () => {
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div>{item.price} €</div>
+                      <div>€ {item.price}</div>
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </>
