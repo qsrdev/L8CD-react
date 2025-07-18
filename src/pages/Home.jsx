@@ -5,7 +5,6 @@ import Slider from "../components/Slider/Slider";
 import CardSlider from "../components/CardSlider/CardSlider";
 import { useCart } from "../Context/CartContext";
 import Loader from "../components/Loader/Loader";
-import ChatBot from "../components/ChatBotAI/ChatBot";
 import CouponToast from "../components/CouponToast";
 
 const Home = () => {
@@ -74,7 +73,6 @@ const Home = () => {
           </section>
 
           <section>
-            <ChatBot />
           </section>
         </>
       )}
