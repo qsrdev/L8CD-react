@@ -57,7 +57,7 @@ const Cart = () => {
                   </button>
                 )}
               </div>
-              {/* CARRELLO VUOTO */}
+              {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
                 <>
                 <h2> OPS! IL TUO CARRELLO È VUOTO</h2>
