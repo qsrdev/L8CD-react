@@ -51,11 +51,7 @@ const Checkout = () => {
         })),
       };
 
-
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/shoes/store`,
-        orderData
-      );
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/shoes/store`, orderData);
       await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/checkout`, {
         email: formData.custom_email,
         cartItems: cartItems,
@@ -186,7 +182,7 @@ const Checkout = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Numero di Telefono*</label>
-                    <input autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} required />
+                    <input inputMode="numeric" maxLength={15} required autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} />
                   </div>
 
                   <div className="mb-3">
