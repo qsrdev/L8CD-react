@@ -4,17 +4,7 @@ import { useState, useEffect } from "react";
 import "../pages/Cart.css";
 
 const Cart = () => {
-  const {
-    cartItems,
-    totalPrice,
-    clearCart,
-    increaseQuantity,
-    decreaseQuantity,
-    discount,
-    setDiscount,
-    isDiscountApplied,
-    setIsDiscountApplied,
-  } = useCart();
+  const { cartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity, discount, setDiscount, isDiscountApplied, setIsDiscountApplied } = useCart();
 
   const [discountCode, setDiscountCode] = useState("");
 
@@ -60,10 +50,7 @@ const Cart = () => {
                 {cartItems.length === 0 ? (
                   ""
                 ) : (
-                  <button
-                    className="btn btn-outline-danger btn-sm p-2"
-                    onClick={clearCart}
-                  >
+                  <button className="btn btn-outline-danger btn-sm p-2" onClick={clearCart}>
                     <i className="bi bi-recycle"></i> Svuota carrello
                   </button>
                 )}
@@ -75,11 +62,7 @@ const Cart = () => {
                   <div key={item.id} className="card mb-3">
                     <div className="row g-0">
                       <div className="col-md-3">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="rounded-start cart-img"
-                        />
+                        <img src={item.image} alt={item.name} className="rounded-start cart-img" />
                       </div>
                       <div className="col-md-6">
                         <div className="card-body">
@@ -95,21 +78,11 @@ const Cart = () => {
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">
                         <div className="counter-container btn-group">
-                          <button
-                            className="counter-btn"
-                            onClick={() => decreaseQuantity(item.id)}
-                          >
-                            <i
-                              className={`bi ${
-                                item.quantity === 1 ? "bi-trash" : "bi-dash"
-                              }`}
-                            ></i>
+                          <button className="counter-btn" onClick={() => decreaseQuantity(item.id)}>
+                            <i className={`bi ${item.quantity === 1 ? "bi-trash" : "bi-dash"}`}></i>
                           </button>
                           <div className="counter-number">{item.quantity}</div>
-                          <button
-                            className="counter-btn"
-                            onClick={() => increaseQuantity(item.id)}
-                          >
+                          <button className="counter-btn" onClick={() => increaseQuantity(item.id)}>
                             <i className="bi bi-plus"></i>
                           </button>
                         </div>
@@ -142,9 +115,7 @@ const Cart = () => {
 
                 <div className="d-flex justify-content-between fw-bold mb-3">
                   <span>Totale</span>
-                  <span>
-                    {totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €
-                  </span>
+                  <span>{totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €</span>
                 </div>
 
                 {cartItems.length === 0 ? (
@@ -152,10 +123,7 @@ const Cart = () => {
                     <button className="btn btn-secondary w-100 mb-2" disabled>
                       Vai al pagamento
                     </button>
-                    <button
-                      className="btn btn-outline-secondary w-100 mb-3"
-                      disabled
-                    >
+                    <button className="btn btn-outline-secondary w-100 mb-3" disabled>
                       PayPal
                     </button>
                   </>
@@ -164,43 +132,22 @@ const Cart = () => {
                     <Link className="btn btn-dark w-100 mb-2" to="/checkout">
                       Vai al pagamento
                     </Link>
-                    <Link
-                      className="btn btn-outline-secondary w-100 mb-3"
-                      to="/checkout/Paypal"
-                    >
+                    <Link className="btn btn-outline-secondary w-100 mb-3" to="/checkout/Paypal">
                       PayPal
                     </Link>
                   </>
                 )}
 
                 <div className="mb-3">
-                  <label className="form-label">
-                    Hai un codice promozionale?
-                  </label>
+                  <label className="form-label">Hai un codice promozionale?</label>
 
                   <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Inserisci codice"
-                      value={discountCode}
-                      onChange={(e) => setDiscountCode(e.target.value)}
-                      disabled={isDiscountApplied}
-                    />
-                    <button
-                      className="btn btn-outline-dark"
-                      type="button"
-                      onClick={applyDiscountCode}
-                      disabled={isDiscountApplied}
-                    >
+                    <input type="text" className="form-control" placeholder="Inserisci codice" value={discountCode} onChange={(e) => setDiscountCode(e.target.value)} disabled={isDiscountApplied} />
+                    <button className="btn btn-outline-dark" type="button" onClick={applyDiscountCode} disabled={isDiscountApplied}>
                       Applica
                     </button>
                   </div>
-                  {isDiscountApplied && (
-                    <div className="form-text text-success">
-                      Codice "VILLA15" applicato con successo!
-                    </div>
-                  )}
+                  {isDiscountApplied && <div className="form-text text-success">Codice "VILLA15" applicato con successo!</div>}
                 </div>
               </div>
             </div>
