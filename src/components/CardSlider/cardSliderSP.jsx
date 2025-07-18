@@ -38,16 +38,16 @@ export default function CardSliderSP({ array }) {
       >
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
-            <div>
+            <div className="position-relative">
               <Link to={`/shoes/product/${curElement.slug}`}>
                 {" "}
                 <img src={curElement.image} alt={curElement.name} />{" "}
               </Link>
               <h6 className="card-title name py-3">{curElement.name}</h6>
               <p className="card-text price">{curElement.price} €</p>
+            <p className="promo-marklabel">Tra i più acquistati</p>
             </div>
 
-            <p className="promo-marklabel">Tra i più acquistati</p>
           </SwiperSlide>
         ))}
       </Swiper>
