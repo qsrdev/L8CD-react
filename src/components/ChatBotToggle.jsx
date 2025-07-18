@@ -14,7 +14,6 @@ const ChatBotToggle = () => {
     <>
       <button
         onClick={() => setShowChat(!showChat)}
-    
            style={{
     position: "fixed",
     bottom: "80px",
@@ -32,7 +31,7 @@ const ChatBotToggle = () => {
         {showChat ? "Chiudi chat" : "Apri chat"}
       </button>
 
-    {showChat &&<ChatBot />}
+    {showChat && <ChatBot />}
     </>
   );
 };
