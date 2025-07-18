@@ -22,7 +22,7 @@ export default function NewsletterModal({ show, onClose }) {
     }
 
     axios
-      .post("http://localhost:3000/api/mail/subscribe", { email })
+      .post(`${import.meta.env.VITE_API_URL}/api/mail/subscribe`, { email })
       .then((res) => {
         setStatus("Iscrizione avvenuta con successo!");
         console.log("successo " + email);

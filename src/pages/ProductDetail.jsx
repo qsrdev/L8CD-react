@@ -18,7 +18,7 @@ const ProductDetail = () => {
   }, [slug]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/shoes").then((resp) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/shoes`).then((resp) => {
       setShoes(resp.data.data);
     });
   }, []);
@@ -30,7 +30,7 @@ const ProductDetail = () => {
   }, [slug]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/shoes/${slug}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/shoes/${slug}`).then((res) => {
       setProduct(res.data.data);
     });
   }, [slug]);
