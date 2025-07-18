@@ -2,8 +2,10 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
+import { useCart } from "../Context/CartContext";
 
 const BurgerMenu = () => {
+  const { cartItems } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchMobile, setSearchMobile] = useState(false)
 
@@ -42,7 +44,6 @@ const BurgerMenu = () => {
   return (
     <div className="burger-menu d-md-block d-lg-none">
 
-
       <div className="d-flex align-content-center gap-1">
 
         {/* Link-cart */}
@@ -53,10 +54,15 @@ const BurgerMenu = () => {
         </div>
 
         {/* Search Button */}
-        <div>
+        <div className="position-relative">
           <button className="btn btn-search-small-screen" onClick={() => setSearchMobile(!searchMobile)}>
             <i className="fs-5 fa-solid fa-magnifying-glass text-white"></i>
           </button>
+          {cartItems.length > 0 && (
+            <span className="cart-badge-small-screen translate-middle badge rounded-pill bg-danger">
+              {cartItems.length}
+            </span>
+          )}
         </div>
 
         {searchMobile && (

@@ -336,6 +336,7 @@ footer {
   margin-top: 30px;
   margin: 0 auto;
 }
+
 .add-to-cart {
   background-color: #ff6b6b;
   color: #fff;
@@ -346,10 +347,12 @@ footer {
   margin-top: 30px;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
 .add-to-cart:active {
   transform: scale(1.08);
   background-color: #e04a4a;
 }
+
 .add-to-cart-all {
   background-color: #ff6b6b;
   color: #fff;
@@ -360,10 +363,12 @@ footer {
   margin-top: 30px;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
 .add-to-cart-all:active {
   transform: scale(1.08);
   background-color: #e04a4a;
 }
+
 @media screen and (max-width: 990px) {
   .SP-section {
     flex-wrap: wrap;
@@ -583,6 +588,12 @@ footer {
   line-height: 1;
   min-width: 20px;
   text-align: center;
+}
+
+.cart-badge-small-screen {
+ position: absolute;
+ top: 5px;
+ left: -10px;
 }
 
 .relative {
