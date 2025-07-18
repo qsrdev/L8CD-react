@@ -36,12 +36,16 @@ img {
 
 .promo-marklabel {
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 23px;
+  right: -11px;
   padding: 3px 5px;
   background-color: var(--common-color-4);
   color: white;
   border-radius: 5px;
   font-size: 12px;
   font-weight: bold;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6b579b3a09cf856f7d5b22de0721ff0d5c01f2f2

@@ -272,7 +272,7 @@ const Checkout = () => {
 
               {/* Colonna destra */}
               <div className="col-lg-5 right-column-desktop">
-                <h5 className="fw-bold">Nel carrello</h5>
+                <h5 className="fw-bold">Riepilogo carrello</h5>
                 <div className="d-flex justify-content-between border-bottom py-2">
                   <span>Subtotale</span>
                   <span>{totalPrice.toFixed(2)} €</span>
@@ -313,7 +313,7 @@ const Checkout = () => {
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div>€ {item.price}</div>
+                      <div className="card-text price">{item.price} €</div>
                     </div>
                   </div>
                 ))}
