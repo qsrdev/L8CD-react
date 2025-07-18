@@ -112,7 +112,7 @@ const Checkout = () => {
                 {/* FORM */}
                 <form onSubmit={handleOrderSubmit} className="rounded border p-4">
                   <div className="mb-3">
-                    <label class="form-label">E-mail*</label>
+                    <label className="form-label">E-mail*</label>
                     <input
                       className="form-control"
                       type="email"
@@ -127,17 +127,42 @@ const Checkout = () => {
 
                   <div className="row">
                     <div className="col-md-6 mb-3">
-                      <label class="form-label">Nome*</label>
-                      <input autoComplete="off" className="form-control" type="text" name="custom_name" placeholder="Mario" value={formData.custom_name} onChange={handleChange} required />
+                      <label className="form-label">Nome*</label>
+                      <input
+                        pattern="^[A-Za-zÀ-ÿ\s'-]+$"
+                        autoComplete="off"
+                        className="form-control"
+                        type="text"
+                        name="custom_name"
+                        placeholder="Mario"
+                        value={formData.custom_name}
+                        onChange={handleChange}
+                        required
+                        onKeyDown={(e) => {
+                          if (/\d/.test(e.key)) e.preventDefault();
+                        }}
+                      />
                     </div>
                     <div className="col-md-6 mb-3">
-                      <label class="form-label">Cognome*</label>
-                      <input autoComplete="off" className="form-control" type="text" name="custom_surname" placeholder="Rossi" onChange={handleChange} required />
+                      <label className="form-label">Cognome*</label>
+                      <input
+                        pattern="^[A-Za-zÀ-ÿ\s'-]+$"
+                        autoComplete="off"
+                        className="form-control"
+                        type="text"
+                        name="custom_surname"
+                        placeholder="Rossi"
+                        onChange={handleChange}
+                        required
+                        onKeyDown={(e) => {
+                          if (/\d/.test(e.key)) e.preventDefault();
+                        }}
+                      />
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <label class="form-label">Indirizzo di Fatturazione*</label>
+                    <label className="form-label">Indirizzo di Fatturazione*</label>
                     <input
                       autoComplete="off"
                       className="form-control"
@@ -151,17 +176,17 @@ const Checkout = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label class="form-label">Indirizzo di Spedizione</label>
+                    <label className="form-label">Indirizzo di Spedizione</label>
                     <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
                   </div>
 
                   <div className="mb-3">
-                    <label class="form-label">Numero di Telefono*</label>
+                    <label className="form-label">Numero di Telefono*</label>
                     <input autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} required />
                   </div>
 
                   <div className="mb-3">
-                    <label class="form-label">Metodo di Pagamento</label>
+                    <label className="form-label">Metodo di Pagamento</label>
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
