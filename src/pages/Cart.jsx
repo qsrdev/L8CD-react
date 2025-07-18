@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
 import { useState, useEffect } from "react";
 import "../pages/Cart.css";
+import { useNavigate } from "react-router-dom";
+import AppHeader from "../components/AppHeader";
 
 const Cart = () => {
   const {
@@ -17,6 +19,7 @@ const Cart = () => {
   } = useCart();
 
   const [discountCode, setDiscountCode] = useState("");
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isDiscountApplied) {
@@ -68,8 +71,15 @@ const Cart = () => {
                   </button>
                 )}
               </div>
+              {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
-                <p>Il carrello è vuoto</p>
+                <>
+                <h2> OPS! IL TUO CARRELLO È VUOTO</h2>
+                <p>Quando aggiungerai il primo prodotto al carrello, apparirà qui. Inizia ad esplorare!</p>
+                <button className="btn btn-dark"
+                onClick={() => navigate("/shoes")}
+                > Esplora <i class="fa-solid fa-arrow-right"></i></button>
+                </>
               ) : (
                 cartItems.map((item) => (
                   <div key={item.id} className="card mb-3">

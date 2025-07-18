@@ -51,8 +51,12 @@ const Checkout = () => {
         })),
       };
 
-      const response = await axios.post("http://localhost:3000/shoes/store", orderData);
-      await axios.post("http://localhost:3000/api/mail/checkout", {
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/shoes/store`,
+        orderData
+      );
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/checkout`, {
         email: formData.custom_email,
         cartItems: cartItems,
         name: formData.custom_name,
