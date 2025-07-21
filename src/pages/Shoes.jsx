@@ -28,7 +28,7 @@ const Shoes = () => {
     const params = {};
 
     if (gender === "offerte") {
-      params.maxPrice = 90;
+      params.onlyDiscounted = true ;
     } else if (gender === "novita") {
       params.isNew = true;
     } else if (gender) {
