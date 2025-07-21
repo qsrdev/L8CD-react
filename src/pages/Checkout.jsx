@@ -55,7 +55,7 @@ const Checkout = () => {
     e.preventDefault();
 
     const errors = {};
-    if (!/\S+@\S+\.\S+/.test(formData.custom_email)) errors.custom_email = true;
+    if (!/^\d{9,12}$/.test(formData.phone)) errors.phone = true;
     if (!formData.custom_name) errors.custom_name = true;
     if (!formData.custom_surname) errors.custom_surname = true;
     if (!formData.custom_address) errors.custom_address = true;
