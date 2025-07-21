@@ -20,6 +20,19 @@ export default function CardSlider({ array }) {
       setDiscount(resp.data.data);
     })
   }, []);
+  useEffect(() => {
+  const allCards = document.querySelectorAll(".card");
+  let maxHeight = 0;
+  allCards.forEach(card => {
+    if (card.offsetHeight > maxHeight) {
+      maxHeight = card.offsetHeight;
+    }
+  });
+  allCards.forEach(card => {
+    card.style.height = `${maxHeight}px`;
+  });
+}, []);
+
 
   return (
     <>
