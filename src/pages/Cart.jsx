@@ -19,7 +19,7 @@ const Cart = () => {
   } = useCart();
 
   const [discountCode, setDiscountCode] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isDiscountApplied) {
@@ -75,26 +75,43 @@ const Cart = () => {
               {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
                 <>
-                <h2 className="fw-bold"> OPS! IL TUO CARRELLO È VUOTO</h2>
-                <p>Quando aggiungerai il primo prodotto al carrello, apparirà qui. Inizia ad esplorare!</p>
-                <button className="btn-explore"
-                onClick={() => navigate("/shoes")}
-                > Esplora <i className="fa-solid fa-arrow-right"></i></button>
+                  <h2 className="fw-bold"> OPS! IL TUO CARRELLO È VUOTO</h2>
+                  <p>
+                    Quando aggiungerai il primo prodotto al carrello, apparirà
+                    qui. Inizia ad esplorare!
+                  </p>
+                  <button
+                    className="btn-explore"
+                    onClick={() => navigate("/shoes")}
+                  >
+                    {" "}
+                    Esplora <i className="fa-solid fa-arrow-right"></i>
+                  </button>
                 </>
               ) : (
                 cartItems.map((item) => (
                   <div key={item.id} className="card mb-3">
                     <div className="row g-0">
                       <div className="col-md-3">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="rounded-start cart-img"
-                        />
+                        <Link
+                          to={`/shoes/product/${item.slug}`}
+                          className="text-decoration-none text-dark col-md-9 d-flex transform"
+                        >
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="rounded-start cart-img"
+                          />
+                        </Link>
                       </div>
                       <div className="col-md-6">
                         <div className="card-body">
-                          <h5 className="card-title name">{item.name}</h5>
+                          <Link
+                            to={`/shoes/product/${item.slug}`}
+                            className="text-decoration-none text-dark col-md-9 d-flex transform"
+                          >
+                            <h5 className="card-title name">{item.name}</h5>
+                          </Link>
                           <p className="card-text">{item.gender}</p>
                           <p className="card-text">
                             <small className="text-muted">
@@ -132,93 +149,92 @@ const Cart = () => {
             </div>
 
             {cartItems.length > 0 && (
-            <div className="col-md-4">
-              <div className="card p-3">
-                <h4 className="card-title mb-3">Riepilogo</h4>
-                <ul className="list-group list-group-flush mb-3">
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Subtotale</span>
-                    <span>{totalPrice.toFixed(2)} €</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Costi di spedizione</span>
-                    <span>{totalPrice > 100 ? "Gratis" : "5.99 €"}</span>
-                  </li>
-                </ul>
-                {discount > 0 && (
-                  <div className="d-flex justify-content-between text-success mb-2">
-                    <span>Sconto</span>
-                    <span>-{discount.toFixed(2)} €</span>
-                  </div>
-                )}
-
-                <div className="d-flex justify-content-between fw-bold mb-3">
-                  <span>Totale</span>
-                  <span>
-                    {totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €
-                  </span>
-                </div>
-
-                {cartItems.length === 0 ? (
-                  <>
-                    <button className="btn btn-secondary w-100 mb-2" disabled>
-                      Vai al pagamento
-                    </button>
-                    <button
-                      className="btn btn-outline-secondary w-100 mb-3"
-                      disabled
-                    >
-                      PayPal
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link className="btn btn-dark w-100 mb-2" to="/checkout">
-                      Vai al pagamento
-                    </Link>
-                    <Link
-                      className="btn btn-outline-secondary w-100 mb-3"
-                      to="/checkout/Paypal"
-                    >
-                      PayPal
-                    </Link>
-                  </>
-                )}
-
-                <div className="mb-3">
-                  <label className="form-label">
-                    Hai un codice promozionale?
-                  </label>
-
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Inserisci codice"
-                      value={discountCode}
-                      onChange={(e) => setDiscountCode(e.target.value)}
-                      disabled={isDiscountApplied}
-                    />
-                    <button
-                      className="btn btn-outline-dark"
-                      type="button"
-                      onClick={applyDiscountCode}
-                      disabled={isDiscountApplied}
-                    >
-                      Applica
-                    </button>
-                  </div>
-                  {isDiscountApplied && (
-                    <div className="form-text text-success">
-                      Codice "VILLA15" applicato con successo!
+              <div className="col-md-4">
+                <div className="card p-3">
+                  <h4 className="card-title mb-3">Riepilogo</h4>
+                  <ul className="list-group list-group-flush mb-3">
+                    <li className="list-group-item d-flex justify-content-between">
+                      <span>Subtotale</span>
+                      <span>{totalPrice.toFixed(2)} €</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between">
+                      <span>Costi di spedizione</span>
+                      <span>{totalPrice > 100 ? "Gratis" : "5.99 €"}</span>
+                    </li>
+                  </ul>
+                  {discount > 0 && (
+                    <div className="d-flex justify-content-between text-success mb-2">
+                      <span>Sconto</span>
+                      <span>-{discount.toFixed(2)} €</span>
                     </div>
                   )}
-                </div> 
-              </div>
-            </div>
-          )}
 
-          </div> 
+                  <div className="d-flex justify-content-between fw-bold mb-3">
+                    <span>Totale</span>
+                    <span>
+                      {totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €
+                    </span>
+                  </div>
+
+                  {cartItems.length === 0 ? (
+                    <>
+                      <button className="btn btn-secondary w-100 mb-2" disabled>
+                        Vai al pagamento
+                      </button>
+                      <button
+                        className="btn btn-outline-secondary w-100 mb-3"
+                        disabled
+                      >
+                        PayPal
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link className="btn btn-dark w-100 mb-2" to="/checkout">
+                        Vai al pagamento
+                      </Link>
+                      <Link
+                        className="btn btn-outline-secondary w-100 mb-3"
+                        to="/checkout/Paypal"
+                      >
+                        PayPal
+                      </Link>
+                    </>
+                  )}
+
+                  <div className="mb-3">
+                    <label className="form-label">
+                      Hai un codice promozionale?
+                    </label>
+
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Inserisci codice"
+                        value={discountCode}
+                        onChange={(e) => setDiscountCode(e.target.value)}
+                        disabled={isDiscountApplied}
+                      />
+                      <button
+                        className="btn btn-outline-dark"
+                        type="button"
+                        onClick={applyDiscountCode}
+                        disabled={isDiscountApplied}
+                      >
+                        Applica
+                      </button>
+                    </div>
+                    {isDiscountApplied && (
+                      <div className="form-text text-success">
+                        Codice "VILLA15" applicato con successo!
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </>
