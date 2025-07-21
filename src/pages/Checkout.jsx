@@ -394,8 +394,8 @@ const Checkout = () => {
                   <span>{totalPrice.toFixed(2)} €</span>
                 </div>
                 <div className="d-flex justify-content-between border-bottom py-2">
-                  <span>Costi di spedizione stimati</span>
-                  <span>0,00 €</span>
+                  <span>Costi di spedizione</span>
+                  <span>0.00 €</span>
                 </div>
                 {discount > 0 && (
                   <div className="d-flex justify-content-between">
