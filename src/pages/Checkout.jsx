@@ -194,7 +194,7 @@ const Checkout = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
-                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}/>
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
