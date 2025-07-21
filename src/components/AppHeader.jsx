@@ -37,8 +37,8 @@ const AppHeader = () => {
         <div className="container d-flex justify-content-between align-items-center">
           {/* Logo */}
           <div>
-            <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
-              L8CD
+            <Link to="/">
+              <img className="logo" src="../../public/Logo.png" alt="logo" />
             </Link>
           </div>
 
