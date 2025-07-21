@@ -311,9 +311,9 @@ footer {
 
 
 .single-product-image {
-  margin: 30px 80px;
+  margin: 20px 50px; 
   height: 85vh;
-  width: 37vw;
+  width: 100%;
 }
 .single-product-details {
   padding: 80px 70px;
