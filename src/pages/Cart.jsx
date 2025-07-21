@@ -75,9 +75,9 @@ const Cart = () => {
               {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
                 <>
-                <h2> OPS! IL TUO CARRELLO È VUOTO</h2>
+                <h2 className="fw-bold"> OPS! IL TUO CARRELLO È VUOTO</h2>
                 <p>Quando aggiungerai il primo prodotto al carrello, apparirà qui. Inizia ad esplorare!</p>
-                <button className="btn btn-dark"
+                <button className="btn-explore"
                 onClick={() => navigate("/shoes")}
                 > Esplora <i className="fa-solid fa-arrow-right"></i></button>
                 </>
