@@ -26,7 +26,7 @@ useEffect(() => {
         onClick={toggleChat}
         className="chatbox-btn"
       >
-        {showChat ? "Chiudi chat" : <i class="fa-solid fa-headset"></i>}
+        {showChat ? "Chiudi chat" : <i className="fa-solid fa-headset"></i>}
       </button>
 
       {showChat && <ChatBot />}
