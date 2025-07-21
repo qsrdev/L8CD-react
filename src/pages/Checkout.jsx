@@ -125,7 +125,7 @@ const Checkout = () => {
                       className="form-control"
                       type="email"
                       name="custom_email"
-                      placeholder="E-mail"
+                      placeholder="es. mario.rossi@me.it"
                       value={formData.custom_email}
                       onChange={handleChange}
                       required
@@ -144,7 +144,7 @@ const Checkout = () => {
                         className="form-control"
                         type="text"
                         name="custom_name"
-                        placeholder="Mario"
+                        placeholder="es. Mario"
                         value={formData.custom_name}
                         onChange={handleChange}
                         required
@@ -161,7 +161,7 @@ const Checkout = () => {
                         className="form-control"
                         type="text"
                         name="custom_surname"
-                        placeholder="Rossi"
+                        placeholder="es. Rossi"
                         onChange={handleChange}
                         required
                         onKeyDown={(e) => {
@@ -173,7 +173,7 @@ const Checkout = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Indirizzo di Fatturazione*</label>
-                    <label className="form-label">Indirizzo di Fatturazione*</label>
+
                     <input
                       autoComplete="off"
                       className="form-control"
@@ -187,8 +187,6 @@ const Checkout = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label">Indirizzo di Spedizione</label>
-                    <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
                     <label className="form-label">Indirizzo di Spedizione</label>
                     <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
                   </div>
