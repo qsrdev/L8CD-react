@@ -92,7 +92,7 @@ const Checkout = () => {
                 className="logo text-white fw-bold fs-5 text-decoration-none"
                 to="/"
               >
-                L8CD
+                <img className="logo" src="/Logo.png" alt="logo" />
               </Link>
               <h1 className="checkout m-0">Ci sei quasi</h1>
               <Link to="/shoes/cart">

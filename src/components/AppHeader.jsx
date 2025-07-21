@@ -35,10 +35,11 @@ const AppHeader = () => {
       <header className="header-color">
         {/* Occhio a toccare il container */}
         <div className="container d-flex justify-content-between align-items-center">
+
           {/* Logo */}
           <div>
-            <Link className="logo text-white text-decoration-none fw-bold fs-4" to="/">
-              L8CD
+            <Link to="/">
+              <img className="logo" src="/Logo.png" alt="logo" />
             </Link>
           </div>
 

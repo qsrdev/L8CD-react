@@ -65,6 +65,12 @@ li {
   gap: 35px;
 }
 
+.logo {
+  width: 70px;
+  height: auto;
+}
+
+
 .search {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 30px;
@@ -77,6 +83,11 @@ li {
   border: none;
   color: #fff;
   font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-search-desktop:hover {
+  background-color: var(--common-color-1);
 }
 
 .search:focus {
@@ -93,6 +104,16 @@ li {
 .navlink-list {
   /* IMPORTANTE: Non toccare questo margin che sistema l'appheader */
   margin-top: 1rem;
+}
+
+
+.fa-cart-shopping {
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.fa-cart-shopping:hover {
+  color: var(--common-color-1);
 }
 
 input {
@@ -543,10 +564,6 @@ footer {
     z-index: 9999;
   }
 
-  .logo {
-    font-size: 1.4rem;
-  }
-
   .burger-nav {
     position: relative;
     top: 60px;
@@ -600,15 +617,16 @@ footer {
 }
 
 .chatbox-btn{
-   position: fixed;
+    position: fixed;
     bottom: 80px;
     right: 20px;
     background-color: #f4ae3fff;
-    color: #000;
+    color: var(--common-color-1);
     border: none;
     padding: 10px 16px;
     border-radius: 50px;
     cursor: pointer;
     z-index: 9999;
-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    font-size: 17px;
 }

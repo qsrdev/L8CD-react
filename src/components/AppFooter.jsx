@@ -27,12 +27,6 @@ const AppFooter = () => {
           {/* footer bottom */}
           <div className="footer-bottom">
             <div>
-              <Link to="/" className="l8cd-link">
-                L8CD
-              </Link>
-            </div>
-
-            <div>
               <p className="diritti-riservati">@L8CD. diritti riservati</p>
             </div>
           </div>
