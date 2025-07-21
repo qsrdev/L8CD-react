@@ -1,5 +1,5 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../Context/CartContext";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
@@ -17,6 +17,7 @@ const Checkout = () => {
   // verifiche degli errori
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   // const isEmailValid = (email) => {
   //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,6 +74,25 @@ const Checkout = () => {
   }
 };
 
+  
+useEffect(() => {
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.custom_name) errors.custom_name = true;
+    if (!formData.custom_surname) errors.custom_surname = true;
+    if (!formData.custom_address) errors.custom_address = true;
+    if (!/^\d{9,12}$/.test(formData.costum_cell)) errors.costum_cell = true;
+    if (!/^\S+@\S+\.\S+$/.test(formData.custom_email)) errors.custom_email = true;
+    if (!/^[a-zA-Z\s]+$/.test(formData.custom_name)) errors.custom_name = true;
+    if (!/^[a-zA-Z\s]+$/.test(formData.custom_surname)) errors.custom_surname = true;
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  setIsFormValid(validateForm());
+}, [formData]);
+
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
 
@@ -86,6 +106,8 @@ const Checkout = () => {
       setFormErrors(errors);
       return;
     }
+
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
 
@@ -277,7 +299,7 @@ const Checkout = () => {
                   </div>
 
                   {/* Bottone di Invio */}
-                  <button type="submit" className="btn btn-dark w-100" disabled={isSubmitting}>
+                  <button type="submit" className="btn btn-dark w-100" disabled={isSubmitting || !isFormValid}>
                     {isSubmitting ? (
                       <div className="d-flex justify-content-center align-items-center">
                         <Loader />
