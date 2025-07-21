@@ -6,14 +6,14 @@ import Loader from "../components/Loader/Loader";
 
 import "../pages/Checkout.css";
 import "../index.css";
-
-
+import CartAccordion from "../components/CartAccordion";
 
 const Checkout = () => {
   const { cartItems, totalPrice, discount, clearCart, increaseQuantity, decreaseQuantity } = useCart();
   const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,6 +45,8 @@ const Checkout = () => {
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
       const orderData = {
         ...formData,
@@ -69,6 +71,8 @@ const Checkout = () => {
     } catch (error) {
       console.error("Errore durante il salvataggio dell'ordine:", error);
       alert("Errore durante l'invio dell'ordine.");
+    } finally {
+      setIsSubmitting(false); // ← END
     }
   };
 
@@ -127,6 +131,8 @@ const Checkout = () => {
                       required
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     />
+                    <div className="valid-feedback">Indirizzo Mail Corretto!</div>
+                    <div className="invalid-feedback">Perfavore inserisci un indirizzo corretto</div>
                   </div>
 
                   <div className="row">
@@ -195,7 +201,6 @@ const Checkout = () => {
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
-                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
                     </select>
@@ -203,7 +208,6 @@ const Checkout = () => {
 
                   {/* visualizzazione small colonna destra */}
                   <div className="col-lg-5 right-column-small">
-                    <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
                     <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
                   </div>
                   {/* BOTTONE DISABLED DOPO CHE E' STATO CLICCATO */}

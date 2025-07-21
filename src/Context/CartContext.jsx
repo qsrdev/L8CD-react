@@ -32,14 +32,9 @@ export const CartProvider = ({ children }) => {
   // Calcolo totale dinamico e salvataggio su localStorage
   useEffect(() => {
     const newTotal = cartItems.reduce((acc, item) => {
-      console.log(cartItems)
-      const hasDiscount =
-        item.discount_price &&
-        parseFloat(item.discount_price) !== parseFloat(item.price);
+      const hasDiscount = item.discount_price && parseFloat(item.discount_price) !== parseFloat(item.price);
 
-      const itemPrice = hasDiscount
-        ? parseFloat(item.discount_price)
-        : parseFloat(item.price);
+      const itemPrice = hasDiscount ? parseFloat(item.discount_price) : parseFloat(item.price);
 
       return acc + itemPrice * item.quantity;
     }, 0);
@@ -53,11 +48,7 @@ export const CartProvider = ({ children }) => {
     const existingItem = cartItems.find((item) => item.id === newItem.id);
 
     if (existingItem) {
-      const updatedItems = cartItems.map((item) =>
-        item.id === newItem.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
+      const updatedItems = cartItems.map((item) => (item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item));
       setCartItems(updatedItems);
     } else {
       setCartItems([...cartItems, { ...newItem, quantity: 1 }]);
@@ -71,9 +62,7 @@ export const CartProvider = ({ children }) => {
 
   // Aumenta quantità
   const increaseQuantity = (id) => {
-    const updatedItems = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-    );
+    const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
     setCartItems(updatedItems);
   };
 
@@ -85,9 +74,7 @@ export const CartProvider = ({ children }) => {
     if (item.quantity === 1) {
       removeItemCompletely(id);
     } else {
-      const updatedItems = cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-      );
+      const updatedItems = cartItems.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item));
       setCartItems(updatedItems);
     }
   };
@@ -116,7 +103,5 @@ export const CartProvider = ({ children }) => {
     setIsDiscountApplied,
   };
 
-  return (
-    <CartContext.Provider value={value}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
