@@ -58,12 +58,20 @@ const Cart = () => {
                   </button>
                 )}
               </div>
+
               {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
                 <>
-                  <h2> OPS! IL TUO CARRELLO È VUOTO</h2>
-                  <p>Quando aggiungerai il primo prodotto al carrello, apparirà qui. Inizia ad esplorare!</p>
-                  <button className="btn btn-dark" onClick={() => navigate("/shoes")}>
+
+                  <h2 className="fw-bold"> OPS! IL TUO CARRELLO È VUOTO</h2>
+                  <p>
+                    Quando aggiungerai il primo prodotto al carrello, apparirà
+                    qui. Inizia ad esplorare!
+                  </p>
+                  <button
+                    className="btn-explore"
+                    onClick={() => navigate("/shoes")}
+                  >
                     {" "}
                     Esplora <i className="fa-solid fa-arrow-right"></i>
                   </button>
@@ -73,18 +81,34 @@ const Cart = () => {
                   <div key={item.id} className="card mb-3">
                     <div className="row g-0">
                       <div className="col-md-3">
-                        <img src={item.image} alt={item.name} className="rounded-start cart-img" />
+
+                        <Link
+                          to={`/shoes/product/${item.slug}`}
+                          className="text-decoration-none text-dark col-md-9 d-flex transform"
+                        >
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="rounded-start cart-img"
+                          />
+                        </Link>
                       </div>
                       <div className="col-md-6">
                         <div className="card-body">
-                          <h5 className="card-title">{item.name}</h5>
+                          <Link
+                            to={`/shoes/product/${item.slug}`}
+                            className="text-decoration-none text-dark col-md-9 d-flex transform"
+                          >
+                            <h5 className="card-title name">{item.name}</h5>
+                          </Link>
                           <p className="card-text">{item.gender}</p>
                           <p className="card-text">
                             <small className="text-muted">
                               Taglia: <b>{Math.trunc(item.size)}</b>
                             </small>
                           </p>
-                          {item.discount_price && item.price !== item.discount_price ? <p>€{item.discount_price}</p> : <p>€{item.price}</p>}
+
+                          <p className="card-text fw-bold">{item.price} €</p>
                         </div>
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">
@@ -103,6 +127,8 @@ const Cart = () => {
                 ))
               )}
             </div>
+
+
             {cartItems.length > 0 && (
               <div className="col-md-4">
                 <div className="card p-3">
@@ -123,10 +149,11 @@ const Cart = () => {
                       <span>-{discount.toFixed(2)} €</span>
                     </div>
                   )}
-
                   <div className="d-flex justify-content-between fw-bold mb-3">
                     <span>Totale</span>
-                    <span>{totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €</span>
+                    <span>
+                      {totalPrice === 0 ? "---" : discountedTotal.toFixed(2)} €
+                    </span>
                   </div>
 
                   {cartItems.length === 0 ? (
@@ -134,7 +161,10 @@ const Cart = () => {
                       <button className="btn btn-secondary w-100 mb-2" disabled>
                         Vai al pagamento
                       </button>
-                      <button className="btn btn-outline-secondary w-100 mb-3" disabled>
+                      <button
+                        className="btn btn-outline-secondary w-100 mb-3"
+                        disabled
+                      >
                         PayPal
                       </button>
                     </>
@@ -143,22 +173,43 @@ const Cart = () => {
                       <Link className="btn btn-dark w-100 mb-2" to="/checkout">
                         Vai al pagamento
                       </Link>
-                      <Link className="btn btn-outline-secondary w-100 mb-3" to="/checkout/Paypal">
+                      <Link
+                        className="btn btn-outline-secondary w-100 mb-3"
+                        to="/checkout/Paypal"
+                      >
                         PayPal
                       </Link>
                     </>
                   )}
 
                   <div className="mb-3">
-                    <label className="form-label">Hai un codice promozionale?</label>
+                    <label className="form-label">
+                      Hai un codice promozionale?
+                    </label>
 
                     <div className="input-group">
-                      <input type="text" className="form-control" placeholder="Inserisci codice" value={discountCode} onChange={(e) => setDiscountCode(e.target.value)} disabled={isDiscountApplied} />
-                      <button className="btn btn-outline-dark" type="button" onClick={applyDiscountCode} disabled={isDiscountApplied}>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Inserisci codice"
+                        value={discountCode}
+                        onChange={(e) => setDiscountCode(e.target.value)}
+                        disabled={isDiscountApplied}
+                      />
+                      <button
+                        className="btn btn-outline-dark"
+                        type="button"
+                        onClick={applyDiscountCode}
+                        disabled={isDiscountApplied}
+                      >
                         Applica
                       </button>
                     </div>
-                    {isDiscountApplied && <div className="form-text text-success">Codice "VILLA15" applicato con successo!</div>}
+                    {isDiscountApplied && (
+                      <div className="form-text text-success">
+                        Codice "VILLA15" applicato con successo!
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

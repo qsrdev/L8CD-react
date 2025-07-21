@@ -1,41 +1,17 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import "./ChatBot.css"
 
 const ChatBot = () => {
     const [message, setMessage] = useState("")
     const [chatLog, setChatLog] = useState([])
 
-    const shoeKeywords = [
-    // "scarpe",
-    // "sneakers",
-    // "stivali",
-    // "sandali",
-    // "tacchi",
-    // "sportive",
-    // "eleganti",
-    // "modelli",
-    // "taglia",
-    // "numero",
-    // "colore",
-    // "prezzo",
-    // "offerta",
-    // "acquisto",
-    // "spedizione",
-    // "reso",
-    // "catalogo",
-    // "disponibilità",
-    // "brand",
-    // "materiale",
-    // "running",
-    // "calzature",
-    // "shopping",
-    "meteo",
-  ];
+    const chatLogRef = useRef(null);
 
-    const isShoeRelated = (text) => {
-    const lowerText = text.toLowerCase();
-    return shoeKeywords.some((keyword) => lowerText.includes(keyword));
-  };
+  useEffect(() => {
+    if (chatLogRef.current) {
+      chatLogRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [chatLog]);
 
   const sendMessage = async () => {
     if (!message.trim()) return;
@@ -43,16 +19,6 @@ const ChatBot = () => {
     const userMessage = { sender: "You", text: message };
     setChatLog((prev) => [...prev, userMessage]);
     setMessage("");
-
-   // Check if the user's message is on topic
-    if (isShoeRelated(message)) {
-      const offTopicResponse = {
-        sender: "Gemini",
-        text: "Mi dispiace, sono un assistente virtuale specializzato in scarpe. Posso aiutarti con domande su modelli, taglie, acquisti o qualsiasi altra cosa riguardi le calzature! Come posso assisterti riguardo alle scarpe?",
-      };
-      setChatLog((prev) => [...prev, offTopicResponse]);
-      return; // Stop here, don't send to the API
-    }
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
@@ -80,7 +46,7 @@ const ChatBot = () => {
 
         setChatLog((prev) => {
           const updated = [...prev];
-          updated[updated.length - 1] = { sender: "Gemini", text: aiMessage };
+          updated[updated.length - 1] = { sender: "Assistente", text: aiMessage };
           return updated;
         });
       }
@@ -105,31 +71,38 @@ const ChatBot = () => {
     return (
     <div className="chat-container">
       <div className="chat-window">
-        <h2 className="chat-title">Gemini ChatBot</h2>
-        <div className="chat-log">
-          {chatLog.length > 0 ? (
-            chatLog.map((msg, index) => (
-              <p key={index} className={`chat-message ${msg.sender.toLowerCase()}`}>
-                <strong className="sender-name">{msg.sender}: </strong>{" "}
-                <span className="message-text">{msg.text}</span>
-              </p>
-            ))
-          ) : (
-            <p className="welcome-message">Ciao! Sono il tuo assistente virtuale specializzato in scarpe. Come posso aiutarti oggi?</p>
-          )}
-        </div>
-        <div className="chat-input-area">
-          <input
-            className="chat-input"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="Chiedi qualcosa sulle scarpe..."
-          />
-          <button className="send-button" onClick={sendMessage}>
-            Invia
-          </button>
-        </div>
+          <div className="chat-header">
+            <h2 className="chat-title">Assistente L8CD</h2>
+          </div>
+          <div className="chat-log">
+            {chatLog.length > 0 ? (
+              chatLog.map((msg, index) => (
+                <p key={index} className={`chat-message ${msg.sender.toLowerCase()}`}>
+                  <strong className="sender-name">{msg.sender}: </strong>{" "}
+                  <span className="message-text">{msg.text}</span>
+                </p>
+              ))
+            ) : (
+              <p className="welcome-message">Ciao! Sono il tuo assistente virtuale specializzato in scarpe. Come posso aiutarti oggi?</p>
+            )}
+          <div ref={chatLogRef} />
+          </div>
+            <div className="chat-input-area d-flex justify-content-between align-items-center p-2">
+              <div className="chat-input-box">
+                <input
+                  className="chat-input"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  onKeyDown={handleKeyPress}
+                  placeholder="Chiedi qualcosa sulle scarpe..."
+                />
+              </div>
+              <div className="">
+                <button className="send-button" onClick={sendMessage}>
+                  Invia
+                </button>
+              </div>
+            </div>
       </div>
     </div>
   );

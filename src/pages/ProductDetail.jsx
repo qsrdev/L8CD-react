@@ -49,6 +49,7 @@ const ProductDetail = () => {
           <div className="single-product-details">
             <h1 className="fw-5">{product.name}</h1>
             <p className="description">{product.description}</p>
+
             {product.discount_price &&
             product.price !== product.discount_price ? (
               <div className="price-wrapper">

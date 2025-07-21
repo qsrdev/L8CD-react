@@ -34,6 +34,7 @@ export default function CardSlider({ array }) {
       >
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
+
             {/* <Link to={`/shoes/product/${curElement.slug} `} onClick={() => console.log("Clicked", curElement.slug)}>
               <img src={curElement.image} alt={curElement.name} />
             </Link>
@@ -68,6 +69,7 @@ export default function CardSlider({ array }) {
                 </div>
               </div>
             </div>
+
           </SwiperSlide>
         ))}
       </Swiper>

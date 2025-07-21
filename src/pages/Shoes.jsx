@@ -22,10 +22,13 @@ const Shoes = () => {
   const [onlyNew, setOnlyNew] = useState(false);
   const searchTerm = searchTermFromQuery || "";
 
+
+  // Chiamata API
   useEffect(() => {
     let url = `${import.meta.env.VITE_API_URL}/shoes`;
     const params = {};
 
+    
     if (gender === "offerte") {
       params.maxPrice = 90;
     } else if (gender === "novita") {
