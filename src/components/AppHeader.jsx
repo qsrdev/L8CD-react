@@ -35,11 +35,11 @@ const AppHeader = () => {
       <header className="header-color">
         {/* Occhio a toccare il container */}
         <div className="container d-flex justify-content-between align-items-center">
-          
+
           {/* Logo */}
           <div>
             <Link to="/">
-              <img className="logo" src="../../public/Logo.png" alt="logo" />
+              <img className="logo" src="/Logo.png" alt="logo" />
             </Link>
           </div>
 
