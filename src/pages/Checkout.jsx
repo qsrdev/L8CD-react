@@ -267,7 +267,7 @@ const Checkout = () => {
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div>€ {item.price}</div>
+                      <div className="fw-bold">{item.price} €</div>
                     </div>
                   </div>
                 ))}
