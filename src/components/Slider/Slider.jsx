@@ -47,6 +47,7 @@ export default function Slider() {
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
         speed={2000}
+        
         className="nike-swiper"
       >
         {slides.map((slide) => (

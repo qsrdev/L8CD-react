@@ -61,7 +61,7 @@ export default function CardSlider({ array }) {
 
             {/* CARD STRUCTURE */}
             <div
-              className="card shadow-sm rounded-4 overflow-hidden"
+              className="card card-slider shadow-sm rounded-4 overflow-hidden"
               style={{ width: "80%" }}
             >
               <div className="position-relative">
@@ -97,9 +97,9 @@ export default function CardSlider({ array }) {
 
                 <div className="d-flex justify-content-between align-items-center mt-3">
                   <span className="fw-bold fs-6">€{curElement.price}</span>
-                  <button className="btn btn-dark btn-sm rounded-pill">
+                  <Link className="btn btn-dark btn-sm rounded-pill" to={`/shoes/product/${curElement.slug}`}>
                     Acquista →
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
