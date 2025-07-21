@@ -50,7 +50,6 @@ const ProductDetail = () => {
             <h1 className="fw-5">{product.name}</h1>
             <p className="description">{product.description}</p>
 
-
             {product.discount_price &&
             product.price !== product.discount_price ? (
               <div className="price-wrapper fs-3">
@@ -60,13 +59,10 @@ const ProductDetail = () => {
                 </span>
               </div>
             ) : (
-             
               <div className="fw-bold fs-3">
                 <p>{product.price} €</p>
               </div>
-
             )}
-
 
             <p className="categoria-prodotto">Scarpa {product.gender}</p>
 
@@ -94,10 +90,11 @@ const ProductDetail = () => {
                   data-bs-parent="#infoAccordion"
                 >
                   <div className="accordion-body">
-                    Offriamo spedizioni rapide e gratuite su tutti gli ordini.
-                    Se non sei completamente soddisfatta del tuo acquisto, puoi
-                    effettuare un reso gratuito entro 30 giorni dalla consegna.
-                    La procedura è facile, veloce e senza costi aggiuntivi.
+                    Offriamo spedizioni rapide, gratuite su ordini superiori
+                    alla cifra totale di 100€. Se non sei completamente
+                    soddisfatta del tuo acquisto, puoi effettuare un reso
+                    gratuito entro 30 giorni dalla consegna. La procedura è
+                    facile, veloce e senza costi aggiuntivi.
                   </div>
                 </div>
               </div>
