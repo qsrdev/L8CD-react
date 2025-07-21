@@ -1,29 +1,21 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
-
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  // ================GESTIONE del CARRELLO ================
-
-  //settiamo gli stati del carrello e del prezzo totale
   const [cartItems, setCartItems] = useState([]);
-
   const [totalPrice, setTotalPrice] = useState(0);
-
-  // =================== GESTIONE SCONTO =======================
   const [discount, setDiscount] = useState(0);
   const [isDiscountApplied, setIsDiscountApplied] = useState(false);
 
-  //vado a prendere lo stato da localstorage del mio carrello e del prezzo totale del carrello
+  // Recupero dal localStorage
   useEffect(() => {
     const localCartItems = localStorage.getItem("cartItems");
-    const localTotalPrice = localStorage.getItem("totalPrice");
     const localDiscount = localStorage.getItem("discount");
+
     if (localCartItems) {
       setCartItems(JSON.parse(localCartItems));
-      setTotalPrice(JSON.parse(localTotalPrice));
     }
 
     if (localDiscount) {
@@ -31,61 +23,61 @@ export const CartProvider = ({ children }) => {
     }
   }, []);
 
+  // Salvataggio su localStorage: cartItems, discount
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
     localStorage.setItem("discount", JSON.stringify(discount));
-  }, [cartItems, totalPrice, discount]);
+  }, [cartItems, discount]);
 
-  //funzione che gestisce l'aggiunta di prodotti nuovi al carrello
+  // Calcolo totale dinamico e salvataggio su localStorage
+  useEffect(() => {
+    const newTotal = cartItems.reduce((acc, item) => {
+      console.log(cartItems)
+      const hasDiscount =
+        item.discount_price &&
+        parseFloat(item.discount_price) !== parseFloat(item.price);
+
+      const itemPrice = hasDiscount
+        ? parseFloat(item.discount_price)
+        : parseFloat(item.price);
+
+      return acc + itemPrice * item.quantity;
+    }, 0);
+
+    setTotalPrice(newTotal);
+    localStorage.setItem("totalPrice", JSON.stringify(newTotal));
+  }, [cartItems]);
+
+  // Aggiunta prodotto
   const addToCart = (newItem) => {
     const existingItem = cartItems.find((item) => item.id === newItem.id);
 
     if (existingItem) {
       const updatedItems = cartItems.map((item) =>
-        item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === newItem.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
       );
       setCartItems(updatedItems);
     } else {
       setCartItems([...cartItems, { ...newItem, quantity: 1 }]);
     }
-
-    // Gestione del prezzo: considera lo sconto se presente
-    const hasDiscount =
-      newItem.discount_price &&
-      parseFloat(newItem.discount_price) !== parseFloat(newItem.price);
-
-    const finalPrice = hasDiscount
-      ? parseFloat(newItem.discount_price)
-      : parseFloat(newItem.price);
-
-    setTotalPrice((prev) => parseFloat(prev) + finalPrice);
   };
 
-
-
-  //funzione che cancella tutto il carrello con un click
+  // Rimozione completa
   const removeItemCompletely = (id) => {
-    const itemToRemove = cartItems.find((item) => item.id === id);
-    if (!itemToRemove) return;
-
     setCartItems(cartItems.filter((item) => item.id !== id));
-    setTotalPrice((prev) => prev - itemToRemove.price * itemToRemove.quantity);
   };
 
-  //funzione che gestisce i bottoni visino ai prodotti nel carrello per aggiungere 1 di singola quantità
+  // Aumenta quantità
   const increaseQuantity = (id) => {
-    const item = cartItems.find((item) => item.id === id);
-    if (!item) return;
-
     const updatedItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     setCartItems(updatedItems);
-    setTotalPrice((prev) => parseFloat(prev) + parseFloat(item.price));
   };
 
-  //funzione che gestisce il bottone di sottrazione nel carrello
+  // Diminuisci quantità
   const decreaseQuantity = (id) => {
     const item = cartItems.find((item) => item.id === id);
     if (!item) return;
@@ -97,15 +89,12 @@ export const CartProvider = ({ children }) => {
         item.id === id ? { ...item, quantity: item.quantity - 1 } : item
       );
       setCartItems(updatedItems);
-      setTotalPrice((prev) => prev - item.price);
     }
   };
 
-  //funzione che svuota tutto il carrello insieme e aggiorna lo stato dentro il local storage
+  // Svuota tutto
   const clearCart = () => {
-    console.log("è stato chiamato clear cart");
     setCartItems([]);
-    setTotalPrice(0);
     setDiscount(0);
     setIsDiscountApplied(false);
     localStorage.removeItem("cartItems");
@@ -127,5 +116,7 @@ export const CartProvider = ({ children }) => {
     setIsDiscountApplied,
   };
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  );
 };
