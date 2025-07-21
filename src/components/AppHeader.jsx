@@ -35,6 +35,7 @@ const AppHeader = () => {
       <header className="header-color">
         {/* Occhio a toccare il container */}
         <div className="container d-flex justify-content-between align-items-center">
+          
           {/* Logo */}
           <div>
             <Link to="/">

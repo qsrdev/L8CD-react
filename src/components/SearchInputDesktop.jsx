@@ -61,7 +61,7 @@ const SearchInputDesktop = () => {
 
       <div className="header-icons d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block relative">
         <Link to="/shoes/cart">
-          <i className="fa-solid fa-cart-shopping text-white"></i>
+          <i className="fa-solid fa-cart-shopping"></i>
           {cartItems.length > 0 ? (
             <span className="cart-badge">{cartItems.length}</span>
           ) : null}
