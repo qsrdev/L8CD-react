@@ -13,6 +13,9 @@ const Checkout = () => {
   const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
+
+  // verifiche degli errori
+  const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isEmailValid = (email) => {
@@ -22,6 +25,7 @@ const Checkout = () => {
 
   const [formData, setFormData] = useState({
     custom_name: "",
+    custom_surname: "",
     custom_email: "",
     custom_address: "",
     costum_cell: "",
@@ -34,14 +38,31 @@ const Checkout = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setFormErrors((prev) => ({
+      ...prev,
+      [name]: false,
+    }));
   };
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isEmailValid(formData.custom_email)) {
-      alert("Inserisci un indirizzo email valido.");
+    const errors = {};
+    if (!/\S+@\S+\.\S+/.test(formData.custom_email)) errors.custom_email = true;
+    if (!formData.custom_name) errors.custom_name = true;
+    if (!formData.custom_surname) errors.custom_surname = true;
+    if (!formData.custom_address) errors.custom_address = true;
+    if (!/^\d{9,12}$/.test(formData.phone)) errors.phone = true;
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
       return;
     }
 
@@ -100,48 +121,34 @@ const Checkout = () => {
               <div className="col-lg-7">
                 <h4 className="mb-4">Opzioni di consegna</h4>
 
-                {/* <div className="d-flex mb-4">
-                  <button
-                    type="button"
-                    className={`btn me-2 ${formData.shipping_method === "standard" ? "btn-dark" : "btn-outline-dark"}`}
-                    onClick={() => setFormData({ ...formData, shipping_method: "standard" })}
-                  >
-                    <i className="fa-solid fa-truck me-2"></i> Spedizione
-                  </button>
-                  <button
-                    type="button"
-                    className={`btn ${formData.shipping_method === "pickup" ? "btn-dark" : "btn-outline-dark"}`}
-                    onClick={() => setFormData({ ...formData, shipping_method: "pickup" })}
-                  >
-                    <i className="fa-solid fa-map-marker-alt me-2"></i> Ritiro
-                  </button>
-                </div> */}
-
                 {/* FORM */}
-                <form onSubmit={handleOrderSubmit} className="rounded border p-4 need-validate mb-5" noValidate>
+
+
+                <form onSubmit={handleOrderSubmit} className="rounded border p-4 needs-validation" noValidate>
+                  {/* Email */}
+
                   <div className="mb-3">
                     <label className="form-label">E-mail*</label>
                     <input
-                      className="form-control"
+                      className={`form-control ${formErrors.custom_email ? "is-invalid" : formData.custom_email ? "is-valid" : ""}`}
                       type="email"
                       name="custom_email"
                       placeholder="es. mario.rossi@me.it"
                       value={formData.custom_email}
                       onChange={handleChange}
                       required
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     />
-                    <div className="valid-feedback">Indirizzo Mail Corretto!</div>
-                    <div className="invalid-feedback">Perfavore inserisci un indirizzo corretto</div>
+                    <div className="valid-feedback">Indirizzo mail corretto!</div>
+                    <div className="invalid-feedback">Per favore inserisci un indirizzo corretto</div>
                   </div>
 
+                  {/* Nome e Cognome */}
                   <div className="row">
                     <div className="col-md-6 mb-3">
                       <label className="form-label">Nome*</label>
                       <input
-                        pattern="^[A-Za-zÀ-ÿ\s'-]+$"
                         autoComplete="off"
-                        className="form-control"
+                        className={`form-control ${formErrors.custom_name ? "is-invalid" : formData.custom_name ? "is-valid" : ""}`}
                         type="text"
                         name="custom_name"
                         placeholder="es. Mario"
@@ -152,31 +159,36 @@ const Checkout = () => {
                           if (/\d/.test(e.key)) e.preventDefault();
                         }}
                       />
+                      <div className="valid-feedback">Nome valido</div>
+                      <div className="invalid-feedback">Inserisci un nome valido</div>
                     </div>
+
                     <div className="col-md-6 mb-3">
                       <label className="form-label">Cognome*</label>
                       <input
-                        pattern="^[A-Za-zÀ-ÿ\s'-]+$"
                         autoComplete="off"
-                        className="form-control"
+                        className={`form-control ${formErrors.custom_surname ? "is-invalid" : formData.custom_surname ? "is-valid" : ""}`}
                         type="text"
                         name="custom_surname"
                         placeholder="es. Rossi"
+                        value={formData.custom_surname}
                         onChange={handleChange}
                         required
                         onKeyDown={(e) => {
                           if (/\d/.test(e.key)) e.preventDefault();
                         }}
                       />
+                      <div className="valid-feedback">Cognome valido</div>
+                      <div className="invalid-feedback">Inserisci un cognome valido</div>
                     </div>
                   </div>
 
+                  {/* Indirizzo di Fatturazione */}
                   <div className="mb-3">
                     <label className="form-label">Indirizzo di Fatturazione*</label>
-
                     <input
                       autoComplete="off"
-                      className="form-control"
+                      className={`form-control ${formErrors.custom_address ? "is-invalid" : formData.custom_address ? "is-valid" : ""}`}
                       type="text"
                       name="custom_address"
                       placeholder="es. Via Panisperna 7"
@@ -184,41 +196,64 @@ const Checkout = () => {
                       onChange={handleChange}
                       required
                     />
+                    <div className="valid-feedback">Indirizzo valido</div>
+                    <div className="invalid-feedback">Inserisci un indirizzo valido</div>
                   </div>
 
+                  {/* Indirizzo di Spedizione */}
                   <div className="mb-3">
                     <label className="form-label">Indirizzo di Spedizione</label>
-                    <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
+                    <input
+                      autoComplete="off"
+                      className={`form-control ${formErrors.shipping_address ? "is-invalid" : formData.shipping_address ? "is-valid" : ""}`}
+                      type="text"
+                      name="shipping_address"
+                      placeholder="es. Via Cavour 76"
+                      value={formData.shipping_address}
+                      onChange={handleChange}
+                    />
+                    <div className="valid-feedback">Indirizzo valido</div>
                   </div>
 
+                  {/* Numero di Telefono */}
                   <div className="mb-3">
                     <label className="form-label">Numero di Telefono*</label>
-                    <input inputMode="numeric" maxLength={12} required autoComplete="off" className="form-control" type="tel" name="phone" placeholder="es. 3326951222" onChange={handleChange} />
+                    <input
+                      inputMode="numeric"
+                      maxLength={12}
+                      required
+                      autoComplete="off"
+                      className={`form-control ${formErrors.phone > 10 ? "is-invalid" : formData.phone ? "is-valid" : ""}`}
+                      type="tel"
+                      name="phone"
+                      placeholder="es. 3326951222"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                    <div className="valid-feedback">Numero corretto</div>
+                    <div className="invalid-feedback">Inserisci un numero valido</div>
                   </div>
 
+                  {/* Metodo di Pagamento */}
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
-
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                      <option value="">Seleziona un metodo</option>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
                     </select>
+                    <div className="valid-feedback">Metodo selezionato</div>
                   </div>
 
-                  {/* visualizzazione small colonna destra */}
+                  {/* Colonna destra con Carrello */}
                   <div className="col-lg-5 right-column-small">
                     <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
                   </div>
-                  {/* BOTTONE DISABLED DOPO CHE E' STATO CLICCATO */}
+
+                  {/* Bottone di Invio */}
                   <button type="submit" className="btn btn-dark w-100" disabled={isSubmitting}>
                     {isSubmitting ? (
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
+                      <div className="d-flex justify-content-center align-items-center">
                         <Loader />
                         <span className="ms-2">Invio in corso...</span>
                       </div>
