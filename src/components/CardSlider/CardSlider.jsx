@@ -24,22 +24,22 @@ export default function CardSlider({ array }) {
   return (
     <>
       <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
+        slidesPerView={3}
+        spaceBetween={0}
         navigation
         pagination={{ clickable: true }}
         breakpoints={{
           640: {
             slidesPerView: 1,
-            spaceBetween: 30,
+            spaceBetween: 10,
           },
           768: {
             slidesPerView: 2,
-            spaceBetween: 50,
+            spaceBetween: 10,
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 60,
+            spaceBetween: 10,
           },
         }}
         modules={[Pagination, Navigation]}
@@ -48,20 +48,43 @@ export default function CardSlider({ array }) {
         {array.map((curElement, index) => (
           <SwiperSlide key={index} className="slide">
 
+            {/* <Link to={`/shoes/product/${curElement.slug} `} onClick={() => console.log("Clicked", curElement.slug)}>
+              <img src={curElement.image} alt={curElement.name} />
+            </Link>
+            {curElement.discount_price && curElement.price !== curElement.discount_price ? (
+              <p className="promo-marklabel-green">PROMO</p>
+            ) : curElement.price >= 100 ? (
+              <p className="promo-marklabel">spedizione gratuita</p>
+            ) : null} */}
+
+            {/* CARD STRUCTURE */}
+            <div className="card shadow-sm rounded-4 overflow-hidden" style={{ width: "80%" }}>
+              <div className="position-relative">
+                <Link to={`/shoes/product/${curElement.slug}`}>
+                  <img src={curElement.image} className="card-img-top" alt={curElement.name} style={{ height: "250px", objectFit: "cover" }} />
+                </Link>
+
+                {curElement.discount_price && curElement.price !== curElement.discount_price ? (
+                  <span className="badge bg-success text-light position-absolute top-0 start-0 m-2">PROMO </span>
+                ) : curElement.price >= 100 ? (
+                  <span className="badge bg-info text-light position-absolute top-0 start-0 m-2">Spedizione gratuita</span>
+                ) : null}
+              </div>
 
 
 
-            <div className="position-relative">
-              <Link to={`/shoes/product/${curElement.slug} `} onClick={() => console.log("Clicked", curElement.slug)}>
-                <img src={curElement.image} alt={curElement.name} />
-              </Link>
-            {curElement.discount_price ? (
-              <p className="promo-marklabel">PROMO</p>
-            ) : (
-              <p></p>
-            )}
+              <div className="card-body ">
+                <h5 className="card-title fw-bold mb-1">{curElement.name}</h5>
+                <p className="card-subtitle text-muted mb-2">{curElement.tagline}</p>
+                <p className="card-text text-secondary small">{curElement.description}</p>
+
+
+                <div className="d-flex justify-content-between align-items-center mt-3">
+                  <span className="fw-bold fs-6">€{curElement.price}</span>
+                  <button className="btn btn-dark btn-sm rounded-pill">Acquista →</button>
+                </div>
+              </div>
             </div>
-
 
           </SwiperSlide>
         ))}
