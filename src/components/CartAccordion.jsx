@@ -23,8 +23,8 @@ const CartAccordion = ({ cartItems, totalPrice }) => {
             <span>{totalPrice.toFixed(2)} €</span>
           </div>
           <div className="d-flex justify-content-between border-bottom py-2">
-            <span>Costi di spedizione stimati</span>
-            <span>0,00 €</span>
+            <span>Costi di spedizione</span>
+            <span>0.00 €</span>
           </div>
           <div className="d-flex justify-content-between fw-bold fs-5 my-3">
             <span>Totale</span>
