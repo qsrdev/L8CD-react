@@ -148,12 +148,7 @@ const Cart = () => {
                   <ul className="list-group list-group-flush mb-3">
                     <li className="list-group-item d-flex justify-content-between">
                       <span>Subtotale</span>
-                      {cartItems.discount_price &&
-                      cartItems.price !== cartItems.discount_price ? (
                         <span>{totalPrice.toFixed(2)} €</span>
-                      ) : (
-                        <span>{totalPrice.toFixed(2)} €</span>
-                      )}
                     </li>
                     <li className="list-group-item d-flex justify-content-between">
                       <span>Costi di spedizione</span>
