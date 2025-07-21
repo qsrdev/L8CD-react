@@ -1,11 +1,5 @@
 /* // RICORADARE: il progetto è creato con boostrap + custom, se bisogna modificare, fare riferimento alle classi di bootstrap in primis e, in caso, si aggiungono classi custom */
 
-/* RESET */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
 /* Utilities */
 
@@ -135,10 +129,6 @@ li a:hover {
   font-size: 25px;
 }
 
-/* li:hover {
-  color: #fffce6;
-} */
-
 .search-small-screen {
   display: none;
 }
@@ -213,6 +203,14 @@ li a:hover {
 .btn-custom-filter:active {
   background-color: var(--common-color-1);
   transition: background-color 0.1s ease-in-out;
+}
+
+.price-line {
+  font-size: 18px;
+}
+
+.price-discounted {
+  color: var(--common-color-4);
 }
 
 /* PAGINA CONTATTI */

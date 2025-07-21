@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import { Pagination, Navigation } from "swiper/modules";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,6 +10,17 @@ import "swiper/css/navigation";
 import "./CardSlider.css";
 
 export default function CardSlider({ array }) {
+
+  const [discont, setDiscount] = useState([])
+  
+  useEffect(() => {
+    let url = `${import.meta.env.VITE_API_URL}/shoes`;
+
+    axios.get(url).then((resp) => {
+      setDiscount(resp.data.data);
+    })
+  }, []);
+
   return (
     <>
       <Swiper
@@ -42,7 +55,11 @@ export default function CardSlider({ array }) {
               <Link to={`/shoes/product/${curElement.slug} `} onClick={() => console.log("Clicked", curElement.slug)}>
                 <img src={curElement.image} alt={curElement.name} />
               </Link>
-            <p className="promo-marklabel">PROMO</p>
+            {curElement.discount_price ? (
+              <p className="promo-marklabel">PROMO</p>
+            ) : (
+              <p></p>
+            )}
             </div>
 
 

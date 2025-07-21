@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import BurgerMenu from "./BurgerMenu";
 import SearchInput from "./SearchInput";
 import SearchInputDesktop from "./SearchInputDesktop";
+import ChatBotToggle from "./ChatBotToggle";
 
 const AppHeader = () => {
   // Link per la navigazione di pagina in pagina
