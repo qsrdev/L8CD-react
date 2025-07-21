@@ -36,16 +36,37 @@ const CartAccordion = ({ cartItems, totalPrice }) => {
           </p>
 
           {cartItems.map((item, index) => (
-            <div className="d-flex flex-wrap justify-content-center mb-3" key={index}>
-              <img src={item.image} alt={item.name} className="me-3" width="60" />
+            <div
+              className="d-flex flex-wrap justify-content-center mb-3"
+              key={index}
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="me-3"
+                width="60"
+              />
               <div>
                 <div className="fw-bold">{item.name}</div>
-                <small className="text-muted">{item.description?.slice(0, 40)}...</small>
+                <small className="text-muted">
+                  {item.description?.slice(0, 40)}...
+                </small>
                 <br />
                 <small>
                   Quantità: {item.quantity} | Misura: {item.size}
                 </small>
-                <div>{item.price} €</div>
+                {item.discount_price && item.price !== item.discount_price ? (
+                  <div className="price-wrapper fw-bold">
+                    <span className="original-price text-decoration-line-through me-2">
+                      {item.price} €
+                    </span>
+                    <span className="discount-price text-danger">
+                      {item.discount_price} €
+                    </span>
+                  </div>
+                ) : (
+                  <div className="fw-bold">{item.price} €</div>
+                )}
               </div>
             </div>
           ))}
