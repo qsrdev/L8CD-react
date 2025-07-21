@@ -6,17 +6,7 @@ import { useNavigate } from "react-router-dom";
 import AppHeader from "../components/AppHeader";
 
 const Cart = () => {
-  const {
-    cartItems,
-    totalPrice,
-    clearCart,
-    increaseQuantity,
-    decreaseQuantity,
-    discount,
-    setDiscount,
-    isDiscountApplied,
-    setIsDiscountApplied,
-  } = useCart();
+  const { cartItems, totalPrice, clearCart, increaseQuantity, decreaseQuantity, discount, setDiscount, isDiscountApplied, setIsDiscountApplied } = useCart();
 
   const [discountCode, setDiscountCode] = useState("");
   const navigate = useNavigate();
@@ -63,10 +53,7 @@ const Cart = () => {
                 {cartItems.length === 0 ? (
                   ""
                 ) : (
-                  <button
-                    className="btn btn-outline-danger btn-sm p-2"
-                    onClick={clearCart}
-                  >
+                  <button className="btn btn-outline-danger btn-sm p-2" onClick={clearCart}>
                     <i className="bi bi-recycle"></i> Svuota carrello
                   </button>
                 )}
@@ -75,6 +62,7 @@ const Cart = () => {
               {/* CARRELLO VUOTO gestione*/}
               {cartItems.length === 0 ? (
                 <>
+
                   <h2 className="fw-bold"> OPS! IL TUO CARRELLO È VUOTO</h2>
                   <p>
                     Quando aggiungerai il primo prodotto al carrello, apparirà
@@ -93,6 +81,7 @@ const Cart = () => {
                   <div key={item.id} className="card mb-3">
                     <div className="row g-0">
                       <div className="col-md-3">
+
                         <Link
                           to={`/shoes/product/${item.slug}`}
                           className="text-decoration-none text-dark col-md-9 d-flex transform"
@@ -118,26 +107,17 @@ const Cart = () => {
                               Taglia: <b>{Math.trunc(item.size)}</b>
                             </small>
                           </p>
+
                           <p className="card-text fw-bold">{item.price} €</p>
                         </div>
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">
                         <div className="counter-container btn-group">
-                          <button
-                            className="counter-btn"
-                            onClick={() => decreaseQuantity(item.id)}
-                          >
-                            <i
-                              className={`bi ${
-                                item.quantity === 1 ? "bi-trash" : "bi-dash"
-                              }`}
-                            ></i>
+                          <button className="counter-btn" onClick={() => decreaseQuantity(item.id)}>
+                            <i className={`bi ${item.quantity === 1 ? "bi-trash" : "bi-dash"}`}></i>
                           </button>
                           <div className="counter-number">{item.quantity}</div>
-                          <button
-                            className="counter-btn"
-                            onClick={() => increaseQuantity(item.id)}
-                          >
+                          <button className="counter-btn" onClick={() => increaseQuantity(item.id)}>
                             <i className="bi bi-plus"></i>
                           </button>
                         </div>
@@ -147,6 +127,7 @@ const Cart = () => {
                 ))
               )}
             </div>
+
 
             {cartItems.length > 0 && (
               <div className="col-md-4">
@@ -168,7 +149,6 @@ const Cart = () => {
                       <span>-{discount.toFixed(2)} €</span>
                     </div>
                   )}
-
                   <div className="d-flex justify-content-between fw-bold mb-3">
                     <span>Totale</span>
                     <span>

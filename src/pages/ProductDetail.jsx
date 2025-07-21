@@ -49,7 +49,19 @@ const ProductDetail = () => {
           <div className="single-product-details">
             <h1 className="fw-5">{product.name}</h1>
             <p className="description">{product.description}</p>
-            <p className="price">{product.price} €</p>
+
+            {product.discount_price &&
+            product.price !== product.discount_price ? (
+              <div className="price-wrapper">
+                <span className="original-price">€{product.price}</span>
+                <span className="discount-price">
+                  €{product.discount_price}
+                </span>
+              </div>
+            ) : (
+              <p className="price">€{product.price}</p>
+            )}
+
             <p className="categoria-prodotto">Scarpa {product.gender}</p>
 
             {/* accordion */}

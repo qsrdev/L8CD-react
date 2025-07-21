@@ -42,19 +42,27 @@ export const CartProvider = ({ children }) => {
     const existingItem = cartItems.find((item) => item.id === newItem.id);
 
     if (existingItem) {
-      // Se esiste, incrementa quantità
       const updatedItems = cartItems.map((item) =>
         item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item
       );
       setCartItems(updatedItems);
     } else {
-      // Se non esiste, aggiungi al carrello
       setCartItems([...cartItems, { ...newItem, quantity: 1 }]);
     }
 
-    //aggiornamento del prezzo in base all'oggetto che viene aggiunto
-    setTotalPrice((prev) => parseFloat(prev) + parseFloat(newItem.price));
+    // Gestione del prezzo: considera lo sconto se presente
+    const hasDiscount =
+      newItem.discount_price &&
+      parseFloat(newItem.discount_price) !== parseFloat(newItem.price);
+
+    const finalPrice = hasDiscount
+      ? parseFloat(newItem.discount_price)
+      : parseFloat(newItem.price);
+
+    setTotalPrice((prev) => parseFloat(prev) + finalPrice);
   };
+
+
 
   //funzione che cancella tutto il carrello con un click
   const removeItemCompletely = (id) => {

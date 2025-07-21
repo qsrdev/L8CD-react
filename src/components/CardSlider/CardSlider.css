@@ -45,3 +45,15 @@ img {
   font-size: 12px;
   font-weight: bold;
 }
+
+.promo-marklabel-green {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  padding: 3px 5px;
+  background-color: rgb(45, 145, 45);
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
