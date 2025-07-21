@@ -90,11 +90,11 @@ const ProductDetail = () => {
                   data-bs-parent="#infoAccordion"
                 >
                   <div className="accordion-body">
-                    Offriamo spedizioni rapide, gratuite su ordini superiori
-                    alla cifra totale di 100€. Se non sei completamente
-                    soddisfatta del tuo acquisto, puoi effettuare un reso
-                    gratuito entro 30 giorni dalla consegna. La procedura è
-                    facile, veloce e senza costi aggiuntivi.
+                    Offriamo spedizioni rapide, gratuite su ordini superiori a
+                    100€. Se non sei completamente soddisfatt* del tuo acquisto,
+                    puoi effettuare un reso gratuito entro 30 giorni dalla
+                    consegna. La procedura è facile, veloce e senza costi
+                    aggiuntivi.
                   </div>
                 </div>
               </div>

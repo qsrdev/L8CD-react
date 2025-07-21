@@ -9,7 +9,14 @@ import "../index.css";
 import CartAccordion from "../components/CartAccordion";
 
 const Checkout = () => {
-  const { cartItems, totalPrice, discount, clearCart, increaseQuantity, decreaseQuantity } = useCart();
+  const {
+    cartItems,
+    totalPrice,
+    discount,
+    clearCart,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
   const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
@@ -39,6 +46,7 @@ const Checkout = () => {
     tracking_number: "prova",
   });
 
+
  const handleChange = (e) => {
   const { name, value } = e.target;
 
@@ -49,33 +57,33 @@ const Checkout = () => {
 
   setIsFormTouched(true);
 
-  switch (name) {
-    case "custom_email":
-      if (!/^\S+@\S+\.\S+$/.test(value)) {
-        setFormErrors((prev) => ({ ...prev, [name]: true }));
-      } else {
+    switch (name) {
+      case "custom_email":
+        if (!/^\S+@\S+\.\S+$/.test(value)) {
+          setFormErrors((prev) => ({ ...prev, [name]: true }));
+        } else {
+          setFormErrors((prev) => ({ ...prev, [name]: false }));
+        }
+        break;
+      case "custom_name":
+      case "custom_surname":
+        if (!/^[a-zA-Z\s]+$/.test(value)) {
+          setFormErrors((prev) => ({ ...prev, [name]: true }));
+        } else {
+          setFormErrors((prev) => ({ ...prev, [name]: false }));
+        }
+        break;
+      case "costum_cell":
+        if (!/^\d{9,12}$/.test(value)) {
+          setFormErrors((prev) => ({ ...prev, [name]: true }));
+        } else {
+          setFormErrors((prev) => ({ ...prev, [name]: false }));
+        }
+        break;
+      default:
         setFormErrors((prev) => ({ ...prev, [name]: false }));
-      }
-      break;
-    case "custom_name":
-    case "custom_surname":
-      if (!/^[a-zA-Z\s]+$/.test(value)) {
-        setFormErrors((prev) => ({ ...prev, [name]: true }));
-      } else {
-        setFormErrors((prev) => ({ ...prev, [name]: false }));
-      }
-      break;
-    case "costum_cell":
-      if (!/^\d{9,12}$/.test(value)) {
-        setFormErrors((prev) => ({ ...prev, [name]: true }));
-      } else {
-        setFormErrors((prev) => ({ ...prev, [name]: false }));
-      }
-      break;
-    default:
-      setFormErrors((prev) => ({ ...prev, [name]: false }));
-  }
-};
+    }
+  };
 
 const validateForm = () => {
   const errors = {};
@@ -128,7 +136,10 @@ useEffect(() => {
         })),
       };
 
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/shoes/store`, orderData);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/shoes/store`,
+        orderData
+      );
       await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/checkout`, {
         email: formData.custom_email,
         cartItems: cartItems,
@@ -154,7 +165,10 @@ useEffect(() => {
           {/* Header */}
           <header className="header-color-checkout py-3 mb-4">
             <div className="container d-flex justify-content-between align-items-center text-white">
-              <Link className="logo text-white fw-bold fs-5 text-decoration-none" to="/">
+              <Link
+                className="logo text-white fw-bold fs-5 text-decoration-none"
+                to="/"
+              >
                 <img className="logo" src="/Logo.png" alt="logo" />
               </Link>
               <h1 className="checkout m-0">Ci sei quasi</h1>
@@ -173,13 +187,25 @@ useEffect(() => {
 
                 {/* FORM */}
 
-                <form onSubmit={handleOrderSubmit} className="rounded border p-4 needs-validation" noValidate>
+                <form
+                  onSubmit={handleOrderSubmit}
+                  className="rounded border p-4 needs-validation"
+                  noValidate
+                >
                   {/* Email */}
 
                   <div className="mb-3">
                     <label className="form-label">E-mail*</label>
                     <input
-                      className={`form-control ${formErrors.custom_email ? "is-invalid" : (!formErrors.custom_email && formData.custom_email && /^\S+@\S+\.\S+$/.test(formData.custom_email)) ? "is-valid" : ""}`}
+                      className={`form-control ${
+                        formErrors.custom_email
+                          ? "is-invalid"
+                          : !formErrors.custom_email &&
+                            formData.custom_email &&
+                            /^\S+@\S+\.\S+$/.test(formData.custom_email)
+                          ? "is-valid"
+                          : ""
+                      }`}
                       type="email"
                       name="custom_email"
                       placeholder="es. mario.rossi@me.it"
@@ -187,8 +213,12 @@ useEffect(() => {
                       onChange={handleChange}
                       required
                     />
-                    <div className="valid-feedback">Indirizzo mail corretto!</div>
-                    <div className="invalid-feedback">Per favore inserisci un indirizzo corretto</div>
+                    <div className="valid-feedback">
+                      Indirizzo mail corretto!
+                    </div>
+                    <div className="invalid-feedback">
+                      Per favore inserisci un indirizzo corretto
+                    </div>
                   </div>
 
                   {/* Nome e Cognome */}
@@ -197,7 +227,15 @@ useEffect(() => {
                       <label className="form-label">Nome*</label>
                       <input
                         autoComplete="off"
-                        className={`form-control ${formErrors.custom_name ? "is-invalid" : (!formErrors.custom_name && formData.custom_name && /^[a-zA-Z\s]+$/.test(formData.custom_name)) ? "is-valid" : ""}`}
+                        className={`form-control ${
+                          formErrors.custom_name
+                            ? "is-invalid"
+                            : !formErrors.custom_name &&
+                              formData.custom_name &&
+                              /^[a-zA-Z\s]+$/.test(formData.custom_name)
+                            ? "is-valid"
+                            : ""
+                        }`}
                         type="text"
                         name="custom_name"
                         placeholder="es. Mario"
@@ -209,14 +247,24 @@ useEffect(() => {
                         }}
                       />
                       <div className="valid-feedback">Nome valido</div>
-                      <div className="invalid-feedback">Inserisci un nome valido</div>
+                      <div className="invalid-feedback">
+                        Inserisci un nome valido
+                      </div>
                     </div>
 
                     <div className="col-md-6 mb-3">
                       <label className="form-label">Cognome*</label>
                       <input
                         autoComplete="off"
-                        className={`form-control ${formErrors.custom_surname ? "is-invalid" : (!formErrors.custom_surname && formData.custom_surname && /^[a-zA-Z\s]+$/.test(formData.custom_surname)) ? "is-valid" : ""}`}
+                        className={`form-control ${
+                          formErrors.custom_surname
+                            ? "is-invalid"
+                            : !formErrors.custom_surname &&
+                              formData.custom_surname &&
+                              /^[a-zA-Z\s]+$/.test(formData.custom_surname)
+                            ? "is-valid"
+                            : ""
+                        }`}
                         type="text"
                         name="custom_surname"
                         placeholder="es. Rossi"
@@ -228,16 +276,26 @@ useEffect(() => {
                         }}
                       />
                       <div className="valid-feedback">Cognome valido</div>
-                      <div className="invalid-feedback">Inserisci un cognome valido</div>
+                      <div className="invalid-feedback">
+                        Inserisci un cognome valido
+                      </div>
                     </div>
                   </div>
 
                   {/* Indirizzo di Fatturazione */}
                   <div className="mb-3">
-                    <label className="form-label">Indirizzo di Fatturazione*</label>
+                    <label className="form-label">
+                      Indirizzo di Fatturazione*
+                    </label>
                     <input
                       autoComplete="off"
-                      className={`form-control ${formErrors.custom_address ? "is-invalid" : formData.custom_address ? "is-valid" : ""}`}
+                      className={`form-control ${
+                        formErrors.custom_address
+                          ? "is-invalid"
+                          : formData.custom_address
+                          ? "is-valid"
+                          : ""
+                      }`}
                       type="text"
                       name="custom_address"
                       placeholder="es. Via Panisperna 7"
@@ -246,15 +304,25 @@ useEffect(() => {
                       required
                     />
                     <div className="valid-feedback">Indirizzo valido</div>
-                    <div className="invalid-feedback">Inserisci un indirizzo valido</div>
+                    <div className="invalid-feedback">
+                      Inserisci un indirizzo valido
+                    </div>
                   </div>
 
                   {/* Indirizzo di Spedizione */}
                   <div className="mb-3">
-                    <label className="form-label">Indirizzo di Spedizione</label>
+                    <label className="form-label">
+                      Indirizzo di Spedizione
+                    </label>
                     <input
                       autoComplete="off"
-                      className={`form-control ${formErrors.shipping_address ? "is-invalid" : formData.shipping_address ? "is-valid" : ""}`}
+                      className={`form-control ${
+                        formErrors.shipping_address
+                          ? "is-invalid"
+                          : formData.shipping_address
+                          ? "is-valid"
+                          : ""
+                      }`}
                       type="text"
                       name="shipping_address"
                       placeholder="es. Via Cavour 76"
@@ -272,7 +340,13 @@ useEffect(() => {
                       maxLength={11}
                       required
                       autoComplete="off"
-                      className={`form-control ${formErrors.costum_cell > 10 ? "is-invalid" : formData.costum_cell ? "is-valid" : ""}`}
+                      className={`form-control ${
+                        formErrors.costum_cell > 10
+                          ? "is-invalid"
+                          : formData.costum_cell
+                          ? "is-valid"
+                          : ""
+                      }`}
                       type="tel"
                       name="costum_cell"
                       placeholder="es. 3326951222"
@@ -280,19 +354,35 @@ useEffect(() => {
                       onChange={handleChange}
                       pattern="[0-9]*"
                       onKeyDown={(e) => {
-                        if (!/[0-9]/.test(e.key) && !["Backspace", "ArrowLeft", "ArrowRight", "Tab", "Delete"].includes(e.key)) {
+                        if (
+                          !/[0-9]/.test(e.key) &&
+                          ![
+                            "Backspace",
+                            "ArrowLeft",
+                            "ArrowRight",
+                            "Tab",
+                            "Delete",
+                          ].includes(e.key)
+                        ) {
                           e.preventDefault();
                         }
                       }}
                     />
                     <div className="valid-feedback">Numero corretto</div>
-                    <div className="invalid-feedback">Inserisci un numero valido</div>
+                    <div className="invalid-feedback">
+                      Inserisci un numero valido
+                    </div>
                   </div>
 
                   {/* Metodo di Pagamento */}
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
-                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                    <select
+                      className="form-select"
+                      name="payment_method"
+                      value={formData.payment_method}
+                      onChange={handleChange}
+                    >
                       <option value="">Seleziona un metodo</option>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
@@ -302,11 +392,16 @@ useEffect(() => {
 
                   {/* Colonna destra con Carrello */}
                   <div className="col-lg-5 right-column-small">
-                    <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
+                    <CartAccordion
+                      cartItems={cartItems}
+                      totalPrice={totalPrice}
+                    />
                   </div>
 
                   {/* Bottone di Invio */}
+
                   <button type="submit" className="btn btn-dark w-100" disabled={isSubmitting || (isFormTouched && !isFormValid)}>
+
                     {isSubmitting ? (
                       <div className="d-flex justify-content-center align-items-center">
                         <Loader />
@@ -327,8 +422,8 @@ useEffect(() => {
                   <span>{totalPrice.toFixed(2)} €</span>
                 </div>
                 <div className="d-flex justify-content-between border-bottom py-2">
-                  <span>Costi di spedizione stimati</span>
-                  <span>0,00 €</span>
+                  <span>Costi di spedizione</span>
+                  <span>0.00 €</span>
                 </div>
                 {discount > 0 && (
                   <div className="d-flex justify-content-between">
@@ -347,15 +442,35 @@ useEffect(() => {
 
                 {cartItems.map((item, index) => (
                   <div className="d-flex mb-3" key={index}>
-                    <img src={item.image} alt={item.name} className="me-3" width="60" />
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="me-3"
+                      width="60"
+                    />
                     <div>
                       <div className="fw-bold">{item.name}</div>
-                      <small className="text-muted">{item.description?.slice(0, 40)}...</small>
+                      <small className="text-muted">
+                        {item.description?.slice(0, 40)}...
+                      </small>
                       <br />
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div className="fw-bold">{item.price} €</div>
+
+                      {item.discount_price &&
+                      item.price !== item.discount_price ? (
+                        <div className="price-wrapper fw-bold">
+                          <span className="original-price text-decoration-line-through me-2">
+                            {item.price} €
+                          </span>
+                          <span className="discount-price text-danger">
+                            {item.discount_price} €
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="fw-bold">{item.price} €</div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -366,7 +481,10 @@ useEffect(() => {
       ) : (
         <div className="container text-center mt-5">
           <h1>Ordine ricevuto con successo!</h1>
-          <p>Grazie per il tuo acquisto. Ti invieremo presto la conferma via email.</p>
+          <p>
+            Grazie per il tuo acquisto. Ti invieremo presto la conferma via
+            email.
+          </p>
           <Link to="/" className="btn btn-dark mt-3">
             Continua con gli acquisti
           </Link>
