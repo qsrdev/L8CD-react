@@ -37,25 +37,47 @@ const Checkout = () => {
     tracking_number: "prova",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+ const handleChange = (e) => {
+  const { name, value } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  setFormData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
 
-    setFormErrors((prev) => ({
-      ...prev,
-      [name]: false,
-    }));
-  };
+  switch (name) {
+    case "custom_email":
+      if (!/^\S+@\S+\.\S+$/.test(value)) {
+        setFormErrors((prev) => ({ ...prev, [name]: true }));
+      } else {
+        setFormErrors((prev) => ({ ...prev, [name]: false }));
+      }
+      break;
+    case "custom_name":
+    case "custom_surname":
+      if (!/^[a-zA-Z\s]+$/.test(value)) {
+        setFormErrors((prev) => ({ ...prev, [name]: true }));
+      } else {
+        setFormErrors((prev) => ({ ...prev, [name]: false }));
+      }
+      break;
+    case "costum_cell":
+      if (!/^\d{9,12}$/.test(value)) {
+        setFormErrors((prev) => ({ ...prev, [name]: true }));
+      } else {
+        setFormErrors((prev) => ({ ...prev, [name]: false }));
+      }
+      break;
+    default:
+      setFormErrors((prev) => ({ ...prev, [name]: false }));
+  }
+};
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
 
     const errors = {};
-    if (!/^\d{9,12}$/.test(formData.phone)) errors.phone = true;
+    if (!/^\d{9,12}$/.test(formData.costum_cell)) errors.costum_cell = true;
     if (!formData.custom_name) errors.custom_name = true;
     if (!formData.custom_surname) errors.custom_surname = true;
     if (!formData.custom_address) errors.custom_address = true;
@@ -129,7 +151,7 @@ const Checkout = () => {
                   <div className="mb-3">
                     <label className="form-label">E-mail*</label>
                     <input
-                      className={`form-control ${formErrors.custom_email ? "is-invalid" : formData.custom_email ? "is-valid" : ""}`}
+                      className={`form-control ${formErrors.custom_email ? "is-invalid" : (!formErrors.custom_email && formData.custom_email && /^\S+@\S+\.\S+$/.test(formData.custom_email)) ? "is-valid" : ""}`}
                       type="email"
                       name="custom_email"
                       placeholder="es. mario.rossi@me.it"
@@ -147,7 +169,7 @@ const Checkout = () => {
                       <label className="form-label">Nome*</label>
                       <input
                         autoComplete="off"
-                        className={`form-control ${formErrors.custom_name ? "is-invalid" : formData.custom_name ? "is-valid" : ""}`}
+                        className={`form-control ${formErrors.custom_name ? "is-invalid" : (!formErrors.custom_name && formData.custom_name && /^[a-zA-Z\s]+$/.test(formData.custom_name)) ? "is-valid" : ""}`}
                         type="text"
                         name="custom_name"
                         placeholder="es. Mario"
@@ -166,7 +188,7 @@ const Checkout = () => {
                       <label className="form-label">Cognome*</label>
                       <input
                         autoComplete="off"
-                        className={`form-control ${formErrors.custom_surname ? "is-invalid" : formData.custom_surname ? "is-valid" : ""}`}
+                        className={`form-control ${formErrors.custom_surname ? "is-invalid" : (!formErrors.custom_surname && formData.custom_surname && /^[a-zA-Z\s]+$/.test(formData.custom_surname)) ? "is-valid" : ""}`}
                         type="text"
                         name="custom_surname"
                         placeholder="es. Rossi"
