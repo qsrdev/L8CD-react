@@ -219,7 +219,7 @@ const Checkout = () => {
                     <label className="form-label">Numero di Telefono*</label>
                     <input
                       inputMode="numeric"
-                      maxLength={12}
+                      maxLength={11}
                       required
                       autoComplete="off"
                       className={`form-control ${formErrors.costum_cell > 10 ? "is-invalid" : formData.costum_cell ? "is-valid" : ""}`}
@@ -228,6 +228,12 @@ const Checkout = () => {
                       placeholder="es. 3326951222"
                       value={formData.costum_cell}
                       onChange={handleChange}
+                      pattern="[0-9]*"
+                      onKeyDown={(e) => {
+                        if (!/[0-9]/.test(e.key) && !["Backspace", "ArrowLeft", "ArrowRight", "Tab", "Delete"].includes(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
                     />
                     <div className="valid-feedback">Numero corretto</div>
                     <div className="invalid-feedback">Inserisci un numero valido</div>
