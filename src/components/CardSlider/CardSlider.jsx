@@ -86,7 +86,7 @@ export default function CardSlider({ array }) {
                 ) : null}
               </div>
 
-              <div className="card-body ">
+              <div className="card-body">
                 <h5 className="card-title fw-bold mb-1">{curElement.name}</h5>
                 <p className="card-subtitle text-muted mb-2">
                   {curElement.tagline}
@@ -96,7 +96,7 @@ export default function CardSlider({ array }) {
                 </p>
 
                 <div className="d-flex justify-content-between align-items-center mt-3">
-                  <span className="fw-bold fs-6">€{curElement.price}</span>
+                  <span className="fw-bold fs-6">{curElement.price} €</span>
                   <Link className="btn btn-dark btn-sm rounded-pill" to={`/shoes/product/${curElement.slug}`}>
                     Acquista →
                   </Link>
