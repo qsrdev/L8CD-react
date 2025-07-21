@@ -26,7 +26,7 @@ img {
 
 .slide img {
    position: relative;
-  object-fit: cover;
+  object-fit: contain;
   float: left;
 }
 
