@@ -59,7 +59,7 @@ const Checkout = () => {
     if (!formData.custom_name) errors.custom_name = true;
     if (!formData.custom_surname) errors.custom_surname = true;
     if (!formData.custom_address) errors.custom_address = true;
-    if (!/^\d{9,12}$/.test(formData.phone)) errors.phone = true;
+    if (!/^\d{9,12}$/.test(formData.costum_cell)) errors.costum_cell = true;
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -122,7 +122,6 @@ const Checkout = () => {
                 <h4 className="mb-4">Opzioni di consegna</h4>
 
                 {/* FORM */}
-
 
                 <form onSubmit={handleOrderSubmit} className="rounded border p-4 needs-validation" noValidate>
                   {/* Email */}
@@ -223,11 +222,11 @@ const Checkout = () => {
                       maxLength={12}
                       required
                       autoComplete="off"
-                      className={`form-control ${formErrors.phone > 10 ? "is-invalid" : formData.phone ? "is-valid" : ""}`}
+                      className={`form-control ${formErrors.costum_cell > 10 ? "is-invalid" : formData.costum_cell ? "is-valid" : ""}`}
                       type="tel"
-                      name="phone"
+                      name="costum_cell"
                       placeholder="es. 3326951222"
-                      value={formData.phone}
+                      value={formData.costum_cell}
                       onChange={handleChange}
                     />
                     <div className="valid-feedback">Numero corretto</div>
