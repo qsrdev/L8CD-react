@@ -118,7 +118,7 @@ const Checkout = () => {
                 </div> */}
 
                 {/* FORM */}
-                <form onSubmit={handleOrderSubmit} className="rounded border p-4 need-validate" noValidate>
+                <form onSubmit={handleOrderSubmit} className="rounded border p-4 need-validate mb-5" noValidate>
                   <div className="mb-3">
                     <label className="form-label">E-mail*</label>
                     <input
@@ -198,8 +198,6 @@ const Checkout = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
-
-                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}/>
 
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                       <option value="paypal">PayPal</option>
