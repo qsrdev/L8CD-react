@@ -16,7 +16,7 @@ const ChatBot = () => {
   const sendMessage = async () => {
     if (!message.trim()) return;
 
-    const userMessage = { sender: "You", text: message };
+    const userMessage = { sender: "Tu", text: message };
     setChatLog((prev) => [...prev, userMessage]);
     setMessage("");
 
@@ -55,7 +55,7 @@ const ChatBot = () => {
       setChatLog((prev) => [
         ...prev,
         {
-          sender: "Gemini",
+          sender: "Assistente",
           text: "Mi scuso, c'è stato un problema nel connettermi. Riprova più tardi.",
         },
       ]);

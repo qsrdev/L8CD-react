@@ -20,6 +20,30 @@
   z-index: 1001;
 }
 
+.chat-message.tu {
+  text-align: right;
+  background-color: rgb(103, 125, 183, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-message.assistente {
+  text-align: left;
+  background-color: rgb(254, 168, 47, 0.2); 
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-message.tu .sender-name {
+  color: var(--common-color-1); 
+}
+
+.chat-message.assistente .sender-name {
+  color: var(--common-color-2); 
+}
+
 .chat-window {
   display: flex;
   flex-direction: column;

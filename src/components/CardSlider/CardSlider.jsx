@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import { Pagination, Navigation } from "swiper/modules";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,6 +10,17 @@ import "swiper/css/navigation";
 import "./CardSlider.css";
 
 export default function CardSlider({ array }) {
+
+  const [discont, setDiscount] = useState([])
+  
+  useEffect(() => {
+    let url = `${import.meta.env.VITE_API_URL}/shoes`;
+
+    axios.get(url).then((resp) => {
+      setDiscount(resp.data.data);
+    })
+  }, []);
+
   return (
     <>
       <Swiper
@@ -58,10 +71,13 @@ export default function CardSlider({ array }) {
                 ) : null}
               </div>
 
+
+
               <div className="card-body ">
                 <h5 className="card-title fw-bold mb-1">{curElement.name}</h5>
                 <p className="card-subtitle text-muted mb-2">{curElement.tagline}</p>
                 <p className="card-text text-secondary small">{curElement.description}</p>
+
 
                 <div className="d-flex justify-content-between align-items-center mt-3">
                   <span className="fw-bold fs-6">€{curElement.price}</span>

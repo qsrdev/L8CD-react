@@ -50,6 +50,7 @@ const ProductDetail = () => {
             <h1 className="fw-5">{product.name}</h1>
             <p className="description">{product.description}</p>
 
+
             {product.discount_price &&
             product.price !== product.discount_price ? (
               <div className="price-wrapper">
@@ -61,6 +62,7 @@ const ProductDetail = () => {
             ) : (
               <p className="price">€{product.price}</p>
             )}
+
 
             <p className="categoria-prodotto">Scarpa {product.gender}</p>
 
