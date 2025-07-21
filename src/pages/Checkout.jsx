@@ -6,6 +6,8 @@ import "../pages/Checkout.css";
 import "../index.css";
 import CartAccordion from "../components/CartAccordion";
 import Loader from "../components/Loader/Loader";
+
+
 const Checkout = () => {
   const {
     cartItems,

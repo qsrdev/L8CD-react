@@ -21,6 +21,7 @@ export const CartProvider = ({ children }) => {
     const localCartItems = localStorage.getItem("cartItems");
     const localTotalPrice = localStorage.getItem("totalPrice");
     const localDiscount = localStorage.getItem("discount");
+    
     if (localCartItems) {
       setCartItems(JSON.parse(localCartItems));
       setTotalPrice(JSON.parse(localTotalPrice));
