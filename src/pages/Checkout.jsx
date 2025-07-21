@@ -224,7 +224,7 @@ const Checkout = () => {
                       autoComplete="off"
                       className={`form-control ${formErrors.costum_cell > 10 ? "is-invalid" : formData.costum_cell ? "is-valid" : ""}`}
                       type="tel"
-                      name="phone"
+                      name="costum_cell"
                       placeholder="es. 3326951222"
                       value={formData.costum_cell}
                       onChange={handleChange}
