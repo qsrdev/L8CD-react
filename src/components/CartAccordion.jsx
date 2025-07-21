@@ -20,7 +20,7 @@ const CartAccordion = ({ cartItems, totalPrice }) => {
 
           <div className="d-flex justify-content-between border-bottom py-2">
             <span>Subtotale</span>
-            <span>{totalPrice} €</span>
+            <span>{totalPrice.toFixed(2)} €</span>
           </div>
           <div className="d-flex justify-content-between border-bottom py-2">
             <span>Costi di spedizione stimati</span>
@@ -28,7 +28,7 @@ const CartAccordion = ({ cartItems, totalPrice }) => {
           </div>
           <div className="d-flex justify-content-between fw-bold fs-5 my-3">
             <span>Totale</span>
-            <span>{totalPrice} €</span>
+            <span>{totalPrice.toFixed(2)} €</span>
           </div>
 
           <p className="text-muted">
