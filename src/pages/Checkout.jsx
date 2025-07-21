@@ -18,6 +18,7 @@ const Checkout = () => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isFormTouched, setIsFormTouched] = useState(false);
 
   // const isEmailValid = (email) => {
   //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,6 +46,8 @@ const Checkout = () => {
     ...prev,
     [name]: value,
   }));
+
+  setIsFormTouched(true);
 
   switch (name) {
     case "custom_email":
@@ -74,24 +77,28 @@ const Checkout = () => {
   }
 };
 
+const validateForm = () => {
+  const errors = {};
+  if (!formData.custom_name) errors.custom_name = true;
+  if (!formData.custom_surname) errors.custom_surname = true;
+  if (!formData.custom_address) errors.custom_address = true;
+  if (!/^\d{9,12}$/.test(formData.costum_cell)) errors.costum_cell = true;
+  if (!/^\S+@\S+\.\S+$/.test(formData.custom_email)) errors.custom_email = true;
+  if (!/^[a-zA-Z\s]+$/.test(formData.custom_name)) errors.custom_name = true;
+  if (!/^[a-zA-Z\s]+$/.test(formData.custom_surname)) errors.custom_surname = true;
+
+  setFormErrors(errors);
+  return Object.keys(errors).length === 0;
+};
   
 useEffect(() => {
-  const validateForm = () => {
-    const errors = {};
-    if (!formData.custom_name) errors.custom_name = true;
-    if (!formData.custom_surname) errors.custom_surname = true;
-    if (!formData.custom_address) errors.custom_address = true;
-    if (!/^\d{9,12}$/.test(formData.costum_cell)) errors.costum_cell = true;
-    if (!/^\S+@\S+\.\S+$/.test(formData.custom_email)) errors.custom_email = true;
-    if (!/^[a-zA-Z\s]+$/.test(formData.custom_name)) errors.custom_name = true;
-    if (!/^[a-zA-Z\s]+$/.test(formData.custom_surname)) errors.custom_surname = true;
 
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  setIsFormValid(validateForm());
-}, [formData]);
+  if (isFormTouched) {
+    setIsFormValid(validateForm());
+  } else {
+    setIsFormValid(false);
+  }
+}, [formData, isFormTouched]);
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
@@ -106,7 +113,7 @@ useEffect(() => {
       setFormErrors(errors);
       return;
     }
-
+    
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -299,7 +306,7 @@ useEffect(() => {
                   </div>
 
                   {/* Bottone di Invio */}
-                  <button type="submit" className="btn btn-dark w-100" disabled={isSubmitting || !isFormValid}>
+                  <button type="submit" className="btn btn-dark w-100" disabled={isSubmitting || (isFormTouched && !isFormValid)}>
                     {isSubmitting ? (
                       <div className="d-flex justify-content-center align-items-center">
                         <Loader />
