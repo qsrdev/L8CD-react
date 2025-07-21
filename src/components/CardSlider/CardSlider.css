@@ -57,3 +57,6 @@ img {
   font-size: 12px;
   font-weight: bold;
 }
+.card{
+  min-height: 420px;
+}
