@@ -390,14 +390,6 @@ const Checkout = () => {
                     <div className="valid-feedback">Metodo selezionato</div>
                   </div>
 
-                  {/* Colonna destra con Carrello */}
-                  <div className="col-lg-5 right-column-small">
-                    <CartAccordion
-                      cartItems={cartItems}
-                      totalPrice={totalPrice}
-                    />
-                  </div>
-
                   {/* Bottone di Invio */}
 
                   <button
@@ -479,6 +471,13 @@ const Checkout = () => {
                 ))}
               </div>
             </div>
+                {/* Colonna destra con Carrello */}
+                  <div className="col-lg-5 right-column-small">
+                    <CartAccordion
+                      cartItems={cartItems}
+                      totalPrice={totalPrice}
+                    />
+                  </div>
           </div>
         </>
       ) : (
