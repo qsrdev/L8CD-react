@@ -77,7 +77,6 @@ const Checkout = () => {
     e.preventDefault();
 
     const errors = {};
-    if (!/^\d{9,12}$/.test(formData.costum_cell)) errors.costum_cell = true;
     if (!formData.custom_name) errors.custom_name = true;
     if (!formData.custom_surname) errors.custom_surname = true;
     if (!formData.custom_address) errors.custom_address = true;
