@@ -96,7 +96,17 @@ export default function CardSlider({ array }) {
                 </p>
 
                 <div className="d-flex justify-content-between align-items-center mt-3">
-                  <span className="fw-bold fs-6">{curElement.price} €</span>
+                  {curElement.discount_price ? (
+                    <>
+                    <div className="d-flex flex-wrap flex-column">
+                      <span className="original-price">{curElement.price} €</span>
+                      <span className="discount-price">{curElement.discount_price} €</span>
+                    </div>
+                    </>
+                    ) : (
+                    <span className="fw-bold fs-6">{curElement.price} €</span>
+                    )}
+
                   <Link className="btn btn-dark btn-sm rounded-pill" to={`/shoes/product/${curElement.slug}`}>
                     Acquista →
                   </Link>

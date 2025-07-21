@@ -2,9 +2,12 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import axios from "axios";
+import Loader from "../components/Loader/Loader";
+
 import "../pages/Checkout.css";
 import "../index.css";
-import CartAccordion from "../components/CartAccordion";
+
+
 
 const Checkout = () => {
   const { cartItems, totalPrice, discount, clearCart, increaseQuantity, decreaseQuantity } = useCart();

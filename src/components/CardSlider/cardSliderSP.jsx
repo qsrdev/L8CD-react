@@ -45,7 +45,17 @@ export default function CardSliderSP({ array }) {
                 </Link>
               <div className="card-body">
                 <h6 className="card-title name py-3">{curElement.name}</h6>
-                <p className="card-text price">{curElement.price} €</p>
+                <p className="card-text description">{curElement.description}</p>
+                {curElement.discount_price ? (
+                  <>
+                  <div className="d-flex">
+                    <p className="original-price me-1">{curElement.price} €</p>
+                    <p className="discount-price">{curElement.discount_price} €</p>
+                  </div>
+                  </>
+                  ) : (
+                  <p className="card-text price">{curElement.price} €</p>
+                  )}
               </div>
             </div>
                 <p className="promo-marklabel">Tra i più acquistati</p>

@@ -441,6 +441,13 @@ footer {
   }
 }
 
+.price-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
 @media screen and (max-width: 390px) {
   .accordion {
     text-align: center;

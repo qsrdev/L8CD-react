@@ -4,7 +4,7 @@ import { use } from "react";
 
 const ShoesCard = ({ shoe }) => {
   const { addToCart } = useCart();
-  const { id, name, description, brand, price, image, gender, slug } = shoe;
+  const { id, name, description, brand, price, image, gender, slug, discount_price } = shoe;
 
   return (
     <Link
@@ -18,16 +18,17 @@ const ShoesCard = ({ shoe }) => {
             {name} - {brand}
           </h5>
           <p className="card-text description">{description}</p>
+          {discount_price ? (
+          <>
+          <div className="d-flex">
+            <p className="original-price me-1">{price} €</p>
+            <p className="discount-price">{discount_price} €</p>
+          </div>
+          </>
+          ) : (
           <p className="card-text price">{price} €</p>
-          {/* <button
-            className="add-to-cart-all "
-            onClick={(e) => {
-              e.preventDefault();
-              addToCart(shoe);
-            }}
-          >
-            AGGIUNGI!
-          </button> */}
+          )}
+
         </div>
       </div>
     </Link>
