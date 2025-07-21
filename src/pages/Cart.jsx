@@ -108,7 +108,16 @@ const Cart = () => {
                             </small>
                           </p>
 
-                          <p className="card-text fw-bold">{item.price} €</p>
+                          {item.discount_price ? (
+                            <>
+                            <div className="d-flex gap-1">
+                              <p className="original-price">{item.price} €</p>
+                              <p className="discount-price">{item.discount_price} €</p>
+                            </div>
+                            </>
+                            ) : (
+                            <p className="card-text fw-bold">{item.price} €</p>
+                            )}
                         </div>
                       </div>
                       <div className="col-md-3 d-flex align-items-center justify-content-center">

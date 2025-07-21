@@ -122,8 +122,11 @@ const Checkout = () => {
                 <h4 className="mb-4">Opzioni di consegna</h4>
 
                 {/* FORM */}
+
+
                 <form onSubmit={handleOrderSubmit} className="rounded border p-4 needs-validation" noValidate>
                   {/* Email */}
+
                   <div className="mb-3">
                     <label className="form-label">E-mail*</label>
                     <input
