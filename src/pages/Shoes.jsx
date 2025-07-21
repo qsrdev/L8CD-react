@@ -22,13 +22,11 @@ const Shoes = () => {
   const [onlyNew, setOnlyNew] = useState(false);
   const searchTerm = searchTermFromQuery || "";
 
-
   // Chiamata API
   useEffect(() => {
     let url = `${import.meta.env.VITE_API_URL}/shoes`;
     const params = {};
 
-    
     if (gender === "offerte") {
       params.maxPrice = 90;
     } else if (gender === "novita") {
@@ -76,7 +74,7 @@ const Shoes = () => {
       {/* {shoes.length === 0 ? (
         <Loader/>
       ) : ( */}
-        <section className="container py-5">
+      <section className="container py-5">
         <div className="d-flex justify-content-center align-items-center gap-3 my-5 flex-wrap">
           <h1 className="m-0 text-center">{pageTitle}</h1>
           <span className="text-muted fs-6">({shoes.length} risultati)</span>
@@ -146,7 +144,7 @@ const Shoes = () => {
                 <option value="Asics">Asics</option>
                 <option value="La Sportiva">La Sportiva</option>
                 <option value="Vans">Vans</option>
-                <option value="Solomon">Solomon</option>
+                <option value="Salomon">Salomon</option>
                 <option value="The North Face">The North Face</option>
                 <option value="Columbia">Columbia</option>
                 <option value="Under Armour">Under Armour</option>

@@ -5,13 +5,12 @@ import axios from "axios";
 import "../pages/Checkout.css";
 import "../index.css";
 import CartAccordion from "../components/CartAccordion";
-import Loader from "../components/Loader/Loader";
+
 const Checkout = () => {
   const { cartItems, totalPrice, discount, clearCart, increaseQuantity, decreaseQuantity } = useCart();
   const totalWithDiscount = (totalPrice - discount).toFixed(2);
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +21,7 @@ const Checkout = () => {
     custom_name: "",
     custom_email: "",
     custom_address: "",
+    costum_cell: "",
     shipping_address: "",
     shipping_method: "standard",
     payment_method: "PayPal",
@@ -36,14 +36,12 @@ const Checkout = () => {
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     if (!isEmailValid(formData.custom_email)) {
       alert("Inserisci un indirizzo email valido.");
-      setIsSubmitting(false);
       return;
     }
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     try {
       const orderData = {
         ...formData,
@@ -166,6 +164,7 @@ const Checkout = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Indirizzo di Fatturazione*</label>
+                    <label className="form-label">Indirizzo di Fatturazione*</label>
                     <input
                       autoComplete="off"
                       className="form-control"
@@ -181,6 +180,8 @@ const Checkout = () => {
                   <div className="mb-3">
                     <label className="form-label">Indirizzo di Spedizione</label>
                     <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
+                    <label className="form-label">Indirizzo di Spedizione</label>
+                    <input autoComplete="off" className="form-control" type="text" name="shipping_address" placeholder="es. Via Cavour 76" value={formData.shipping_address} onChange={handleChange} />
                   </div>
 
                   <div className="mb-3">
@@ -191,6 +192,7 @@ const Checkout = () => {
                   <div className="mb-3">
                     <label className="form-label">Metodo di Pagamento</label>
                     <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+                    <select className="form-select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
                       <option value="paypal">PayPal</option>
                       <option value="credit_card">Carta di credito</option>
                     </select>
@@ -198,6 +200,7 @@ const Checkout = () => {
 
                   {/* visualizzazione small colonna destra */}
                   <div className="col-lg-5 right-column-small">
+                    <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
                     <CartAccordion cartItems={cartItems} totalPrice={totalPrice} />
                   </div>
                   {/* BOTTONE DISABLED DOPO CHE E' STATO CLICCATO */}
@@ -222,7 +225,7 @@ const Checkout = () => {
 
               {/* Colonna destra */}
               <div className="col-lg-5 right-column-desktop">
-                <h5 className="fw-bold">Riepilogo carrello</h5>
+                <h5 className="fw-bold">Nel carrello</h5>
                 <div className="d-flex justify-content-between border-bottom py-2">
                   <span>Subtotale</span>
                   <span>{totalPrice.toFixed(2)} €</span>
@@ -256,7 +259,7 @@ const Checkout = () => {
                       <small>
                         Quantità: {item.quantity} | Misura: {item.size}
                       </small>
-                      <div className="card-text price">{item.price} €</div>
+                      <div>€ {item.price}</div>
                     </div>
                   </div>
                 ))}
