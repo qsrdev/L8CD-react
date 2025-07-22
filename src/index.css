@@ -413,12 +413,14 @@ footer {
   .accordion {
     margin: 0 auto;
   }
+
   .single-product-image {
     width: 80vw;
     height: auto;
     object-fit: contain;
     margin: 0;
   }
+  
   .add-to-cart {
     display: flex;
     justify-content: center;
