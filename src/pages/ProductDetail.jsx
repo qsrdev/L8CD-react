@@ -52,7 +52,7 @@ const ProductDetail = () => {
 
             {product.discount_price &&
             product.price !== product.discount_price ? (
-              <div className="price-wrapper fs-3">
+              <div className="d-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start gap-3 price-wrapper-small fs-4 mb-4">
                 <span className="original-price">{product.price} €</span>
                 <span className="discount-price">
                   {product.discount_price} €

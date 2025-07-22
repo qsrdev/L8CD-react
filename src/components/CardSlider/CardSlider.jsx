@@ -107,7 +107,7 @@ export default function CardSlider({ array }) {
                     <span className="fw-bold fs-6">{curElement.price} €</span>
                     )}
 
-                  <Link className="btn btn-dark btn-sm rounded-pill" to={`/shoes/product/${curElement.slug}`}>
+                  <Link className="btn btn-card-home btn-sm rounded-pill" to={`/shoes/product/${curElement.slug}`}>
                     Acquista →
                   </Link>
                 </div>

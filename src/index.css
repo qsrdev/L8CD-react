@@ -293,12 +293,6 @@ footer {
 
 /* SINGLE PRODUCT STYLING */
 
-.price-wrapper {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
 .original-price {
   text-decoration: line-through;
   color: #888;
@@ -343,7 +337,6 @@ footer {
   width: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .custom-accordion-btn {
@@ -416,6 +409,7 @@ footer {
     text-align: center;
     background-color: #f1ebeb6e;
   }
+  
   .accordion {
     margin: 0 auto;
   }
@@ -440,6 +434,7 @@ footer {
     margin: 0;
   }
 }
+
 
 @media screen and (max-width: 390px) {
   .accordion {

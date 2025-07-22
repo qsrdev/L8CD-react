@@ -61,3 +61,12 @@ img {
 .card-slider {
   min-height: 440px;
 }
+
+.btn-card-home {
+  background-color: var(--common-color-1) !important;
+  color: white !important;
+}
+
+.btn-card-home:hover {
+  background-color: var(--common-color-2) !important;
+}
