@@ -16,8 +16,12 @@ const Contacts = () => {
             <div className="text-center col-6">
               <i className="fa-solid fa-mobile-screen fs-1 mb-4"></i>
               <h5>Puoi chiamarci</h5>
-              <p>Numero nazionale: +39 02 12345678</p>
-              <p>Numero internazionale: +44 20 12345678</p>
+              <p>
+                Numero nazionale: <br /> +39 02 12345678
+              </p>
+              <p>
+                Numero internazionale: <br /> +44 20 12345678
+              </p>
               <p>7 giorni su 7</p>
             </div>
           </div>
